@@ -26,7 +26,7 @@ exports.updatepost = async(req,res) => {
         category: req.body.category
     },
     {new: true})
-    if(req.file){
+    if(req.post){
         post = await post.findByIdAndUpdate(req.params.id, {
             image: req.file?.path
         })
@@ -55,7 +55,30 @@ exports.getpostByCategory = async(req,res) =>{
     res.send(post);
 }
 
-delete post
+//get all post
+exports.getAllpost = async(req,res) =>{
+   const username = req.query.user;
+   const catName = req.query.cat;
+   try{
+    let post;
+    if(username) {
+        post = await Post.find({username});
+    } else if(catName) {
+        post = await Post.find({
+            category : {$in : [catName],
+            },
+        });
+    } else {
+        post = Post.find();
+    }
+    res.send(post)
+   } catch (err) {
+    res.status(400).json({ error: "Something went wrong" });
+   }
+}
+
+
+//delete post
 exports.deletepost = (req,res) => {
         Post.findByIdAndDelete(req.params.id)   
         .then(post =>{

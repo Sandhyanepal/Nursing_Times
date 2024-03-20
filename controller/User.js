@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 // REGISTER
 exports.register = async (req, res) => {
     try{
-
         const salt = await bcrypt.genSalt(10);
         const hashed_password = await bcrypt.hash(req.body.password, salt);
         const newUser = new User({

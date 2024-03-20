@@ -9,3 +9,4 @@ router.delete('/deleteuser/:id', deleteUser)
 router.get('/getuser/:id', getUser)
 
 module.exports = router
+

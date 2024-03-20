@@ -4,10 +4,10 @@ require('./database/connection')
 const morgan = require('morgan')
 
 
-const UserRoute = require("./routes/user");
+const UserRoute = require("./routes/User");
 
 const postRoute = require("./routes/posts");
-const CategoryRoute = require("./routes/category")
+const CategoryRoute = require("./routes/category");
 
 const app = express();
 const port = process.env.PORT || 5000; // Set the port for your server

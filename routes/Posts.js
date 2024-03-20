@@ -1,5 +1,5 @@
 const express = require('express')
-const { addpost, updatepost, getpost, deletepost, getpostByCategory, getAllpost } = require('../Controller/Post')
+const { addpost, updatepost, getpost, deletepost, getpostByCategory, getAllpost } = require('../Controller/post')
 const router = express.Router()
 
 router.post('/addpost', addpost);

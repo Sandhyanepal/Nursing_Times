@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 // app.use("/api/posts",postRoute);
 app.use(postRoute);
+app.use(CategoryRoute);
 
 
 // Start the server

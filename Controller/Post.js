@@ -1,9 +1,9 @@
-const Post = require("../models/Post");
+const Post = require("../models/post");
 
 //Create Post
 exports.addpost = async(req,res) => {
      if(!req.post){
-        return res.status(500).json({error:"Please upload an image"})
+        return res.status(500).json({error:"Post not found."})
      }
     let post = await Post.create({
         title: req.body.title,
@@ -26,7 +26,7 @@ exports.updatepost = async(req,res) => {
         category: req.body.category
     },
     {new: true})
-    if(req.post){
+    if(req.file){
         post = await post.findByIdAndUpdate(req.params.id, {
             image: req.file?.path
         })
@@ -43,7 +43,7 @@ exports.getpost = async(req,res) => {
     if (!post){
         return res.status(400).json({error:"Something went wrong"})
     }
-    res.send(products);
+    res.send(post);
 }
 
 //get post of a category

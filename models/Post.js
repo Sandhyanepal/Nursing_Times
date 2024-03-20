@@ -1,11 +1,11 @@
 const mongoose = require("mongoose")
+const {ObjectId} =mongoose.Schema
 
 const postSchema = new mongoose.Schema(
     {
         title: {
             type: String,
             required: true,
-            unique: true,
         },
         description: {
             type: String,
@@ -20,8 +20,9 @@ const postSchema = new mongoose.Schema(
             required: true,
         },
         category:{
-            type: Array,
+            type: ObjectId,
             required: false,
+            ref: "Category",
         },
     },
     {timestamps: true}

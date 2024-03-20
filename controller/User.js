@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user');
 const bcrypt = require('bcrypt')
 
 // REGISTER
@@ -60,7 +60,7 @@ exports.login = async (req, res) => {
             res.status(200).json(user);
         }
         catch(err){
-        return res.status(400).json(err.message);
+        res.status(400).json(err.message);
         }
     }
     else{

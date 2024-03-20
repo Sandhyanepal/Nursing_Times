@@ -1,94 +1,84 @@
-const Post = require("../models/Post");
+const { raw } = require("express");
+const Post = require("../models/post");
 
 //Create Post
-exports.addpost = async(req,res) => {
-     if(!req.post){
-        return res.status(500).json({error:"Please upload an image"})
-     }
-    let post = await Post.create({
-        title: req.body.title,
-        description: req.body.description,
-        username: req.body.username,
-        category: req.body.category
-    })
-    if(!post){
-        return res.status(400).json({error:"Something went wrong"})
+exports.addpost = async (req, res) => {
+    try {
+        let post = await Post.create({
+            title: req.body.title,
+            description: req.body.description,
+            username: req.body.username,
+            category: req.body.category
+        })
+        if (!post) {
+            return res.status(400).json({ error: "Something went wrong" })
+        }
+        res.send(post)
     }
-    res.send(post)
+    catch (err) {
+        res.status(400).json(err.message);
+    }
 };
 
-//update post
-exports.updatepost = async(req,res) => {
-    let post = await Post.findByIdAndUpdate(req.params.id,{
-        title: req.body.title,
-        description: req.body.description,
-        username: req.body.username,
-        category: req.body.category
+//Update post
+exports.updatePost = async (req, res) => {
+    let post = await Post.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
     },
-    {new: true})
-    if(req.post){
-        post = await post.findByIdAndUpdate(req.params.id, {
-            image: req.file?.path
-        })
-    }
-    if(!post){
-        return res.status(400).json({error:"Something went wrong"})
+        { new: true })
+    if (!post) {
+        return res.status(400).json({ error: "You can update only your post!!!" })
     }
     res.send(post)
 }
 
-//get post
-exports.getpost = async(req,res) => {
-    let post = await Post.findById(req.params.id);
-    if (!post){
-        return res.status(400).json({error:"Something went wrong"})
+//Delete post
+exports.deletePost = async (req, res) => {
+    if (req.body.postId === req.params.id) {
+        try {
+            let post = await Post.findByIdAndDelete(req.params.id, {
+                $set: req.body,
+            }, { new: true })
+            res.status(200).json("Post Deleted!!!")
+        }
+        catch (err) {
+            res.status(400).json(err.message);
+        }        
     }
-    res.send(products);
+    else{
+        res.status(401).json("You can delete only your posts!!!");
+    }
+
 }
 
-//get post of a category
-exports.getpostByCategory = async(req,res) =>{
-    let post = await Post.find({category: req.params.category_id}).populate('category', 'category_name');
-    if(!post) {
+//Get post By Id
+exports.getPost = async (req, res) => {
+        let post = await Post.findById(req.params.id);
+        if (!post) {
+            return res.status(400).json({ error: "Post not found" })
+        }
+        res.send(post);
+}
+
+//Get Posts by Category
+exports.getPostByCategory = async (req, res) => {
+    let posts = await Post.find({ category: req.params.category_name});
+    if (!posts) {
         return res.status(400).json({ error: "Something went wrong" });
     }
-    res.send(post);
+    res.send(posts);
 }
 
 //get all post
-exports.getAllpost = async(req,res) =>{
-   const username = req.query.user;
-   const catName = req.query.cat;
-   try{
-    let post;
-    if(username) {
-        post = await Post.find({username});
-    } else if(catName) {
-        post = await Post.find({
-            category : {$in : [catName],
-            },
-        });
-    } else {
-        post = Post.find();
+exports.getAllPosts = async (req, res) => {
+    let posts = await Post.find()
+    if(!posts){
+        return res.status(400).json({ error: "Something went wrong" });
     }
-    res.send(post)
-   } catch (err) {
-    res.status(400).json({ error: "Something went wrong" });
-   }
+    res.send(posts);
 }
 
 
-//delete post
-exports.deletepost = (req,res) => {
-        Post.findByIdAndDelete(req.params.id)   
-        .then(post =>{
-                if(!post){
-                        return res.status(400).json({error:"Post not found"});
-                    }
-                    res.send({message:"Post deleted successsfully"})
-                })
-                .catch(error=> res.status(400).json({error:error.message}))
-            }
-                       
-           
-                    
+
+
+

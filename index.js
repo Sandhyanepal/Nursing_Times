@@ -1,9 +1,10 @@
 const express = require('express');
 require('dotenv').config();
 require('./database/connection')
+const morgan = require('morgan')
 
 
-const UserRoute = require("./routes/User");
+const UserRoute = require("./routes/user");
 
 const postRoute = require("./routes/posts");
 const CategoryRoute = require("./routes/category")
@@ -13,15 +14,10 @@ const port = process.env.PORT || 5000; // Set the port for your server
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
+app.use(morgan("dev"))
 
 // Routes
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-
 app.use(UserRoute);
-// app.use("/api/posts",postRoute);
 app.use(postRoute);
 app.use(CategoryRoute);
 

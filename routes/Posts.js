@@ -1,12 +1,12 @@
 const express = require('express')
-const { addpost, updatepost, getpost, deletepost, getpostByCategory, getAllpost } = require('../Controller/Post')
+const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts } = require('../controller/post')
 const router = express.Router()
 
 router.post('/addpost', addpost);
-router.put('/updatepost', updatepost);
-router.get('/getpost', getpost);
-router.get('/getpostByCategory', getpostByCategory);
-router.get('/getAllpost', getAllpost);
-router.delete('/deletepost', deletepost);
+router.put('/updatepost/:id', updatePost);
+router.delete('/deletepost/:id', deletePost);
+router.get('/getpost', getPost);
+router.get('/getpostbycategory', getPostByCategory);
+router.get('/getallposts', getAllPosts);
 
 module.exports = router;

@@ -2,19 +2,21 @@ const Post = require("../models/post");
 
 //Create Post
 exports.addpost = async(req,res) => {
-     if(!req.post){
-        return res.status(500).json({error:"Post not found."})
-     }
-    let post = await Post.create({
-        title: req.body.title,
-        description: req.body.description,
-        username: req.body.username,
-        category: req.body.category
-    })
-    if(!post){
-        return res.status(400).json({error:"Something went wrong"})
+    try{
+        let post = await Post.create({
+            title: req.body.title,
+            description: req.body.description,
+            username: req.body.username,
+            category: req.body.category
+        })
+        if(!post){
+            return res.status(400).json({error:"Something went wrong"})
+        }
+        res.send(post)
     }
-    res.send(post)
+    catch (err){
+        res.status(400).json(err.message);
+    }
 };
 
 //update post
@@ -26,11 +28,6 @@ exports.updatepost = async(req,res) => {
         category: req.body.category
     },
     {new: true})
-    if(req.file){
-        post = await post.findByIdAndUpdate(req.params.id, {
-            image: req.file?.path
-        })
-    }
     if(!post){
         return res.status(400).json({error:"Something went wrong"})
     }
@@ -48,7 +45,7 @@ exports.getpost = async(req,res) => {
 
 //get post of a category
 exports.getpostByCategory = async(req,res) =>{
-    let post = await Post.find({category: req.params.category_id}).populate('category', 'category_name');
+    let post = await Post.find({category: req.params.category_id});
     if(!post) {
         return res.status(400).json({ error: "Something went wrong" });
     }

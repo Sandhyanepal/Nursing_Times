@@ -20,8 +20,9 @@ const postSchema = new mongoose.Schema(
             required: true,
         },
         category:{
-            type: Array,
+            type: String,
             required: false,
+            // enum: ["health","medicine"]
         },
     },
     {timestamps: true}

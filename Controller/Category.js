@@ -13,11 +13,18 @@ exports.addCategory = async(req,res)=>{
 
 
 exports.getAllCategory = async(req,res)=>{
-    let category = await Category.find()
-    if(!category){
+    try{
+        category = await Category.find();
+        res.send(category)
+    }
+    catch (err) {
         return res.status(400).json({error:"Something went wrong"})
     }
-    res.send(category)
+    // let category = await Category.find()
+    // if(!category){
+    //     return res.status(400).json({error:"Something went wrong"})
+    // }
+    // res.send(category)
 }
 
 exports.updateCategory = async(req,res) =>{

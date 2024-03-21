@@ -4,7 +4,7 @@ require('./database/connection')
 const morgan = require('morgan')
 
 
-const UserRoute = require("./routes/User");
+const UserRoute = require("./routes/user");
 
 const postRoute = require("./routes/posts");
 const CategoryRoute = require("./routes/category");

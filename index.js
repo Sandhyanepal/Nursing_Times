@@ -1,11 +1,11 @@
 const express = require('express');
 require('dotenv').config();
 require('./database/connection')
-
-
 const morgan = require('morgan')
 
-const UserRoute = require("./routes/user");
+
+const UserRoute = require("./routes/User");
+
 const postRoute = require("./routes/posts");
 const CategoryRoute = require("./routes/category");
 
@@ -17,11 +17,6 @@ app.use(express.json()); // Parse JSON bodies
 app.use(morgan("dev"))
 
 // Routes
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-
 app.use(UserRoute);
 app.use(postRoute);
 app.use(CategoryRoute);

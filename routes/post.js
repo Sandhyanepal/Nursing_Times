@@ -1,9 +1,9 @@
 const express = require('express')
 const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts } = require('../controller/post');
-//const { postCheck, validation } = require('../validation');
+const upload = require('../utils/fileUpload');
 const router = express.Router()
 
-router.post('/addpost', addpost);
+router.post('/addpost', upload.single('postImage'), addpost);
 router.put('/updatepost/:id', updatePost);
 router.delete('/deletepost/:id', deletePost);
 router.get('/getpost', getPost);

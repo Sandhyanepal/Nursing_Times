@@ -1,5 +1,8 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt')
+//const {expressjwt} = require('express-jwt');
+//const { jwt } = require('jsonwebtoken');
+
 
 // REGISTER
 exports.register = async (req, res) => {
@@ -43,6 +46,8 @@ exports.login = async (req, res) => {
         return res.status(400).json(err.message);
     }
 };
+
+
 
 
 // UPDATE
@@ -101,6 +106,31 @@ exports.getUser = async (req, res) => {
     catch{
         return res.status(400).json(err.message);
     }
+}
+
+
+//log out
+exports.logout = (req, res) =>{
+    return res.clearCookie('myCookie')
+}
+
+//get userlist
+exports.getusersList = async(req,res) => {
+    let users = await User.find()
+    if(!users){
+        return res.status(400).json({error:"Something went wrong"})
+    }
+    res.send(users)
+}
+
+
+//get userdetails
+exports.getuserdetails = async(req,res) => {
+     let user = await User.findById(req.params.id)
+     if(!user){
+        return res.status(400).json({error:"Something went wrong"})
+     }
+     res.send(user)
 }
 
 

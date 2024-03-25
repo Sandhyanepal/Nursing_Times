@@ -1,5 +1,6 @@
 const express = require('express')
-const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts } = require('../controller/post')
+const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts } = require('../controller/post');
+//const { postCheck, validation } = require('../validation');
 const router = express.Router()
 
 router.post('/addpost', addpost);

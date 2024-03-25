@@ -6,7 +6,7 @@ const morgan = require('morgan')
 
 const UserRoute = require("./routes/user");
 
-const postRoute = require("./routes/posts");
+const postRoute = require("./routes/post");
 const CategoryRoute = require("./routes/category");
 
 const app = express();

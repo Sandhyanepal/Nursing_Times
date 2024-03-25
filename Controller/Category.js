@@ -20,11 +20,6 @@ exports.getAllCategory = async(req,res)=>{
     catch (err) {
         return res.status(400).json({error:"Something went wrong"})
     }
-    // let category = await Category.find()
-    // if(!category){
-    //     return res.status(400).json({error:"Something went wrong"})
-    // }
-    // res.send(category)
 }
 
 exports.updateCategory = async(req,res) =>{

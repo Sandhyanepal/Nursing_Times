@@ -9,7 +9,7 @@ exports.addpost = async (req, res) => {
             description: req.body.description,
             username: req.body.username,
             category: req.body.category,
-            image: req.file.path
+            image: req.file?.path
         })
         if (!post) {
             return res.status(400).json({ error: "Something went wrong" })

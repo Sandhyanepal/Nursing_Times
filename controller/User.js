@@ -181,6 +181,8 @@ exports.login = async (req, res) => {
 };
 
 
+
+
 // UPDATE
 exports.updateUser = async (req, res) => {
     if (req.body.userId === req.params.id) {
@@ -237,6 +239,22 @@ exports.getUser = async (req, res) => {
     catch {
         return res.status(400).json(err.message);
     }
+}
+
+
+//log out
+exports.logout = (req, res) =>{
+    return res.clearCookie('myCookie')
+}
+
+
+//get userdetails
+exports.getuserdetails = async(req,res) => {
+     let user = await User.findById(req.params.id)
+     if(!user){
+        return res.status(400).json({error:"Something went wrong"})
+     }
+     res.send(user)
 }
 
 

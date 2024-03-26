@@ -247,15 +247,6 @@ exports.logout = (req, res) =>{
     return res.clearCookie('myCookie')
 }
 
-//get userlist
-exports.getusersList = async(req,res) => {
-    let users = await User.find()
-    if(!users){
-        return res.status(400).json({error:"Something went wrong"})
-    }
-    res.send(users)
-}
-
 
 //get userdetails
 exports.getuserdetails = async(req,res) => {

@@ -13,7 +13,6 @@ router.put('/updateuser/:id', updateUser)
 router.delete('/deleteuser/:id', deleteUser)
 router.get('/getuser/:id', getUser)
 router.get('/logout',logout)
-//router.get('/getusersList', getusersList)
 router.get('/getuserdetails/:id', getuserdetails)
 
 module.exports = router

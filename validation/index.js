@@ -26,8 +26,6 @@ const userCheck = [
     .isLength({min: 8}).withMessage("Password must be at least 8 characters")
     .isLength({max: 20}).withMessage("Password must not exceed 20 characters")
     .not().isIn(['P@ssW0rd']).withMessage("Cannot use this password")
-    
-    //for blocking words commonly used password type
 ]
 
 module.exports = {validation , userCheck}

@@ -25,8 +25,12 @@ exports.addpost = async (req, res) => {
 exports.updatePost = async (req, res) => {
     let post = await Post.findByIdAndUpdate(req.params.id, {
         $set: req.body,
-    },
-        { new: true })
+    },{ new: true })
+    if(req.file){
+        product = await Product.findByIdAndUpdate(req.params.id,{
+            image: req.file.path
+        })
+    }
     if (!post) {
         return res.status(400).json({ error: "You can update only your post!!!" })
     }

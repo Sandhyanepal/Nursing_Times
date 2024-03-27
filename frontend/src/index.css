@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+footer{
+    @apply bg-green-900 text-center py-2 text-white;
+}

@@ -5,5 +5,22 @@
 .header-right {
     display: flex;
     justify-content: center;
-    
+}
+
+
+
+@media (min-width: 768px){
+    .bannerTitleLg{
+        position: absolute;
+        top: 166px;
+    }
+}
+
+
+.posts{
+    flex: 9;
+}
+
+.latestposts{
+    flex: 3;
 }

@@ -6,6 +6,37 @@
     display: flex;
     justify-content: center;
 }
+
+@media (min-width: 768px){
+    .bannerTitleLg{
+        position: absolute;
+        top: 166px;
+    }
+}
+
+
+/* .posts{
+    flex: 9;
+}
+
+.latestposts{
+    flex: 3;
+} */
+
+
+.writeIcon{
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
 footer{
     @apply bg-green-900 text-center py-2 text-white;
 }

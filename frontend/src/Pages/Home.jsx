@@ -10,6 +10,7 @@ const Home = () => {
         <div>
             <Header />
             <Banner />
+            
             <div className="home flex w-11/12 m-auto mt-11">
                 <Posts />
                 <Latestposts/>

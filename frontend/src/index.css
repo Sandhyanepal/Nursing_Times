@@ -15,14 +15,6 @@
 }
 
 
-/* .posts{
-    flex: 9;
-}
-
-.latestposts{
-    flex: 3;
-} */
-
 
 .writeIcon{
     width: 30px;
@@ -35,13 +27,19 @@
     cursor: pointer;
 }
 
-
-
-footer{
-    @apply bg-green-900 text-center py-2 text-white;
+.login{
+    background-image: url("https://images.pexels.com/photos/1166643/pexels-photo-1166643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    /* object-fit: cover; */
 }
+.register{
+    background-image: url("https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+}
+
+
 @media screen and (max-width:1140px) {
-    .container {
+    .footer {
         flex-direction: column;
     }
 }

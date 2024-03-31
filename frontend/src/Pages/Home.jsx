@@ -3,6 +3,7 @@ import Header from '../Layout/Header'
 import Banner from '../Layout/Banner'
 import Posts from '../Layout/Posts'
 import Latestposts from '../Layout/Latestposts'
+import Footer from '../Layout/Footer'
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
                 <Posts />
                 <Latestposts/>
             </div>
+            <Footer/>
         </div>
     )
 }

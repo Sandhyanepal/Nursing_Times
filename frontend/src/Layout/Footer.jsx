@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer>
-      <div className="container flex flex-col md:flex-row w-4/5 pt-3 justify-between" >
+    <footer className="text-white bg-gray-600 mt-11 text-center py-2">
+      <div className="footer w-11/12 m-auto flex flex-col md:flex-row pt-3 justify-between" >
         <div className="foot text-start">
-          <h3 className="nur font-bold py-2">Nursing Times</h3>
-          <p>
+          <h3 className="nur font-bold py-2 px-10">Nursing Times</h3>
+          <p className="px-10">
             Nursing Times was started by MSN, to encourage 
             <p>graduate nurses. We decided to start a blog that </p>
             <p>
@@ -63,7 +63,7 @@ function Footer() {
           </div>
             <form className="flex flex-col sm:flex-row pt-3">
                 <input className="w-full p-2 mr-4 rounded-md " type="email" placeholder="Enter email"/>
-                <button className=" bg-red-500 p-2">Subscribe</button>
+                <button className=" bg-red-500 p-2 rounded-lg">Subscribe</button>
             </form>
         </div>
       </div>

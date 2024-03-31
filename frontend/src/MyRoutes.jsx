@@ -7,6 +7,7 @@ import Home from './Pages/Home'
 import Write from './Pages/Write'
 import Login from './Pages/Login'
 import Contact from './Pages/Contact'
+import About from './Pages/About'
 
 const MyRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const MyRoutes = () => {
 
                 </Route>
                     <Route path='contact' element={<Contact/>} />
+                    <Route path='about' element={<About/>} />
 
 
 

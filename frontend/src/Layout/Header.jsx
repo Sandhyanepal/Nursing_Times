@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Header = () => {
     return (
         <>
+        
             <header className='md:flex w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3 text-center sticky top-0 bg-white z-10'>
                 <div className=" text-3xl font-bold py-4 w-3/10 italic md:text-start">NursingTimes</div>
                 <div className=" w-3/6">
@@ -21,7 +23,7 @@ const Header = () => {
                 </div>
             </header>
         </>
-    )
+    )   
 }
 
 export default Header

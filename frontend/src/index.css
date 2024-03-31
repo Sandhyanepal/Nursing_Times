@@ -37,9 +37,7 @@
 
 
 
-footer{
-    @apply bg-green-900 text-center py-2 text-white;
-}
+
 @media screen and (max-width:1140px) {
     .container {
         flex-direction: column;

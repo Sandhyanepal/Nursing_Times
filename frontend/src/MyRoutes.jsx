@@ -7,8 +7,8 @@ import Write from './Pages/Write'
 import Login from './Pages/Login'
 import Contact from './Pages/Contact'
 import Register from './Pages/Register'
-
 import About from './Pages/About'
+import Settings from './Pages/Settings'
 
 const MyRoutes = () => {
     return (
@@ -22,9 +22,9 @@ const MyRoutes = () => {
                 <Route path='/test' element={<Test/>}/>
                 <Route path='contact' element={<Contact/>} />
                 <Route path='contact' element={<Contact/>} />
-                    <Route path='about' element={<About/>} />
+                <Route path='about' element={<About/>} />
 
-
+                <Route path='/settings' element={<Settings/>}/>
 
             </Routes>
         </BrowserRouter>

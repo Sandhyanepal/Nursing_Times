@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../Layout/Header";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp, faCoffee, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 const About = () => {
   return (
@@ -24,17 +26,18 @@ const About = () => {
             courses, hosting podcasts, and speaking all over the country since
             2013. She is the owner of the FreshRN® online platform, specifically
             created to support, educate, and encourage newly licensed nurses.
-          </p>
-          <p className="pb-3">
+            <br/>
             Kati has been a member of the profession since 2010 with experience
             in med-surg, stepdown, and neurocritical care. She has been a
             preceptor, mentor, charge nurse and is now a nurse educator.
-          </p>
-          <p className="pb-3">
+            <br/>
             Kati was awarded Nurse of the Year by the Charlotte Business
             Journal, and named one of the Great 100 Nurses of North Carolina,
             both in 2015. Kati is also a published author with the American
             Nurses Association.
+            <FontAwesomeIcon icon={faHouse} />
+            <FontAwesomeIcon icon={faCoffee} />
+            <FontAwesomeIcon icon={faCaretUp} />
           </p>
 
           <div className="abouticons  flex pt-5">

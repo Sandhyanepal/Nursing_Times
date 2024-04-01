@@ -63,7 +63,7 @@ function Footer() {
           </div>
             <form className="flex flex-col sm:flex-row pt-3">
                 <input className="w-full p-2 mr-4 rounded-md " type="email" placeholder="Enter email"/>
-                <button className=" bg-red-500 p-2 rounded-lg">Subscribe</button>
+                <button className=" bg-orange-600 p-2 rounded-lg">Subscribe</button>
             </form>
         </div>
       </div>

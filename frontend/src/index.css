@@ -14,16 +14,6 @@
     }
 }
 
-
-/* .posts{
-    flex: 9;
-}
-
-.latestposts{
-    flex: 3;
-} */
-
-
 .writeIcon{
     width: 30px;
     height: 30px;
@@ -34,9 +24,6 @@
     border-radius: 50%;
     cursor: pointer;
 }
-
-
-
 
 @media screen and (max-width:1140px) {
     .container {

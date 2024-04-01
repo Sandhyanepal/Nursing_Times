@@ -30,7 +30,7 @@ const Contact = () => {
               <textarea name="" id=""  rows="10" placeholder='Message' className='border w-full' ></textarea>
           </form>
           <div className="flex justify-end">
-            <button className='bg-green-500 p-2 rounded-lg'>Submit</button>
+            <button className='bg-lime-600 p-2 rounded-lg'>Submit</button>
           </div>
         </div>
       </div>
@@ -51,8 +51,7 @@ const Contact = () => {
             <div className='pb-2'>
             <input type="text" placeholder='Email' className='border-2 w-80 p-2' />
             </div>
-            <button className='text-center border-2 w-80 bg-green-500 rounded-lg p-2'>SUBSCRIBE</button>
-
+            <button className='text-center border-2 w-80 bg-lime-600 rounded-lg p-2'>SUBSCRIBE</button>
           </div>
         </div>
 
@@ -69,8 +68,8 @@ const Contact = () => {
             <h1 className='text-black font-bold text-lg'>KLEBER</h1>
             <h1 className='text-black font-bold text-lg'>MSN,</h1>
             <h1 className='text-black font-bold text-lg pb-2'>RN</h1>
-            <h2 className='font-bold text-green-500'>FOUNDER OF</h2>
-            <h2 className='font-bold text-green-500 text-center pb-2'>NURSING TIMES</h2>
+            <h2 className='font-bold text-lime-600'>FOUNDER OF</h2>
+            <h2 className='font-bold text-lime-600 text-center pb-2'>NURSING TIMES</h2>
                
               <p>The founder and educator behind Nursing Times is,</p>
               <p>the Nursing Times podcast, a nurse educator, author,</p>
@@ -79,7 +78,7 @@ const Contact = () => {
               <p>and warmth clearly and concisely so that every nurse entering the profession is better equipped to 
                 provide care for both their patients and themselves in a sustainable manner!</p>
 
-            <div className="contacticons flex justify-between w-full text-green-500 pt-2">
+            <div className="contacticons flex justify-between w-full text-lime-600 pt-2">
                 <Link to="">
                 <i class="fa-brands fa-facebook text-2xl"></i>
                 </Link>

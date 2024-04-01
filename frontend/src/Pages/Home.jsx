@@ -15,9 +15,9 @@ const Home = () => {
                 <Posts />
                 <Latestposts/>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     )
 }
 
-export default Home
+export default Home;

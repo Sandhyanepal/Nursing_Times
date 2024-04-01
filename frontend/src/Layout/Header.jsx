@@ -14,7 +14,7 @@ const Header = () => {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/contact">Contacts</Link></li>
                         <li><Link to="/write">Write</Link></li>
-                        <li><Link to="/contact">Logout</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
                 <div className='w-1/5 md:flex md:justify-center items-center'>

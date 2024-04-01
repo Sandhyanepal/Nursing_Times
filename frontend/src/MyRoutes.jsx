@@ -5,10 +5,10 @@ import Test from './Test'
 import Home from './Pages/Home'
 import Write from './Pages/Write'
 import Login from './Pages/Login'
-import Contact from './Pages/Contact'
 import Register from './Pages/Register'
 import About from './Pages/About'
 import Settings from './Pages/Settings'
+import Contact from './Pages/Contact'
 
 const MyRoutes = () => {
     return (
@@ -20,7 +20,6 @@ const MyRoutes = () => {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/test' element={<Test/>}/>
-                <Route path='contact' element={<Contact/>} />
                 <Route path='contact' element={<Contact/>} />
                 <Route path='about' element={<About/>} />
 

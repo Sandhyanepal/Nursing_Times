@@ -46,8 +46,8 @@ function Footer() {
             </Link>
           </div>
             <form className="flex flex-col sm:flex-row pt-3">
-                <input className="w-full p-2 mr-2 rounded-md " type="email" placeholder="Enter email"/>
-                <button className=" bg-yellow-500 p-2 rounded-md">Subscribe</button>
+                <input className="w-full p-2 mr-4 rounded-md " type="email" placeholder="Enter email"/>
+                <button className=" bg-orange-600 p-2 rounded-lg">Subscribe</button>
             </form>
         </div>
       </div>

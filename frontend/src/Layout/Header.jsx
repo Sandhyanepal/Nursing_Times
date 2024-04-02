@@ -9,13 +9,13 @@ const Header = () => {
         <>
         
             <header className='md:flex w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3 text-center sticky top-0 bg-white z-10'>
-                <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic md:text-start">NursingTimes</Link>
+                <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic md:text-start text-gray-600">NursingTimes</Link>
                 <div className=" w-3/6">
                     <ul className='list-unstyle text-xl md:flex md:justify-between'>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/contact">Contacts</Link></li>
-                        <li><Link to="/write">Write</Link></li>
+                        <li><Link to="/write">Community</Link></li>
                         <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>

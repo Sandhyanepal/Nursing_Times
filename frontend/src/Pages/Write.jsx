@@ -21,7 +21,7 @@ const Write = () => {
                     <div className="writeFormGroup ml-40 text-xl">
                         <textarea placeholder='Tell your story...' type="text" className='focus:outline-none resize-none' style={{width: "70vw", height: "50vh"}}></textarea>
                     </div>
-                    <button className='absolute top-6 right-28 text-white bg-gray-600 p-1 rounded-md'>Publish</button>
+                    <button className='absolute top-6 right-28 text-white bg-yellow-500 p-1 rounded-md'>Publish</button>
                 </form>
             </div>
         </>

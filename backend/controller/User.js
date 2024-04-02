@@ -6,6 +6,21 @@ const sendEmail = require('../utils/emailSender');
 
 // REGISTER
 exports.register = async (req, res) => {
+
+    const { username, email } = req.body;
+    // check username if already exists
+    const usernameExists = await User.findOne({ username });
+    if (usernameExists) {
+      return res.status(400).json({ error: "Username is not available." });
+    }
+  
+    // check email if already exists
+    const emailExists = await User.findOne({ email });
+    if (emailExists) {
+      return res.status(400).json({ error: "Email already registered." });
+    }
+
+
     try {
         const salt = await bcrypt.genSalt(10);
         const hashed_password = await bcrypt.hash(req.body.password, salt);

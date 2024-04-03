@@ -68,7 +68,7 @@ exports.verifyEmail = async (req, res) => {
         res.status(400).json({error: "Token not found, or may have expired"})
     }
 
-    // find user associatrd with token
+    // find user associated with token
     let user = await User.findById(token.user)
     if(!user){
         res.status(400).json({error: "Usernot found"})
@@ -174,14 +174,14 @@ exports.resetPassword = async (req,res) => {
 // LOGIN
 exports.login = async (req, res) => {
     try {
-        const user = await User.findOne({ username: req.body.username });
+        const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(400).json("No such user");
+            return res.status(400).json({error:"No such user"});
         }
 
         const validated = await bcrypt.compare(req.body.password, user.password);
         if (!validated) {
-            return res.status(400).json("Wrong password");
+            return res.status(400).json({error:"Wrong password"});
         }
 
         // If login is successful, send user data without password
@@ -191,7 +191,7 @@ exports.login = async (req, res) => {
     catch (err) {
         // Handle any unexpected errors
         console.error(err);
-        return res.status(400).json(err.message);
+        return res.status(400).json({error:err.message});
     }
 };
 

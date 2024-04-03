@@ -23,7 +23,6 @@ const Register = () => {
       else{
         setSuccess(true)
         setError('')
-        // resetForm()
       }
     })
   }
@@ -64,7 +63,7 @@ const Register = () => {
             <button className='mt-5 bg-yellow-500 text-white py-1 rounded-md' onClick={handleRegister}>Register</button>
 
           </form>
-          <p className='mt-5 text-center'>Aready have an account? <Link to="/login" className='text-blue-500'>Login</Link></p>
+          <p className='mt-5 text-center'>Aready have an account? <Link to="/login" className='text-blue-600'>Login</Link></p>
         </div>
     </div>
   )

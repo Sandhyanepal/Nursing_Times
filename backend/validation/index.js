@@ -15,7 +15,7 @@ const validation = (req,res,next) =>{
 
 const userCheck = [
     check('username',"username is required").notEmpty()
-    .isLength({min:5}).withMessage("Username must be at least 5 characters"),
+    .isLength({min:3}).withMessage("Username must be at least 3 characters"),
     check('email',"Email is required").notEmpty()
     .isEmail().withMessage("Email format incorrect"),
     check('password',"Password is required").notEmpty()

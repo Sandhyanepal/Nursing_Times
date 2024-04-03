@@ -29,8 +29,8 @@ function Footer() {
           <h2 className="font-bold mb-2">Quick Links</h2>
           <li className="pb-2"><Link to="/faq">FAQ</Link></li>
           <li className="pb-2"><Link to="/privacy">Privacy</Link></li>
-          <li className="pb-2"><Link to="/">Career</Link></li>
-          <li><Link to="/">Study</Link></li>
+          {/* <li className="pb-2"><Link to="/">Career</Link></li>
+          <li><Link to="/">Study</Link></li> */}
         </div>
         <div className="list-none">
         <h2 className="font-bold pt-3 text-start mb-2">Connect With Us</h2> 
@@ -47,7 +47,7 @@ function Footer() {
           </div>
             <form className="flex flex-col sm:flex-row pt-3">
                 <input className="w-full p-2 mr-4 rounded-md " type="email" placeholder="Enter email"/>
-                <button className=" bg-orange-600 p-2 rounded-lg">Subscribe</button>
+                <button className=" bg-yellow-500 p-2 rounded-lg">Subscribe</button>
             </form>
         </div>
       </div>

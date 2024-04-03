@@ -6,9 +6,11 @@ import Home from './Pages/Home'
 import Write from './Pages/Write'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
-
 import About from './Pages/About'
+import Settings from './Pages/Settings'
 import Contact from './Pages/Contact'
+import Privacy from './Pages/Privacy'
+import FAQ from './Pages/FAQ'
 
 
 const MyRoutes = () => {
@@ -24,6 +26,11 @@ const MyRoutes = () => {
                 <Route path='contact' element={<Contact/>} />
                 {/* <Route path='contact' element={<Contact/>} /> */}
                 <Route path='about' element={<About/>}  />
+                <Route path='privacy' element={<Privacy/>} />
+                <Route path='faq' element={<FAQ/>} />
+
+                <Route path='/settings' element={<Settings/>}/>
+
             </Routes>
         </BrowserRouter>
     )

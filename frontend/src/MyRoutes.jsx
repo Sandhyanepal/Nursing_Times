@@ -9,6 +9,9 @@ import Register from './Pages/Register'
 import About from './Pages/About'
 import Settings from './Pages/Settings'
 import Contact from './Pages/Contact'
+import Privacy from './Pages/Privacy'
+import FAQ from './Pages/FAQ'
+
 
 const MyRoutes = () => {
     return (
@@ -21,7 +24,10 @@ const MyRoutes = () => {
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/test' element={<Test/>}/>
                 <Route path='contact' element={<Contact/>} />
-                <Route path='about' element={<About/>} />
+                {/* <Route path='contact' element={<Contact/>} /> */}
+                <Route path='about' element={<About/>}  />
+                <Route path='privacy' element={<Privacy/>} />
+                <Route path='faq' element={<FAQ/>} />
 
                 <Route path='/settings' element={<Settings/>}/>
 

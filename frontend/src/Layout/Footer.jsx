@@ -9,28 +9,28 @@ function Footer() {
           <h3 className="font-bold py-2 mb-2">Nursing Times</h3>
           <p>
             Nursing Times was started by MSN, to encourage 
-            <p>graduate nurses. We decided to start a blog that </p>
+            <p>graduate nurses. We decided to start a blog that</p>
             <p>
             focuses on providing concise,information to help 
             </p>
-            <p>new nurses gain confidence in their abilities. It </p>
+            <p>new nurses gain confidence in their abilities. It</p>
             <p>focuses on nursing education for all nurses.</p>
           </p>
         </div>
         <div className="list-none px-10 pt-3 text-start">
           <h2 className="font-bold mb-2">TOPICS</h2>
-          <li className="pb-2"><Link to="/" >Home</Link></li>
-          <li className="pb-2"><Link to="/">About</Link></li>
+          <li className="pb-2"><Link to="/home" >Home</Link></li>
+          <li className="pb-2"><Link to="/about">About</Link></li>
           <li className="pb-2"><Link to="/contact">Contact</Link></li>
-          <li><Link to="/">Write</Link></li>
+          <li><Link to="/write">Write</Link></li>
         </div>
 
         <div className="list-none px-10 pt-3 text-start">
           <h2 className="font-bold mb-2">Quick Links</h2>
-          <li className="pb-2"><Link to="/">FAQ</Link></li>
-          <li className="pb-2"><Link to="/">Work</Link></li>
-          <li className="pb-2"><Link to="/">Career</Link></li>
-          <li><Link to="/">Study</Link></li>
+          <li className="pb-2"><Link to="/faq">FAQ</Link></li>
+          <li className="pb-2"><Link to="/privacy">Privacy</Link></li>
+          {/* <li className="pb-2"><Link to="/">Career</Link></li>
+          <li><Link to="/">Study</Link></li> */}
         </div>
         <div className="list-none">
         <h2 className="font-bold pt-3 text-start mb-2">Connect With Us</h2> 

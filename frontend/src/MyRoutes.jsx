@@ -10,6 +10,7 @@ import Register from './Pages/Register'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 
+
 const MyRoutes = () => {
     return (
         <BrowserRouter>
@@ -21,11 +22,8 @@ const MyRoutes = () => {
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/test' element={<Test/>}/>
                 <Route path='contact' element={<Contact/>} />
-                <Route path='contact' element={<Contact/>} />
-                    <Route path='about' element={<About/>} />
-
-
-
+                {/* <Route path='contact' element={<Contact/>} /> */}
+                <Route path='about' element={<About/>}  />
             </Routes>
         </BrowserRouter>
     )

@@ -38,19 +38,19 @@ const About = () => {
 
           <div className="abouticons flex pt-5">
             <Link to="">
-              <i className="fa-brands fa-facebook text-2xl mr-6 bg-lime-600 p-2 rounded-sm text-white" ></i>
+              <i className="fa-brands fa-facebook text-xl mr-6 bg-lime-600 p-2 rounded-sm text-white" ></i>
             </Link>
             <Link to="">
-              <i className="fa-brands fa-twitter text-2xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
+              <i className="fa-brands fa-twitter text-xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
             </Link>
             <Link to="">
-              <i className="fa-brands fa-instagram text-2xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
+              <i className="fa-brands fa-instagram text-xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
             </Link>
             <Link>
-              <i className="fa-brands fa-youtube text-2xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
+              <i className="fa-brands fa-youtube text-xl mr-6 bg-lime-600 p-2 rounded-sm text-white"></i>
             </Link>
             <Link>
-              <i className="fa-brands fa-pinterest text-2xl bg-lime-600 p-2 rounded-sm text-white"></i>
+              <i className="fa-brands fa-pinterest text-xl bg-lime-600 p-2 rounded-sm text-white"></i>
             </Link>
           </div>
         </div>        

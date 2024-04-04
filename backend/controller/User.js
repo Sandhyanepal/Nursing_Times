@@ -44,7 +44,7 @@ exports.register = async (req, res) => {
         }
 
         // Send Verification Email
-        const URL = `http://localhost:5000/verify/${token.token}`
+        const URL = `http://localhost:3000/verify/${token.token}`
         sendEmail({
             from: "noreply@something.com",
             to: req.body.email,
@@ -162,7 +162,9 @@ exports.resetPassword = async (req,res) => {
         return res.status(400).json({error: "User not found"})        
     }
     // update password
-    user.password = req.body.password
+    const salt = await bcrypt.genSalt(10);
+    const hashed_password = await bcrypt.hash(req.body.password, salt);
+    user.password = hashed_password
     user = await user.save()
     if(!user){
         return res.status(400).json({error: "Something went wrong"})      

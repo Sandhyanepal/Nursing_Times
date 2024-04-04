@@ -7,7 +7,6 @@ import Footer from '../Layout/Footer'
 const Settings = () => {
     return (
         <>
-            <Header />
 
             <div className="settings w-11/12 m-auto mt-10">
                 <div className="settingTitle flex items-center justify-between">
@@ -33,7 +32,6 @@ const Settings = () => {
                 </form>
             </div>
 
-            <Footer/>
         </>
     )
 }

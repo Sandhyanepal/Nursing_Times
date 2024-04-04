@@ -41,7 +41,6 @@ const Register = () => {
 
   return (
     <div>
-      <Header/>
        <div className='register w-11/12 m-auto flex flex-col justify-center mt-12 items-center' style={{ height: "80vh" }}>
 
           {showError()}

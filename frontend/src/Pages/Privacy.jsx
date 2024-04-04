@@ -5,7 +5,6 @@ import Footer from '../Layout/Footer'
 const Privacy = () => {
   return (
     <>
-     <Header />
      <h1 className='bg-blue-500 p-7 py-12 text-center box-border text-2xl font-bold text-white w-11/12 m-auto'>Privacy Policy</h1>
      <div className="protecting py-3">
         <h1 className='pl-48 text-2xl font-bold p-2'>Protecting your data: The Nursing Times Group privacy statement</h1>
@@ -39,7 +38,6 @@ const Privacy = () => {
      </div>
 
       </div>
-           <Footer />   
     </>
   )
 }

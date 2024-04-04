@@ -1,10 +1,23 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { isAuthenticate} from '../api/userApi'
+
 
 
 const Header = () => {
+let [dropdown, showDropdown] = useState(false)
+
+let [user, setUser] = useState([])
+
+useEffect(()=>{
+    if(typeof window !== 'undefined'){
+        let { user } = isAuthenticate()
+        setUser(user)
+    }
+},[])
+
     return (
         <>
         
@@ -16,12 +29,37 @@ const Header = () => {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/contact">Contacts</Link></li>
                         <li><Link to="/write">Community</Link></li>
+                        
+                        {!user && 
+                        <>
                         <li><Link to="/login">Login</Link></li>
+                        </>}
+
                     </ul>
                 </div>
-                <div className='w-1/5 md:flex md:justify-center items-center'>
-                    <Link to="/settings"><img className='headerImg rounded-full' src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: "40px", height: "40px" }} /></Link>
+                <div className='w-1/5 md:flex md:justify-center items-center relative'>
+                    <span><img className='headerImg rounded-full' src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: "40px", height: "40px" }} onClick={()=>showDropdown(!dropdown)}/></span>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className='pl-9 text-2xl' />
+
+
+                   {
+                    dropdown &&
+                   <div style={{
+                        // height:'400px',
+                        // width: '250px',
+                        position: 'absolute',
+                        top: '120%', 
+                        right: '33%'
+                        // display: 'none',
+                    }} className='bg-gray-200 rounded-md'>
+                        <div className='flex flex-col py-2'>
+                            <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
+                            <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</button>
+                            <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Account Settings</Link>
+                            <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Logout</button>
+                        </div>
+                    </div>
+                   } 
                 </div>
             </header>
         </>

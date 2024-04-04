@@ -4,7 +4,6 @@ import Header from '../Layout/Header'
 const Write = () => {
     return (
         <>
-            <Header />
 
             <img src="https://images.pexels.com/photos/126271/pexels-photo-126271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className='w-3/5 h-72 m-auto mt-8  object-cover object-center rounded-lg' />
 

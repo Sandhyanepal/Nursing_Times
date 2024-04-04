@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 const Contact = () => {
   return (
     <>
-      <Header />
       <div className="contact mb-14 mt-5">
         <div className="wrapper w-3/5 mx-auto pt-5">
           <h1 className='text-center font-bold text-2xl pb-2 text-gray-600'>Contact Us!</h1>
@@ -96,7 +95,6 @@ const Contact = () => {
       </div>
 
 
-      <Footer />
 
     </>
   )

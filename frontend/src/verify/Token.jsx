@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { verifyUser } from '../api/userApi'
+import { useParams } from 'react-router-dom'
 
 const Token = () => {
 
-    const navigate = useNavigate()
-    const {token} = navigate.query
+    const {token} = useParams()
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)

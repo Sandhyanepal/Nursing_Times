@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 const FAQ = () => {
   return (
     <>
-     <Header />
        {/* <h1 className='text-center text-4xl pt-16 font-bold'>Frequently Asked Questions</h1> */}
        <div className="relative bg-white transition-all mx-auto
        max-w-xs sm:max-w-2xl rounded-lg flex flex-col gap-4 mt-40

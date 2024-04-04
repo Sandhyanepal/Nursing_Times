@@ -39,10 +39,10 @@ export const login = (user) => {
 export const isAuthenticate = () => {
     if(typeof window !== "undefined"){
         if(localStorage.getItem('jwt')){
-            return {Authenticated: true, data: JSON.parse(localStorage.getItem('jwt'))}
+            return JSON.parse(localStorage.getItem('jwt'))
         }
         else{
-            return {Authenticated: false, data: null}
+            return false
         }
     }
 }

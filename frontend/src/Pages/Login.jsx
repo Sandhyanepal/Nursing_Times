@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from '../Layout/Header'
 import { isAuthenticate, login } from '../api/userApi'
 
 const Login = () => {
@@ -24,6 +23,7 @@ const Login = () => {
       else{
         setSuccess(true)
         setError('')
+        console.log(data)
         isAuthenticate(data)
       }
     })
@@ -38,14 +38,13 @@ const Login = () => {
 
   const redirect = () => {
     if(success){
-      return navigate('/')
+      // return navigate('/')
     }
   }
 
   return (
     
     <>
-    <Header />
 
       <div className='login w-11/12 m-auto flex flex-col justify-center mt-12 items-center' style={{ height: "80vh" }}>
 

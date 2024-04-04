@@ -6,7 +6,6 @@ import Footer from "../Layout/Footer";
 const About = () => {
   return (
     <>
-      <Header />
       <div className="aboutmain md:flex pt-12 w-11/12 m-auto">
 
         <div className="aboutLeft flex flex-col items-center">
@@ -55,68 +54,62 @@ const About = () => {
         </div>
       </div>
 
-      <div className="vision pt-28 text-start">
-        <h2 className="font-bold text-2xl pl-28 pb-2">NURSING TIMES - WHO WE ARE</h2>
-        <h3 className="font-bold text-yellow-500 text-lg pl-28 pb-1">MISSION</h3>
-        <p className="text-lg pl-28">Educating new nurses by meeting them where they are with clinical knowledge, authenticity, and warmth in a clear and concise
-          manner so that</p>
-        <p className="text-lg pl-28">every nurse entering the profession is better equipped to sustainably provide care for both their patients and themselves.</p>
 
-        <h3 className="font-bold text-yellow-500 text-lg pl-28 pt-4">VISION</h3>
-        <p className="text-lg pl-28 pb-7">To cut the number of nurses leaving the profession in half.</p>
-        <p className="text-lg pl-28">As many as 30% of nurses leave the profession in the first year, and that jumps up to over 50% in year two. We believe that by starting off your</p>
-        <p className="text-lg pl-28">professional journey with a solid foundation of skills in self-compassion, assertiveness, and healthy boundaries that more nurses will be empowered to</p>
-        <p className="text-lg pl-28">command what they are worth and craft their professional life to fit their unique desires – not leave nursing altogether.</p>
 
-        <h2 className="font-bold text-2xl pl-28 pt-3 pb-2">VALUES</h2>
-        <h3 className="font-bold text-yellow-500 text-lg pl-28 pb-1">OWNERSHIP</h3>
-        <p className="text-lg pl-28 pb-2">Foster accountability and responsibility in one’s growth as a clinician, CEO of their license, advocate for their patient, and as a human being</p>
-        <h3 className="font-bold text-yellow-500  text-lg pl-28 pb-1">CARE</h3>
-        <p className="text-lg pl-28 pb-2">Genuinely caring about and nurturing the nurse as a whole person, not just a robot to complete tasks</p>
-        <h3 className="font-bold text-yellow-500  text-lg pl-28 pb-1">HUMANITY</h3>
-        <p className="text-lg pl-28 pb-2">Give nurses permission to be human, practice self-compassion, and extend empathy with boundaries</p>
-        <h3 className="font-bold text-yellow-500  text-lg pl-28 pb-1">AUTHENTICITY</h3>
-        <p className="text-lg pl-28 pb-2">Come from a place of honesty and openness to facilitate meaningful learning and professional growth</p>
-        <h3 className="font-bold text-yellow-500  text-lg pl-28 pb-1">VITALITY</h3>
-        <p className="text-lg pl-28 pb-2">Not to just survive your career, but find joy, purpose, and meaning in the work – and thrive</p>
+      <div className="vision pt-28 text-start w-11/12 m-auto">
+        <h2 className="font-bold text-2xl  pb-2">NURSING TIMES - WHO WE ARE</h2>
+        <h3 className="font-bold text-yellow-500 text-lg  pb-1">MISSION</h3>
+        <p className="text-lg ">Educating new nurses by meeting them where they are with clinical knowledge, authenticity, and warmth in a clear and concise
+          manner so that every nurse entering the profession is better equipped to sustainably provide care for both their patients and themselves.</p>
+
+        <h3 className="font-bold text-yellow-500 text-lg pt-4">VISION</h3>
+        <p className="text-lg pb-7">To cut the number of nurses leaving the profession in half. As many as 30% of nurses leave the profession in the first year, and that jumps up to over 50% in year two. We believe that by starting off your professional journey with a solid foundation of skills in self-compassion, assertiveness, and healthy boundaries that more nurses will be empowered to command what they are worth and craft their professional life to fit their unique desires – not leave nursing altogether.</p>
+
+        <h2 className="font-bold text-2xl pt-3 pb-2">VALUES</h2>
+        <h3 className="font-bold text-yellow-500 text-lg pb-1">OWNERSHIP</h3>
+        <p className="text-lg pb-2">Foster accountability and responsibility in one’s growth as a clinician, CEO of their license, advocate for their patient, and as a human being</p>
+        <h3 className="font-bold text-yellow-500  text-lg pb-1">CARE</h3>
+        <p className="text-lg pb-2">Genuinely caring about and nurturing the nurse as a whole person, not just a robot to complete tasks</p>
+        <h3 className="font-bold text-yellow-500  text-lg pb-1">HUMANITY</h3>
+        <p className="text-lg pb-2">Give nurses permission to be human, practice self-compassion, and extend empathy with boundaries</p>
+        <h3 className="font-bold text-yellow-500  text-lg pb-1">AUTHENTICITY</h3>
+        <p className="text-lg pb-2">Come from a place of honesty and openness to facilitate meaningful learning and professional growth</p>
+        <h3 className="font-bold text-yellow-500  text-lg pb-1">VITALITY</h3>
+        <p className="text-lg pb-2">Not to just survive your career, but find joy, purpose, and meaning in the work – and thrive</p>
       </div>
 
 
-      <div className="wrapper w-3/5 mx-auto pt-16">
-        <div className="containerdivision flex justify-evenly">
+      <div className="containerdivision w-3/5 mx-auto pt-16 flex">
 
           <div className="contactsignup pb-10 w-1/2 px-5 flex">
             <div className="p-3 w-full border-2 rounded-xl">
               <h2 className='text-2xl text-gray-500 font-bold mt-3'>Sign-up for email</h2>
               <h2 className='text-2xl text-gray-500 font-bold'>updates from Nursing Times</h2>
               <p className='text-xl pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
-              <form className="pt-10">
-                <input type="text" placeholder='Name' className='border-2 w-80 p-2' />
-                <input type="text" placeholder='Email' className='border-2 w-80 p-2 my-3' />
-                <button className='text-center  w-80 bg-yellow-500 text-white rounded-lg p-2'>SUBSCRIBE</button>
+              <form className="pt-10 text-center flex flex-col">
+                <input type="text" placeholder='Name' className='border-2  p-2' />
+                <input type="text" placeholder='Email' className='border-2  p-2 my-3' />
+                <button className='text-center   bg-yellow-500 text-white rounded-lg p-2'>SUBSCRIBE</button>
               </form>
             </div>
           </div>
 
-          <div className="contactfounder pb-10 w-1/2 px-5">
-            <div className="p-3 w-full border-2 rounded-xl">
-
-
+          <div className="contactfounder pb-10 w-1/2 px-5 ">
+            <div className="p-3 border-2 rounded-xl">
               <div className="float-left w-1/3">
                 <img src="https://static.vecteezy.com/system/resources/previews/027/395/212/non_2x/doctor-lady-friendly-smiling-arms-crossed-png.png" alt="" className='w-full' />
               </div>
 
-              {/* </Link> */}
               <h1 className='text-black font-bold text-lg'>KATE KLEBER</h1>
               <h1 className='text-black font-bold text-lg'>MSN,</h1>
               <h1 className='text-black font-bold text-lg pb-2'>RN</h1>
               <h2 className='font-bold text-gray-600 '>FOUNDER OF</h2>
-              <h2 className='font-bold text-gray-600   pb-2'>NURSING TIMES</h2>
+              <h2 className='font-bold text-gray-600   pb-4'>NURSING TIMES</h2>
 
               <p>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
 
 
-              <div className="contacticons flex justify-between w-full text-yellow-500  pt-2">
+              <div className="contacticons flex flex-wrap justify-between w-full text-yellow-500  pt-2">
                 <Link to="">
                   <i class="fa-brands fa-facebook text-2xl"></i>
                 </Link>
@@ -141,10 +134,8 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
 
-      <Footer />
     </>
   );
 };

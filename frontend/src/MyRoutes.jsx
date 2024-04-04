@@ -11,13 +11,15 @@ import Settings from './Pages/Settings'
 import Contact from './Pages/Contact'
 import Privacy from './Pages/Privacy'
 import FAQ from './Pages/FAQ'
+import Token from './verify/Token'
+import Layout from './Layout/Layout'
 
 
 const MyRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-
+<Route path='/' element={<Layout/>}>
                 <Route index element={<Home />} />
                 <Route path='/write' element= {<Write/>}/>
                 <Route path='/login' element={<Login/>}/>
@@ -27,8 +29,11 @@ const MyRoutes = () => {
                 <Route path='about' element={<About/>}  />
                 <Route path='privacy' element={<Privacy/>} />
                 <Route path='faq' element={<FAQ/>} />
+                <Route path='verify/:token' element={<Token/>}/>
 
                 <Route path='/settings' element={<Settings/>}/>
+
+</Route>
 
             </Routes>
         </BrowserRouter>

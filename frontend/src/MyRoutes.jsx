@@ -25,7 +25,6 @@ const MyRoutes = () => {
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/test' element={<Test/>}/>
                 <Route path='contact' element={<Contact/>} />
-                {/* <Route path='contact' element={<Contact/>} /> */}
                 <Route path='about' element={<About/>}  />
                 <Route path='privacy' element={<Privacy/>} />
                 <Route path='faq' element={<FAQ/>} />

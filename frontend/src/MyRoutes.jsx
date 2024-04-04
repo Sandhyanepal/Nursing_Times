@@ -13,6 +13,7 @@ import Privacy from './Pages/Privacy'
 import FAQ from './Pages/FAQ'
 
 
+
 const MyRoutes = () => {
     return (
         <BrowserRouter>

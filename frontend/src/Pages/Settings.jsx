@@ -1,8 +1,6 @@
 import React from 'react'
-import Header from '../Layout/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import Footer from '../Layout/Footer'
 
 const Settings = () => {
     return (

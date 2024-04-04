@@ -1,11 +1,9 @@
 import React from 'react'
-import Header from '../Layout/Header'
-import Footer from '../Layout/Footer'
 
 const Privacy = () => {
   return (
     <>
-     <h1 className='bg-blue-500 p-7 py-12 text-center box-border text-2xl font-bold text-white w-11/12 m-auto'>Privacy Policy</h1>
+     <h1 className='bg-yellow-500 p-7 py-12 text-center box-border text-2xl font-bold text-white w-11/12 m-auto'>Privacy Policy</h1>
      <div className="protecting py-3">
         <h1 className='pl-48 text-2xl font-bold p-2'>Protecting your data: The Nursing Times Group privacy statement</h1>
         <p className='pl-48 text-lg'>Protecting your privacy is very important to us. So that you can feel in control of your personal information, we want to be clear with you about the</p>
@@ -13,7 +11,7 @@ const Privacy = () => {
      </div>
       <div className="main pb-14">
 
-     <div className="personal pt-10 bg-blue-100">
+     <div className="personal pt-10 bg-yellow-200">
 
         <h1 className='font-bold text-xl pl-48'>Collecting Personal Information</h1>
            {/* <p className='pl-48'>The Nursing Times is an online platform for sharing your experiences and ideas.</p>. */}

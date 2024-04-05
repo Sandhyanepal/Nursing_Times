@@ -9,19 +9,28 @@ import { isAuthenticate} from '../api/userApi'
 const Header = () => {
 let [dropdown, showDropdown] = useState(false)
 
-let [user, setUser] = useState([])
+let [user, setUser] = useState({})
 
+// useEffect(()=>{
+//     if(typeof window !== 'undefined'){
+//         let { user } = isAuthenticate()
+//         setUser(user)
+//     }
+// },[])
 useEffect(()=>{
     if(typeof window !== 'undefined'){
-        let { user } = isAuthenticate()
-        setUser(user)
+        const authData = isAuthenticate();
+        if (authData) {
+            setUser(authData.user);
+        }
     }
-},[])
+},[]);
+
 
     return (
         <>
         
-            <header className='md:flex w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3 text-center sticky top-0 bg-white z-10'>
+            <header className='md:flex sm:w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3 text-center sticky top-0 bg-white z-10'>
                 <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic md:text-start text-gray-600">NursingTimes</Link>
                 <div className=" w-3/6">
                     <ul className='list-unstyle text-xl md:flex md:justify-between'>
@@ -30,10 +39,16 @@ useEffect(()=>{
                         <li><Link to="/contact">Contacts</Link></li>
                         <li><Link to="/write">Community</Link></li>
                         
-                        {!user && 
+                        {/* {!user && 
                         <>
                         <li><Link to="/login">Login</Link></li>
-                        </>}
+                        </>} */}
+
+                        {!user ? 
+                            <li><Link to="/login">Login</Link></li>
+                            :
+                            <li><Link to="/login">Logout</Link></li>
+                        }
 
                     </ul>
                 </div>
@@ -54,7 +69,7 @@ useEffect(()=>{
                     }} className='bg-gray-200 rounded-md'>
                         <div className='flex flex-col py-2'>
                             <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
-                            <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</button>
+                            <Link to='/admindashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</Link>
                             <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Account Settings</Link>
                             <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Logout</button>
                         </div>

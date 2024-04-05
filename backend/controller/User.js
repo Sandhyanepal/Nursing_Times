@@ -137,7 +137,7 @@ exports.forgetPassword = async (req,res) => {
         return console.log("Failed to generate token");
     }
     // send password reset link in email
-    const URL = `http://localhost:5000/resetpassword/${token.token}`
+    const URL = `http://localhost:3000/resetpassword/${token.token}`
     sendEmail({
         from: "noreply@something.com",
         to: req.body.email,

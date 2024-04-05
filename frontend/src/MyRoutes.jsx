@@ -13,6 +13,7 @@ import Privacy from './Pages/Privacy'
 import FAQ from './Pages/FAQ'
 import Token from './verify/Token'
 import Layout from './Layout/Layout'
+import Dashboard from './Pages/Dashboard'
 
 
 
@@ -31,7 +32,7 @@ const MyRoutes = () => {
                 <Route path='privacy' element={<Privacy/>} />
                 <Route path='faq' element={<FAQ/>} />
                 <Route path='verify/:token' element={<Token/>}/>
-
+                <Route path='/admindashboard' element={<Dashboard/>}/>
                 <Route path='/settings' element={<Settings/>}/>
 
 </Route>

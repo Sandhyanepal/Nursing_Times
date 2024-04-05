@@ -6,6 +6,7 @@ const Login = () => {
 
   let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
+  let [user, setUser] = useState({})
 
   let [error, setError] = useState('')
   let [success, setSuccess] = useState(false)
@@ -16,6 +17,7 @@ const Login = () => {
     e.preventDefault()
     login({email,password})
     .then(data => {
+      console.log(data)
       if(data.error){
         setError(data.error)
         setSuccess(false)
@@ -23,7 +25,7 @@ const Login = () => {
       else{
         setSuccess(true)
         setError('')
-        console.log(data)
+        setUser(data)
         isAuthenticate(data)
       }
     })
@@ -38,9 +40,15 @@ const Login = () => {
 
   const redirect = () => {
     if(success){
-      // return navigate('/')
+      if(user.role === 1){
+        return navigate('/admindashboard')
+      }
+      else{
+        return navigate('/')
+      }
     }
   }
+
 
   return (
     

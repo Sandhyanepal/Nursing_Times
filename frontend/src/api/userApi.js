@@ -36,6 +36,20 @@ export const login = (user) => {
 }
 
 // TO KEEP LOGGED IN
+export const authenticate = (data) =>{
+    localStorage.setItem('jwt', JSON.stringify(data))
+
+}
+
+// TO KEEP LOGGED IN
+// export const authenticate = (data) => {
+//     console.log("Data received for authentication:", data);
+//     localStorage.setItem('jwt', JSON.stringify(data));
+//     console.log("User authentication data stored in local storage:", data);
+// }
+
+
+// to check if logged in
 export const isAuthenticate = () => {
     if(typeof window !== "undefined"){
         if(localStorage.getItem('jwt')){

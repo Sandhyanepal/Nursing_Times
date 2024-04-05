@@ -77,61 +77,61 @@ const About = () => {
       </div>
 
 
-      <div className="containerdivision w-3/5 mx-auto pt-16 flex">
+      <div className="containerdivision w-3/5 mx-auto pt-16 md:flex">
 
-          <div className="contactsignup pb-10 w-1/2 px-5 flex">
-            <div className="p-3 w-full border-2 rounded-xl">
-              <h2 className='text-2xl text-gray-500 font-bold mt-3'>Sign-up for email</h2>
-              <h2 className='text-2xl text-gray-500 font-bold'>updates from Nursing Times</h2>
-              <p className='text-xl pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
-              <form className="pt-10 text-center flex flex-col">
-                <input type="text" placeholder='Name' className='border-2  p-2' />
-                <input type="text" placeholder='Email' className='border-2  p-2 my-3' />
-                <button className='text-center   bg-yellow-500 text-white rounded-lg p-2'>SUBSCRIBE</button>
-              </form>
+        <div className="contactsignup pb-10 w-1/2 px-5 flex">
+          <div className="p-3 w-full border-2 rounded-xl">
+            <h2 className='text-2xl text-gray-500 font-bold mt-3'>Sign-up for email</h2>
+            <h2 className='text-2xl text-gray-500 font-bold'>updates from Nursing Times</h2>
+            <p className='text-xl pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
+            <form className="pt-10 text-center flex flex-col">
+              <input type="text" placeholder='Name' className='border-2  p-2' />
+              <input type="text" placeholder='Email' className='border-2  p-2 my-3' />
+              <button className='text-center   bg-yellow-500 text-white rounded-lg p-2'>SUBSCRIBE</button>
+            </form>
+          </div>
+        </div>
+
+        <div className="contactfounder pb-10 w-1/2 px-5 ">
+          <div className="p-3 border-2 rounded-xl">
+            <div className="float-left w-1/3">
+              <img src="https://static.vecteezy.com/system/resources/previews/027/395/212/non_2x/doctor-lady-friendly-smiling-arms-crossed-png.png" alt="" className='w-full' />
+            </div>
+
+            <h1 className='text-black font-bold text-lg'>KATE KLEBER</h1>
+            <h1 className='text-black font-bold text-lg'>MSN,</h1>
+            <h1 className='text-black font-bold text-lg pb-2'>RN</h1>
+            <h2 className='font-bold text-gray-600 '>FOUNDER OF</h2>
+            <h2 className='font-bold text-gray-600   pb-4'>NURSING TIMES</h2>
+
+            <p>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
+
+
+            <div className="contacticons flex flex-wrap justify-between w-full text-yellow-500  pt-2">
+              <Link to="">
+                <i class="fa-brands fa-facebook text-2xl"></i>
+              </Link>
+              <Link to="">
+                <i class="fa-brands fa-twitter text-2xl"></i>
+              </Link>
+              <Link to="">
+                <i class="fa-brands fa-instagram text-2xl"></i>
+              </Link>
+              <Link>
+                <i class="fa-brands fa-youtube text-2xl"></i>
+              </Link>
+              <Link>
+                <i class="fa-brands fa-pinterest text-2xl"></i>
+              </Link>
+              <Link>
+                <i class="fa-brands fa-tiktok text-2xl"></i>
+              </Link>
+              <Link>
+                <i class="fa-regular fa-envelope text-2xl"></i>
+              </Link>
             </div>
           </div>
-
-          <div className="contactfounder pb-10 w-1/2 px-5 ">
-            <div className="p-3 border-2 rounded-xl">
-              <div className="float-left w-1/3">
-                <img src="https://static.vecteezy.com/system/resources/previews/027/395/212/non_2x/doctor-lady-friendly-smiling-arms-crossed-png.png" alt="" className='w-full' />
-              </div>
-
-              <h1 className='text-black font-bold text-lg'>KATE KLEBER</h1>
-              <h1 className='text-black font-bold text-lg'>MSN,</h1>
-              <h1 className='text-black font-bold text-lg pb-2'>RN</h1>
-              <h2 className='font-bold text-gray-600 '>FOUNDER OF</h2>
-              <h2 className='font-bold text-gray-600   pb-4'>NURSING TIMES</h2>
-
-              <p>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
-
-
-              <div className="contacticons flex flex-wrap justify-between w-full text-yellow-500  pt-2">
-                <Link to="">
-                  <i class="fa-brands fa-facebook text-2xl"></i>
-                </Link>
-                <Link to="">
-                  <i class="fa-brands fa-twitter text-2xl"></i>
-                </Link>
-                <Link to="">
-                  <i class="fa-brands fa-instagram text-2xl"></i>
-                </Link>
-                <Link>
-                  <i class="fa-brands fa-youtube text-2xl"></i>
-                </Link>
-                <Link>
-                  <i class="fa-brands fa-pinterest text-2xl"></i>
-                </Link>
-                <Link>
-                  <i class="fa-brands fa-tiktok text-2xl"></i>
-                </Link>
-                <Link>
-                  <i class="fa-regular fa-envelope text-2xl"></i>
-                </Link>
-              </div>
-            </div>
-          </div>
+        </div>
       </div>
 
     </>

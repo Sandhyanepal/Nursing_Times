@@ -32,10 +32,10 @@ const MyRoutes = () => {
                 <Route path='privacy' element={<Privacy/>} />
                 <Route path='faq' element={<FAQ/>} />
                 <Route path='verify/:token' element={<Token/>}/>
-                <Route path='/admindashboard' element={<Dashboard/>}/>
                 <Route path='/settings' element={<Settings/>}/>
 
 </Route>
+                <Route path='/admindashboard' element={<Dashboard/>}/>
 
             </Routes>
         </BrowserRouter>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Header from '../Layout/Header'
 import { Link } from 'react-router-dom'
 
 const FAQ = () => {
@@ -8,9 +7,9 @@ const FAQ = () => {
   const [showPara2, setShowPara2] = useState(false)
 
   const handleShowPara =(a)=> e =>{
-    if(a == 1)
+    if(a === 1)
       setShowPara(!showPara);
-    else if(a == 2)
+    else if(a === 2)
       setShowPara1(!showPara1);
     else 
       setShowPara2(!showPara2);

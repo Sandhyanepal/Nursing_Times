@@ -13,7 +13,8 @@ import Privacy from './Pages/Privacy'
 import FAQ from './Pages/FAQ'
 import Token from './verify/Token'
 import Layout from './Layout/Layout'
-import Dashboard from './Pages/Dashboard'
+import AdminDashboard from './Pages/AdminDashboard'
+import SinglePost from './Layout/SinglePost'
 
 
 
@@ -32,7 +33,11 @@ const MyRoutes = () => {
                 <Route path='privacy' element={<Privacy/>} />
                 <Route path='faq' element={<FAQ/>} />
                 <Route path='verify/:token' element={<Token/>}/>
-                <Route path='/admindashboard' element={<Dashboard/>}/>
+                
+                <Route path='/singlepost' element={<SinglePost/>}/>
+
+                {/* For admin dashboard */}
+                <Route path='/admindashboard' element={<AdminDashboard/>}/>
                 <Route path='/settings' element={<Settings/>}/>
 
 </Route>

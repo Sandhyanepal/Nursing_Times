@@ -40,7 +40,7 @@ const Login = () => {
 
   const redirect = () => {
     if(success){
-      if(user.role === 1){
+      if(user.role === 0){
         return navigate('/admindashboard')
       }
       else{

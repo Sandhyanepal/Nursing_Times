@@ -1,12 +1,12 @@
 import React from 'react'
-import AdminSidebar from '../components/AdminSidebar'
+// import AdminSidebar from '../components/AdminSidebar'
 import { Link } from 'react-router-dom'
 
 
 const Dashboard = () => {
   return (
     <div className='flex'>
-    <AdminSidebar/>
+    {/* <AdminSidebar/> */}
       {/* <h1 className='font-bold text-2xl pl-96 p-4'>Welcome to Admin DashBoard</h1> */}
       <div className="container-dash">
         <h2 className='text-center font-sans mt-4 text-gray-600 text-3xl mb-4'>

@@ -41,7 +41,7 @@ const MyRoutes = () => {
                 <Route path='/settings' element={<Settings/>}/>
 
 </Route>
-                <Route path='/admindashboard' element={<Dashboard/>}/>
+                <Route path='/admindashboard2' element={<Dashboard/>}/>
                  
             </Routes>
         </BrowserRouter>

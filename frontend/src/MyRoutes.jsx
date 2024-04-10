@@ -16,8 +16,6 @@ import Layout from './Layout/Layout'
 import AdminDashboard from './Pages/AdminDashboard'
 import SinglePost from './Layout/SinglePost'
 import Index from './Pages/category/Index'
-// import index from './Pages/category/Index'
-// import Dashboard from './Pages/Dashboard'
 
 
 const MyRoutes = () => {
@@ -38,7 +36,6 @@ const MyRoutes = () => {
                 
                 <Route path='/singlepost/:id' element={<SinglePost/>}/>
 
-                {/* <Route path='/Dashboard' element={<Dashboard/>}/> */}
 
 </Route>
                 {/* For admin dashboard */}

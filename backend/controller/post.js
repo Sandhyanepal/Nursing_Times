@@ -27,7 +27,7 @@ exports.updatePost = async (req, res) => {
         $set: req.body,
     },{ new: true })
     if(req.file){
-        product = await Product.findByIdAndUpdate(req.params.id,{
+        post = await Post.findByIdAndUpdate(req.params.id,{
             image: req.file.path
         })
     }

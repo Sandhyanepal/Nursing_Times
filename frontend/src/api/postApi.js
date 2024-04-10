@@ -6,8 +6,8 @@ export const getAllPost = () => {
     .catch(error=>console.log(error))
 }
 
-// export const getpost = () => {
-//     return fetch(`${API}/getpost/`)
-//     .then(response=>response.json())
-//     .catch(error=>console.log(error))
-// }
+export const getpost = () => {
+    return fetch(`${API}/getpost/:id`)
+    .then(response=>response.json())
+    .catch(error=>console.log(error))
+}

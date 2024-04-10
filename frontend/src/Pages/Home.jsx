@@ -8,6 +8,7 @@ import { API } from '../config'
 const Home = () => {
 
     const [posts, setPosts] = useState([])
+
     
     useEffect(()=>{
         const fetchPosts = async () =>{
@@ -18,14 +19,19 @@ const Home = () => {
         fetchPosts()
     }, [])
 
+
+    
+
     return (
-        <div>
+        <div >
             <Banner />
             
             <div className="home flex w-11/12 m-auto mt-11">
                 <Posts posts = {posts} />
                 <Latestposts/>
             </div>
+
+
         </div>
     )
 }

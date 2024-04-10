@@ -15,7 +15,9 @@ import Token from './verify/Token'
 import Layout from './Layout/Layout'
 import AdminDashboard from './Pages/AdminDashboard'
 import SinglePost from './Layout/SinglePost'
-import Dashboard from './Pages/Dashboard'
+import Index from './Pages/category/Index'
+// import index from './Pages/category/Index'
+// import Dashboard from './Pages/Dashboard'
 
 
 const MyRoutes = () => {
@@ -36,12 +38,14 @@ const MyRoutes = () => {
                 
                 <Route path='/singlepost/:id' element={<SinglePost/>}/>
 
+                {/* <Route path='/Dashboard' element={<Dashboard/>}/> */}
+
+</Route>
                 {/* For admin dashboard */}
                 <Route path='/admindashboard' element={<AdminDashboard/>}/>
                 <Route path='/settings' element={<Settings/>}/>
-
-</Route>
-                <Route path='/admindashboard2' element={<Dashboard/>}/>
+                {/* <Route path='/admindashboard2' element={<Dashboard/>}/> */}
+                <Route path='/admin/category' element={<Index/>}/>
                  
             </Routes>
         </BrowserRouter>

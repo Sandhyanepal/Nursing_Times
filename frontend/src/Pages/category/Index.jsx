@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
 import { getAllCategory } from '../../api/categoryApi'
+import { Link } from 'react-router-dom'
 
 const Index = () => {
      let [Category, setCategory] = useState([])
@@ -49,7 +50,7 @@ const Index = () => {
                 <tfoot>
                     <tr>
                         <td colSpan={3}>
-                            <button className='add button rounded-md'>Add New Category</button>
+                            <Link to='/admin/category/add' className='add button rounded-md'>Add New Category</Link>
                         </td>
                     </tr>
                 </tfoot>

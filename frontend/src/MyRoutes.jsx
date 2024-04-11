@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import App from './App'
 import Test from './Test'
 import Home from './Pages/Home'
 import Write from './Pages/Write'
@@ -17,6 +16,7 @@ import AdminDashboard from './Pages/AdminDashboard'
 import SinglePost from './Layout/SinglePost'
 import Index from './Pages/category/Index'
 import ForgetPassword from './Pages/ForgetPassword'
+import Add from './Pages/category/Add'
 
 
 const MyRoutes = () => {
@@ -46,6 +46,8 @@ const MyRoutes = () => {
                 {/* <Route path='/admindashboard2' element={<Dashboard/>}/> */}
                 <Route path='/admin/category' element={<Index />} />
 
+                <Route path='/admin/category/add' element={<Add/>}/>
+                 
             </Routes>
         </BrowserRouter>
     )

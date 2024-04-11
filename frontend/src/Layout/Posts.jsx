@@ -26,7 +26,7 @@ const Posts = () => {
 
   return (
     <>
-    <div className='posts flex flex-wrap gap-11 w-4/5'>
+    <div className='posts  w-4/5'>
       {
         posts.slice(0,limit).map((post)=>{
           return <Post post = {post}/>

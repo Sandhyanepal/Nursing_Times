@@ -11,7 +11,8 @@ const Post = ({ post }) => {
           <div className="postCat text-orange-300 mt-4">{post.category}</div>
         </div>
 
-        <Link to = {`${API}/getpost/${post._id}`}>
+        {/* <Link to = {`${API}/getpost/${post._id}`}> */}
+        <Link to={`/singlepost/${post._id}`}>
         <div className="postTitle text-2xl mt-2">
           {post.title}</div>
         </Link>

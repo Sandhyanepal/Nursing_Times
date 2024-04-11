@@ -37,9 +37,8 @@ const MyRoutes = () => {
                 <Route path='faq' element={<FAQ/>} />
                 <Route path='verify/:token' element={<Token/>}/>
                 
-                <Route path='/singlepost' element={<SinglePost/>}/>
+                <Route path='/singlepost/:id' element={<SinglePost/>}/>
 
-                {/* <Route path='/Dashboard' element={<Dashboard/>}/> */}
 
 </Route>
                 {/* For admin dashboard */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { isAuthenticate, login } from '../api/userApi'
+import { authenticate, login } from '../api/userApi'
 
 const Login = () => {
 
@@ -26,7 +26,7 @@ const Login = () => {
         setSuccess(true)
         setError('')
         setUser(data)
-        isAuthenticate(data)
+        authenticate(data)
       }
     })
   }

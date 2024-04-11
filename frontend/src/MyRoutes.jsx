@@ -16,34 +16,36 @@ import Layout from './Layout/Layout'
 import AdminDashboard from './Pages/AdminDashboard'
 import SinglePost from './Layout/SinglePost'
 import Index from './Pages/category/Index'
+import ForgetPassword from './Pages/ForgetPassword'
 
 
 const MyRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-<Route path='/' element={<Layout/>}>
-                <Route index element={<Home />} />
-                <Route path='/write' element= {<Write/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/register' element={<Register/>}/>
-                <Route path='/test' element={<Test/>}/>
-                <Route path='contact' element={<Contact/>} />
-                <Route path='about' element={<About/>}  />
-                <Route path='privacy' element={<Privacy/>} />
-                <Route path='faq' element={<FAQ/>} />
-                <Route path='verify/:token' element={<Token/>}/>
-                
-                <Route path='/singlepost/:id' element={<SinglePost/>}/>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path='/write' element={<Write />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/forgetpassword' element={<ForgetPassword />} />
+                    <Route path='/test' element={<Test />} />
+                    <Route path='contact' element={<Contact />} />
+                    <Route path='about' element={<About />} />
+                    <Route path='privacy' element={<Privacy />} />
+                    <Route path='faq' element={<FAQ />} />
+                    <Route path='verify/:token' element={<Token />} />
+
+                    <Route path='/singlepost/:id' element={<SinglePost />} />
 
 
-</Route>
+                </Route>
                 {/* For admin dashboard */}
-                <Route path='/admindashboard' element={<AdminDashboard/>}/>
-                <Route path='/settings' element={<Settings/>}/>
+                <Route path='/admindashboard' element={<AdminDashboard />} />
+                <Route path='/settings' element={<Settings />} />
                 {/* <Route path='/admindashboard2' element={<Dashboard/>}/> */}
-                <Route path='/admin/category' element={<Index/>}/>
-                 
+                <Route path='/admin/category' element={<Index />} />
+
             </Routes>
         </BrowserRouter>
     )

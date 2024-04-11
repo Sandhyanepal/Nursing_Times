@@ -7,12 +7,11 @@ function Footer() {
       <div className="footer w-11/12 m-auto flex flex-col md:flex-row  pt-3 justify-between" >
         <div className="foot text-start md:w-1/2">
           <h3 className="font-bold py-2 mb-1">Nursing Times</h3>
-          <p>
-                Nursing Times was started by MSN, to encourage graduate nurses. We decided to start</p>
-            <p>a blog that focuses on providing information to help new nurses gain confidence in their</p>
-            <p>abilities. It focuses on nursing education for all nurses; educating new nurses by meeting</p>
-            <p>them where they are with humor, clinical knowledge, authenticity, and warmth clearly and </p>
-            <p>concisely so that every nurse entering the profession is better equipped to provide care for
+          <p>Nursing Times was started by MSN, to encourage graduate nurses. We decided to start
+            a blog that focuses on providing information to help new nurses gain confidence in their
+            abilities. It focuses on nursing education for all nurses; educating new nurses by meeting
+            them where they are with humor, clinical knowledge, authenticity, and warmth clearly and 
+            concisely so that every nurse entering the profession is better equipped to provide care for
             their patients and themselves in a sustainable manner! </p>
           
         </div>

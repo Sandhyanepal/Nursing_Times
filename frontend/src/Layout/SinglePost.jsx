@@ -5,15 +5,7 @@ import { API } from '../config'
 const SinglePost = () => {
     const { id } = useParams()
     let [post, setPost] = useState({})
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         const result = await fetch(`${API}/getpost/${id}`)
-    //         const jsonResult = await result.json()
-
-    //         setPost(jsonResult)
-    //     }
-    //     fetchData()
-    // },[id])
+    
 
 
     useEffect(() => {

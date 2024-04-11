@@ -259,7 +259,7 @@ exports.getUser = async (req, res) => {
 }
 
 
-//log out
+//Logout
 exports.logout = (req, res) =>{
     return res.clearCookie('myCookie')
 }

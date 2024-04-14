@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { isAuthenticate} from '../api/userApi'
 
 
@@ -9,22 +9,14 @@ import { isAuthenticate} from '../api/userApi'
 const Header = () => {
 let [dropdown, showDropdown] = useState(false)
 
-let [user, setUser] = useState({})
+let {user} = isAuthenticate()
+const navigate = useNavigate()
 
-// useEffect(()=>{
-//     if(typeof window !== 'undefined'){
-//         let { user } = isAuthenticate()
-//         setUser(user)
-//     }
-// },[])
-useEffect(()=>{
-    if(typeof window !== 'undefined'){
-        const authData = isAuthenticate();
-        if (authData) {
-            setUser(authData.user);
-        }
-    }
-},[]);
+
+function logout(){
+    localStorage.clear();
+    navigate('/login')
+}
 
 
     return (
@@ -39,15 +31,11 @@ useEffect(()=>{
                         <li><Link to="/contact">Contacts</Link></li>
                         <li><Link to="/write">Community</Link></li>
                         
-                        {/* {!user && 
-                        <>
-                        <li><Link to="/login">Login</Link></li>
-                        </>} */}
 
                         {!user ? 
                             <li><Link to="/login">Login</Link></li>
                             :
-                            <li><Link to="/login">Logout</Link></li>
+                            <li onClick={logout} className='cursor-pointer'>Logout</li>
                         }
 
                     </ul>
@@ -71,11 +59,12 @@ useEffect(()=>{
                             <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
                             <Link to='/admindashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</Link>
                             <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Account Settings</Link>
-                            <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Logout</button>
+                            {/* <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Logout</button> */}
                         </div>
                     </div>
                    } 
                 </div>
+
             </header>
         </>
     )   

@@ -40,7 +40,7 @@ const Login = () => {
 
   const redirect = () => {
     if(success){
-      if(user.role === 0){
+      if(user.role === 1){
         return navigate('/admindashboard')
       }
       else{
@@ -72,7 +72,7 @@ const Login = () => {
 
           <button className='mt-5 bg-yellow-500 text-white py-1 rounded-md' onClick={handleLogin}>Login</button>
 
-          <button className='mt-3 text-blue-600 text-start' >Forget Password?</button>
+          <Link to='/forgetpassword' className='mt-3 text-blue-600 text-start' >Forget Password?</Link>
         </form>
         <p className='mt-5 text-center'>Don't have an account? <Link to="/register" className='text-blue-600'>Register</Link></p>
       </div>

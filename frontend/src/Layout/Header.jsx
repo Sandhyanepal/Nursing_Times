@@ -35,7 +35,7 @@ function logout(){
                         {!user ? 
                             <li><Link to="/login">Login</Link></li>
                             :
-                            <li onClick={logout}>Logout</li>
+                            <li onClick={logout} className='cursor-pointer'>Logout</li>
                         }
 
                     </ul>

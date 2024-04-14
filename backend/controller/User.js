@@ -150,27 +150,56 @@ exports.forgetPassword = async (req,res) => {
 
 
 // TO RESET PASSWORD
-exports.resetPassword = async (req,res) => {
-    // check if token is valid or not
-    let token = await Token.findOne({token: req.params.token})
-    if(!token){
-        return res.status(400).json({error: "Invalid token or token may have expired"})
+// exports.resetPassword = async (req,res) => {
+//     // check if token is valid or not
+//     let token = await Token.findOne({token: req.params.token})
+//     if(!token){
+//         return res.status(400).json({error: "Invalid token or token may have expired"})
+//     }
+//     // find user
+//     let user = await User.findById(token.user)
+//     if(!user){
+//         return res.status(400).json({error: "User not found"})        
+//     }
+//     // update password
+//     const salt = await bcrypt.genSalt(10);
+//     const hashed_password = await bcrypt.hash(req.body.password, salt);
+//     user.password = hashed_password
+//     user = await user.save()
+//     if(!user){
+//         return res.status(400).json({error: "Something went wrong"})      
+//     }
+//     res.send({message:"Password has been changed successfully."})
+// }
+exports.resetPassword = async (req, res) => {
+    try {
+        // Check if token is valid or not
+        let token = await Token.findOne({ token: req.params.token });
+        if (!token) {
+            return res.status(400).json({ error: 'Invalid token or token may have expired' });
+        }
+
+        // Find user
+        let user = await User.findById(token.user);
+        if (!user) {
+            return res.status(400).json({ error: 'User not found' });
+        }
+
+        // Update password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        user.password = hashedPassword;
+        await user.save();
+
+        // Send success response
+        return res.json({ message: 'Password has been changed successfully.' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error resetting password:', error);
+        return res.status(500).json({ error: 'Internal server error' });
     }
-    // find user
-    let user = await User.findById(token.user)
-    if(!user){
-        return res.status(400).json({error: "User not found"})        
-    }
-    // update password
-    const salt = await bcrypt.genSalt(10);
-    const hashed_password = await bcrypt.hash(req.body.password, salt);
-    user.password = hashed_password
-    user = await user.save()
-    if(!user){
-        return res.status(400).json({error: "Something went wrong"})      
-    }
-    res.send({message:"Password has been changed successfully."})
-}
+};
+
 
 
 // LOGIN

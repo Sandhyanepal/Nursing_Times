@@ -17,6 +17,7 @@ import SinglePost from './Layout/SinglePost'
 import Index from './Pages/category/Index'
 import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
+import ResetPassword from './Pages/ResetPassword'
 
 
 const MyRoutes = () => {
@@ -29,6 +30,7 @@ const MyRoutes = () => {
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/forgetpassword' element={<ForgetPassword />} />
+                    <Route path='/resetpassword/:token' element={<ResetPassword />} />
                     <Route path='/test' element={<Test />} />
                     <Route path='contact' element={<Contact />} />
                     <Route path='about' element={<About />} />
@@ -46,8 +48,8 @@ const MyRoutes = () => {
                 {/* <Route path='/admindashboard2' element={<Dashboard/>}/> */}
                 <Route path='/admin/category' element={<Index />} />
 
-                <Route path='/admin/category/add' element={<Add/>}/>
-                 
+                <Route path='/admin/category/add' element={<Add />} />
+
             </Routes>
         </BrowserRouter>
     )

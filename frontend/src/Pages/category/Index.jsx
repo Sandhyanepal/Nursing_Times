@@ -39,12 +39,15 @@ const Index = () => {
                             <td>{i+1}</td>
                             <td>{category.category_name}</td>
                             <td>
+                                <Link href={`/admin/category/edit/${category._id}`}>
                                 <button className='update button rounded-s-md'>Update</button>
+                                </Link>
                                 <button className='delete button rounded-e-md'>Delete</button>
-
                             </td>
                            </tr> 
                         })
+
+
                     }
                 </tbody>
                 <tfoot>

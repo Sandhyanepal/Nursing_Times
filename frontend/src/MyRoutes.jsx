@@ -17,6 +17,8 @@ import AdminDashboard from './Pages/AdminDashboard'
 import SinglePost from './Layout/SinglePost'
 import Index from './Pages/category/Index'
 import Add from './Pages/category/Add'
+
+
 // import index from './Pages/category/Index'
 // import Dashboard from './Pages/Dashboard'
 
@@ -47,6 +49,7 @@ const MyRoutes = () => {
                 {/* <Route path='/admindashboard2' element={<Dashboard/>}/> */}
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
+                {/* <Route path='/admin/category/edit' element={<Edit/>}/> */}
                  
             </Routes>
         </BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
 import { addCategory } from '../../api/categoryApi'
 
-const Add = () => {
+const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
@@ -44,14 +44,14 @@ const Add = () => {
             {/* <h1 className="underline">Add Category</h1> */}
 
             <form className='p-5 w-1/2 m-auto mt-5 rounded-lg py-10 shadow-xl'>
-                <h2 className='pb-4 font-bold text-2xl text-center'>Add Category</h2>
+                <h2 className='pb-4 font-bold text-2xl text-center'>Update Category</h2>
                 <label htmlFor="category_name">Category Name:</label>
                 <input type="text" id='category_name' className='px-5 py-2
                  w-10/12 rounded-md border-2' 
                  onChange={e=>setCategoryName(e.target.value)}
                  />
 
-                <button className='button add mt-2 w-3/12 rounded-md' onClick={handleSubmit}>Add</button>
+                <button className='button add mt-2 w-3/12 rounded-md' onClick={handleSubmit}>Update</button>
             </form>
             {showError()}
             {showSuccess()}
@@ -60,4 +60,4 @@ const Add = () => {
   )
 }
 
-export default Add
+export default UpdateCategory

@@ -20,3 +20,6 @@ export const addCategory = (category_name) => {
     .catch(err=>console.log(err))
 }
 
+//to update category 
+
+

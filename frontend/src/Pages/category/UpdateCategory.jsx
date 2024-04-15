@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
 import { addCategory } from '../../api/categoryApi'
 
-const Add = () => {
+const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
@@ -60,4 +60,4 @@ const Add = () => {
   )
 }
 
-export default Add
+export default UpdateCategory

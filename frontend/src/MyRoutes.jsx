@@ -18,6 +18,7 @@ import Index from './Pages/category/Index'
 import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
 import ResetPassword from './Pages/ResetPassword'
+import UpdateCategory from './Pages/category/UpdateCategory'
 
 
 const MyRoutes = () => {
@@ -47,6 +48,7 @@ const MyRoutes = () => {
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
+                <Route path='/admin/category/update/:categoryId' element={<UpdateCategory/>}/>
 
 
             </Routes>

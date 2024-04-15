@@ -81,9 +81,3 @@ export const forgetpassword=user=>{
     })
     .catch(err=>console.log(err))
 }
-
-
-
-
-
-

@@ -20,6 +20,11 @@ export const addCategory = (category_name) => {
     .catch(err=>console.log(err))
 }
 
-//to update category 
+//to get category details
+export const getCategoryDetails = id =>{
+    return fetch (`${API}/getcategory/${id}`)
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
 
 

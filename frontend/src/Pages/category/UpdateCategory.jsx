@@ -1,11 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
-import { addCategory } from '../../api/categoryApi'
+import { addCategory, getCategoryDetails } from '../../api/categoryApi'
+import { useParams } from 'react-router-dom'
 
 const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
+    let {id} = useParams()
+    console.log("id:",id)
+
+    useEffect(()=>{
+        if(id != null){
+            getCategoryDetails(id)
+            .then(data=>{
+                if(data.error){
+                    console.log(data.error)
+                }
+                else{
+                    setCategoryName(data.category_name)
+                }
+            })
+        }
+    },[id])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -49,6 +66,7 @@ const UpdateCategory = () => {
                 <input type="text" id='category_name' className='px-5 py-2
                  w-10/12 rounded-md border-2' 
                  onChange={e=>setCategoryName(e.target.value)}
+                 value={category_name}
                  />
 
                 <button className='button add mt-2 w-3/12 rounded-md' onClick={handleSubmit}>Update</button>

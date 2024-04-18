@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
-import { addCategory, getCategoryDetails } from '../../api/categoryApi'
+import { getCategoryDetails, updateCategory } from '../../api/categoryApi'
 import { useParams } from 'react-router-dom'
+//import { isAuthenticate } from '../../api/userApi'
 
 const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
+    // let [token, setToken] = useState('')
+
     let {id} = useParams()
-    console.log("id:",id)
+    console.log(id)
 
     useEffect(()=>{
-        if(id != null){
+        if(id){
             getCategoryDetails(id)
             .then(data=>{
                 if(data.error){
@@ -26,7 +29,12 @@ const UpdateCategory = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        addCategory(category_name)
+        // if(typeof window !== 'undefined'){
+        //     let {token} = isAuthenticate()
+        //     setToken(token)
+        // }
+
+        updateCategory(id, category_name)
         .then(data=>{
             if(data.error){
                 setError(data.error)
@@ -50,7 +58,7 @@ const UpdateCategory = () => {
     // }
 
     const showSuccess = () =>(
-        success && <div className='text-center text-green-600 text-xl font-bold'>Category has been added successfully.</div>
+        success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
     )
 
     return (

@@ -27,4 +27,32 @@ export const getCategoryDetails = id =>{
     .catch(err=>console.log(err))
 }
 
+//to update category
+export const updateCategory = (id, category_name) =>{
+    return fetch(`${API}/updateCategory/${id}`,{
+        method: "PUT",
+        headers:{
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({category_name})
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
+
+//to delete category
+export const deleteCategory = (id) => {
+    return fetch(`${API}/deleteCategory/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
+
+
 

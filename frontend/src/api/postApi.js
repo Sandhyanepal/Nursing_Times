@@ -11,3 +11,12 @@ export const getpost = () => {
     .then(response=>response.json())
     .catch(error=>console.log(error))
 }
+
+export const addpost = (formData) => {
+    return fetch(`${API}/addpost`,{
+        method: "POST",
+        body: formData
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}

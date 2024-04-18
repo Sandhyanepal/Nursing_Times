@@ -11,13 +11,13 @@ exports.register = async (req, res) => {
     // check username if already exists
     const usernameExists = await User.findOne({ username });
     if (usernameExists) {
-      return res.status(400).json({ error: "Username is not available." });
+        return res.status(400).json({ error: "Username is not available." });
     }
-  
+
     // check email if already exists
     const emailExists = await User.findOne({ email });
     if (emailExists) {
-      return res.status(400).json({ error: "Email already registered." });
+        return res.status(400).json({ error: "Email already registered." });
     }
 
 
@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
             token: crypto.randomBytes(24).toString('hex'),
             user: newUser._id
         })
-        if(!token){
+        if (!token) {
             return console.log("Failed to generate token");
         }
 
@@ -63,47 +63,47 @@ exports.register = async (req, res) => {
 // VERIFY EMAIL
 exports.verifyEmail = async (req, res) => {
     // Check if token is correct or not
-    let token = await Token.findOne({token: req.params.token})
-    if(!token){
-        res.status(400).json({error: "Token not found, or may have expired"})
+    let token = await Token.findOne({ token: req.params.token })
+    if (!token) {
+        res.status(400).json({ error: "Token not found, or may have expired" })
     }
 
     // find user associated with token
     let user = await User.findById(token.user)
-    if(!user){
-        res.status(400).json({error: "Usernot found"})
+    if (!user) {
+        res.status(400).json({ error: "Usernot found" })
     }
 
     // Check if user is already verified
-    if(user.isVerified){
-       return res.status(400).json({error: "User already verified. Login to continue"})
+    if (user.isVerified) {
+        return res.status(400).json({ error: "User already verified. Login to continue" })
     }
 
     // Verify User
     user.isVerified = true
     user = await user.save()
-    if(!user){
-        res.status(400).json({error: "Failed to verify, please try again later"})
+    if (!user) {
+        res.status(400).json({ error: "Failed to verify, please try again later" })
     }
-    res.send({message: "User verified successfully"})
-    
+    res.send({ message: "User verified successfully" })
+
 }
 
 
 // TO RESEND VERIFICATION EMAIL
 exports.resendVerification = async (req, res) => {
     // check if email is registered or not
-    let user = await User.findOne({email: req.body.email})
+    let user = await User.findOne({ email: req.body.email })
     console.log(user);
-    if(!user){
-       return res.status(400).json({error: "Email not registered"})
+    if (!user) {
+        return res.status(400).json({ error: "Email not registered" })
     }
     // Generate Token
     const token = await Token.create({
         token: crypto.randomBytes(24).toString('hex'),
         user: user._id
     })
-    if(!token){
+    if (!token) {
         return console.log("Failed to generate token");
     }
 
@@ -117,23 +117,23 @@ exports.resendVerification = async (req, res) => {
         html: `<a href='${URL}'><button>Verify Email</button></a>`
     })
 
-    res.send({message: "Verification link has been send to your email"})
+    res.send({ message: "Verification link has been send to your email" })
 }
 
 
 // FORGET PASSWORD
-exports.forgetPassword = async (req,res) => {
+exports.forgetPassword = async (req, res) => {
     // check if email exist
-    let user = await User.findOne({email: req.body.email})
-    if(!user){
-       return res.status(400).json({error: "Email not registered"})
+    let user = await User.findOne({ email: req.body.email })
+    if (!user) {
+        return res.status(400).json({ error: "Email not registered" })
     }
     // Generate Token
     const token = await Token.create({
         token: crypto.randomBytes(24).toString('hex'),
         user: user._id
     })
-    if(!token){
+    if (!token) {
         return console.log("Failed to generate token");
     }
     // send password reset link in email
@@ -145,32 +145,10 @@ exports.forgetPassword = async (req,res) => {
         text: "Please copy the following link in the browser to reset password" + URL,
         html: `<a href='${URL}'><button>Reset Password</button></a>`
     })
-    res.send({message: "Password reset link has been send to your email"})
+    res.send({ message: "Password reset link has been send to your email" })
 }
 
-
 // TO RESET PASSWORD
-// exports.resetPassword = async (req,res) => {
-//     // check if token is valid or not
-//     let token = await Token.findOne({token: req.params.token})
-//     if(!token){
-//         return res.status(400).json({error: "Invalid token or token may have expired"})
-//     }
-//     // find user
-//     let user = await User.findById(token.user)
-//     if(!user){
-//         return res.status(400).json({error: "User not found"})        
-//     }
-//     // update password
-//     const salt = await bcrypt.genSalt(10);
-//     const hashed_password = await bcrypt.hash(req.body.password, salt);
-//     user.password = hashed_password
-//     user = await user.save()
-//     if(!user){
-//         return res.status(400).json({error: "Something went wrong"})      
-//     }
-//     res.send({message:"Password has been changed successfully."})
-// }
 exports.resetPassword = async (req, res) => {
     try {
         // Check if token is valid or not
@@ -207,13 +185,30 @@ exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(400).json({error:"No such user"});
+            return res.status(400).json({ error: "Email not regestered" });
         }
 
         const validated = await bcrypt.compare(req.body.password, user.password);
         if (!validated) {
-            return res.status(400).json({error:"Wrong password"});
+            return res.status(400).json({ error: "Wrong password" });
         }
+
+        // generate login token
+        const token = jwt.sign(
+            {
+                _id: user._id,
+                role: user.role,
+                username: user.username,
+                email: user.email,
+            },
+            process.env.JWT_SECRET
+        );
+        // set token in cookie
+        res.cookie("myCookie", token, { expire: Date.now() + 86400 });
+        // return user info to the frontend
+        const { _id, username, role } = user;
+        res.json({ token, user: { _id, username, email, role } });
+
 
         // If login is successful, send user data without password
         const { password, ...others } = user._doc;
@@ -222,7 +217,7 @@ exports.login = async (req, res) => {
     catch (err) {
         // Handle any unexpected errors
         console.error(err);
-        return res.status(400).json({error:err.message});
+        return res.status(400).json({ error: err.message });
     }
 };
 
@@ -289,18 +284,18 @@ exports.getUser = async (req, res) => {
 
 
 //Logout
-exports.logout = (req, res) =>{
+exports.logout = (req, res) => {
     return res.clearCookie('myCookie')
 }
 
 
 //get userdetails
-exports.getuserdetails = async(req,res) => {
-     let user = await User.findById(req.params.id)
-     if(!user){
-        return res.status(400).json({error:"Something went wrong"})
-     }
-     res.send(user)
+exports.getuserdetails = async (req, res) => {
+    let user = await User.findById(req.params.id)
+    if (!user) {
+        return res.status(400).json({ error: "Something went wrong" })
+    }
+    res.send(user)
 }
 
 

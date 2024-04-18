@@ -48,7 +48,7 @@ const MyRoutes = () => {
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
-                <Route path='/admin/category/update/:categoryId' element={<UpdateCategory/>}/>
+                <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
 
 
             </Routes>

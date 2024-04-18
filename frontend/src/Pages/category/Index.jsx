@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../Layout/AdminSidebar'
-import { getAllCategory } from '../../api/categoryApi'
+import {  deleteCategory, getAllCategory } from '../../api/categoryApi'
 import { Link } from 'react-router-dom'
 
 const Index = () => {
      let [Category, setCategory] = useState([])
+     let [deleteSuccess, setDeleteSuccess] = useState(false)
+
 
      useEffect(()=>{
         getAllCategory()
@@ -16,7 +18,31 @@ const Index = () => {
                 setCategory(data)
             }
         })
-     })
+     }, [deleteSuccess])
+
+     const handleDelete = id => e => {
+        console.log(id)
+        // let result = confirm("Are you sure you want to delete this category")
+        let result = alert("Are you sure you want to delete this category")
+        // console.log(result)
+        if(result === true){
+            deleteCategory(id)
+            .then(data=>{
+               if(data.error){
+                setDeleteSuccess(false)
+                   alert(data.error)
+               }
+               else{
+                setDeleteSuccess(true)
+                   alert(data.msg)
+               }
+            })
+        }
+     }
+
+    //  const showSuccess = () =>(
+    //     success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
+    // )
 
   return (
     <div className='flex'> 
@@ -40,9 +66,9 @@ const Index = () => {
                             <td>{category.category_name}</td>
                             <td>
                                 {/* <Link href={`/admin/category/update/${category._id}`}> */}
-                                <Link to={`/admin/category/update/${category._id}`} className='update button rounded-s-md'>Update</Link>
+                                <Link to={`/admin/category/update/${category._id}`} className='update button rounded-s-md' >Update</Link>
                                 {/* </Link> */}
-                                <button className='delete button rounded-e-md'>Delete</button>
+                                <button className='delete button rounded-e-md' onClick={handleDelete(category._id)}>Delete</button>
                             </td>
                            </tr> 
                         })

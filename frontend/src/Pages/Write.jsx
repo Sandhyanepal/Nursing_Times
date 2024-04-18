@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 // import { API } from '../config'
 import { addpost } from '../api/postApi'
@@ -98,13 +97,7 @@ const Write = () => {
             setSuccess(false);
         }
     }
-=======
-import React from 'react'
-
-const Write = () => {
-
    
->>>>>>> 4f22d5683d1fc710994fe16bd993b31b76394171
 
     const showError = () => {
         if (error) {
@@ -133,7 +126,6 @@ const Write = () => {
 
     return (
         <>
-<<<<<<< HEAD
 
             {showError()}
             {showSuccess()}
@@ -146,21 +138,10 @@ const Write = () => {
             <div className="write w-11/12 m-auto pt-9">
                 <form className='writeForm relative'>
                     <div className="writeFormGroup ml-36 flex items-center" runat="server">
-=======
-            
-            <img src='' alt="" className='w-3/5 h-72 m-auto mt-8  object-cover object-center rounded-lg' />
-            
-
-
-            <div className="write w-11/12 m-auto pt-9">
-                <form className='writeForm relative' >
-                    <div className="writeFormGroup ml-36 flex items-center">
->>>>>>> 4f22d5683d1fc710994fe16bd993b31b76394171
                         <label htmlFor="fileInput">
                             <i className="fa-solid fa-plus writeIcon text-xl text-gray-500"></i>
                         </label>
 
-<<<<<<< HEAD
                         <input type="file" id='fileInput' style={{ display: "none" }}
                             onChange={handleImage} />
 
@@ -171,11 +152,6 @@ const Write = () => {
                             value={title}
                             onChange={handleChange('title')}
                         />
-=======
-                        <input type="file" id='fileInput' style={{ display: "none" }}/>
-
-                        <input type="text" placeholder='Title' className='text-3xl p-5 ml-2 focus:outline-none' style={{ width: "60vw" }} />
->>>>>>> 4f22d5683d1fc710994fe16bd993b31b76394171
                     </div>
                     <label htmlFor="">Category</label>
 
@@ -191,16 +167,12 @@ const Write = () => {
 
                     <div className="writeFormGroup ml-40 text-xl">
 
-<<<<<<< HEAD
                         <textarea
                             placeholder='Tell your story...' type="text" className='focus:outline-none resize-none'
                             style={{ width: "70vw", height: "50vh" }}
                             value={description}
                             onChange={handleChange('description')}
                         ></textarea>
-=======
-                        <textarea placeholder='Tell your story...' type="text" className='focus:outline-none resize-none' style={{ width: "70vw", height: "50vh" }} ></textarea>
->>>>>>> 4f22d5683d1fc710994fe16bd993b31b76394171
                     </div>
                     <button className='absolute top-6 right-28 text-white bg-yellow-500 p-1 rounded-md'
                         onClick={handleSubmit}

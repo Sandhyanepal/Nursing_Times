@@ -52,7 +52,6 @@ exports.deletePost = async (req, res) => {
     else{
         res.status(401).json("You can delete only your posts!!!");
     }
-
 }
 
 //Get post By Id

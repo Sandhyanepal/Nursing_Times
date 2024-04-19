@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className=" text-center mt-11 text-white bg-gray-600 ">
+    <footer className=" text-center mt-11 text-white bg-gray-600 absolute ">
       <div className="footer w-11/12 m-auto flex flex-col md:flex-row  pt-3 justify-between" >
         <div className="foot text-start md:w-1/2">
           <h3 className="font-bold py-2 mb-1">Nursing Times</h3>

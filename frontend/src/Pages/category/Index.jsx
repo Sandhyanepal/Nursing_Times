@@ -21,15 +21,15 @@ const Index = () => {
      }, [deleteSuccess])
 
      const handleDelete = id => e => {
+        setDeleteSuccess(false)
         console.log(id)
         // let result = confirm("Are you sure you want to delete this category")
-        let result = alert("Are you sure you want to delete this category")
+        const confirmed = window.confirm("Are you sure you want to delete this category")
         // console.log(result)
-        if(result === true){
+        if(confirmed === true){
             deleteCategory(id)
             .then(data=>{
                if(data.error){
-                setDeleteSuccess(false)
                    alert(data.error)
                }
                else{

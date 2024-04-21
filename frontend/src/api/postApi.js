@@ -11,3 +11,48 @@ export const getpost = () => {
     .then(response=>response.json())
     .catch(error=>console.log(error))
 }
+
+export const addpost = (formData) => {
+    return fetch(`${API}/addpost`,{
+        method: "POST",
+        body: formData
+    })
+    .then(response=>response.json())
+    .catch(error=>console.log(error))
+}
+
+
+export const deletepost = async (postId,id) => {
+    try {
+        const response = await fetch(`${API}/deletepost/${id}`, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({postId})
+        });
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while deleting the post." };
+    }
+};
+
+
+export const updatepost = async (id, postData) => {
+    try{
+        const response = await fetch(`${API}/updatepost/${id}`,{
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postData)
+        })
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while deleting the post." };
+    }
+}

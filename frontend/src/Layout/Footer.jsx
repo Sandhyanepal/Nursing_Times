@@ -31,7 +31,7 @@ function Footer() {
         </div>
         <div className="list-none">
           <h2 className="font-bold pt-3 text-center mb-2">Connect With Us</h2>
-          <div className="footer-icons flex justify-around  items-center pt-3 pb-2">
+          <div className="footer-icons flex flex-wrap justify-around items-center pt-3 pb-2">
             <Link to="">
               <i className="fa-brands fa-facebook text-lg md:text-2xl"></i>
             </Link>

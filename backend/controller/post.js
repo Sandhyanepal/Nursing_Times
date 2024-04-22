@@ -43,14 +43,14 @@ exports.deletePost = async (req, res) => {
             let post = await Post.findByIdAndDelete(req.params.id, {
                 $set: req.body,
             }, { new: true })
-            res.status(200).json("Post Deleted!!!")
+            res.status(200).json({success:"Post Deleted!!!"})
         }
         catch (err) {
             res.status(400).json(err.message);
         }        
     }
     else{
-        res.status(401).json("You can delete only your posts!!!");
+        res.status(401).json({error:"You can delete only your posts!!!"});
     }
 }
 

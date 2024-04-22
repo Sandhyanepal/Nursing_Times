@@ -41,7 +41,10 @@ function logout(){
                     </ul>
                 </div>
                 <div className='w-1/5 md:flex md:justify-center items-center relative'>
-                    <span><img className='headerImg rounded-full' src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: "40px", height: "40px" }} onClick={()=>showDropdown(!dropdown)}/></span>
+
+                    {user && (
+                        <span><img className='headerImg rounded-full' src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: "40px", height: "40px" }} onClick={()=>showDropdown(!dropdown)}/></span>
+                    )}
                     <FontAwesomeIcon icon={faMagnifyingGlass} className='pl-9 text-2xl' />
 
 

@@ -27,6 +27,8 @@ const SinglePost = () => {
                 const jsonResult = await result.json();
                 console.log("JSON result:", jsonResult); // Log the JSON result
                 setPost(jsonResult);
+                setTitle(jsonResult.title)
+                setDesc(jsonResult.desc)
 
             } catch (error) {
                 console.error("Error fetching post:", error);
@@ -63,11 +65,11 @@ const SinglePost = () => {
     }
 
 
-    const handleEdit = async (event) =>{
+    const handleEdit = async (event) => {
         event.preventDefault()
 
-        try{
-            const response = await updatepost(id,{ title, description: desc })
+        try {
+            const response = await updatepost(id, { title, description: desc })
             if (response.error) {
                 setSuccess(false)
                 setError(response.error)
@@ -97,41 +99,31 @@ const SinglePost = () => {
 
     return (
         <div className='w-11/12 m-auto'>
-            {id}
 
             {showError()}
             {/* {showSuccess()} */}
 
             <div className="singlePost">
-                <div className="singlePostWrapper">
+                <div className="singlePostWrapper flex flex-col">
 
                     {post.image && (
                         <img className='postImg object-cover rounded w-11/12 m-auto ' src={`${API}/${post.image}`} alt="" style={{ height: '60vh' }} />
                     )}
 
-                    <div className='flex flex-wrap items-center mt-5 w-11/12 md:full '>
+                    <div className='items-center mt-5 '>
 
-                        {updateMode ? ( <input type='text' value={post.title} className='singlePostTitle text-center  text-3xl font-bold  w-11/12 border-2 rounded-md py-2' onChange={(e)=>setTitle(e.target.value)} /> ) : (
-                            <h1 className='singlePostTitle text-center  text-3xl font-bold  w-11/12'>
+                        {updateMode ? (<input type='text' value={title} className='singlePostTitle text-center text-3xl font-bold py-2 border-b-2 w-11/12 ml-12' onChange={(e) => setTitle(e.target.value)} />) : (
+                            <h1 className='singlePostTitle text-center  text-3xl font-bold flex flex-col w-11/12 m-auto'>
                                 {post.title}
-                            </h1>
-                        )}
-                        
 
-                            {post.username === user?.username && (
-                            <div className="singlePostEdit flex w-1/12 gap-5">
-                                {updateMode ? 
-                                <i 
-                                className="fa-regular fa-check-square text-green-500 cursor-pointer text-4xl pl-2" 
-                                onClick={handleEdit}
-                            ></i>
-                            :
-                            <>
-                                <i className="fa-regular fa-pen-to-square text-green-500 cursor-pointer text-2xl" onClick={() => setUpdateMode(true)}></i>
-                                <i className="fa-solid fa-trash text-red-500 cursor-pointer text-2xl" onClick={handleDelete}></i>
-                                </>
-}
-                            </div>
+                                {post.username === user?.username && (
+                                    <div className="singlePostEdit flex gap-5 self-end">
+
+                                        <i className="fa-regular fa-pen-to-square text-green-500 cursor-pointer text-2xl" onClick={() => setUpdateMode(true)}></i>
+                                        <i className="fa-solid fa-trash text-red-500 cursor-pointer text-2xl" onClick={handleDelete}></i>
+                                    </div>
+                                )}
+                            </h1>
                         )}
 
                     </div>
@@ -141,13 +133,18 @@ const SinglePost = () => {
                         <h2>{new Date(post.createdAt).toDateString()}</h2>
                     </div>
 
-                    {updateMode ? ( <textarea className='w-11/12 m-auto mt-5 border-2 rounded-md p-5 h-48' value={post.desc} onChange={(e)=>setDesc(e.target.value)}>{post.description}</textarea> ) : (
+                    {updateMode ? (<textarea className='w-11/12 m-auto mt-5 border-b-2 p-5 h-48 resize-none' value={desc} onChange={(e) => setDesc(e.target.value)}>{post.description}</textarea>) : (
                         <p className='w-11/12 m-auto my-5'>{post.description}
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatem culpa vel et at excepturi ea optio odio quam nulla! Deserunt in et repudiandae distinctio doloremque sed, suscipit soluta quam aliquid deleniti tenetur animi iusto. Neque facilis provident, cum voluptatibus ratione officia dicta veritatis. Doloremque asperiores ab voluptate cum possimus voluptas illum ipsam itaque beatae tenetur quia exercitationem magnam officiis, nihil eaque dolor aut consequuntur labore deserunt. Numquam quaerat ullam culpa maiores amet placeat repudiandae nostrum tempore exercitationem voluptas consequuntur earum, laudantium, nihil ducimus, qui illum et commodi provident. Quasi expedita in non amet eveniet laboriosam quod nisi labore voluptates?
-                         </p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatem culpa vel et at excepturi ea optio odio quam nulla! Deserunt in et repudiandae distinctio doloremque sed, suscipit soluta quam aliquid deleniti tenetur animi iusto.
+                        </p>
+                    )}
+
+                    {updateMode && (
+                        <button className='updateButton bg-yellow-500 text-white py-1 rounded-md mt-3 w-24 self-end me-5 md:me-10' onClick={handleEdit}>Update</button>
                     )}
                 </div>
             </div>
+
         </div>
     )
 }

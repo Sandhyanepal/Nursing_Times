@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 const Token = require('../models/token')
 const crypto = require('crypto')
 const sendEmail = require('../utils/emailSender');
+const jwt = require("jsonwebtoken"); //authorization-login
+const { expressjwt } = require("express-jwt");
 
 // REGISTER
 exports.register = async (req, res) => {
@@ -55,7 +57,7 @@ exports.register = async (req, res) => {
 
     }
     catch (err) {
-        res.status(400).json(err.message);
+        res.status(400).json({error: err.message});
     }
 }
 
@@ -181,16 +183,56 @@ exports.resetPassword = async (req, res) => {
 
 
 // LOGIN
+// exports.login = async (req, res) => {
+//     try {
+//         const user = await User.findOne({ email: req.body.email });
+//         if (!user) {
+//             return res.status(400).json({ error: "Email not regestered" });
+//         }
+
+//         const validated = await bcrypt.compare(req.body.password, user.password);
+//         if (!validated) {
+//             return res.status(400).json({ error: "Wrong password" });
+//         }
+
+//         // generate login token
+//         const token = jwt.sign(
+//             {
+//                 _id: user._id,
+//                 role: user.role,
+//                 username: user.username,
+//                 email: user.email,
+//             },
+//             process.env.JWT_SECRET
+//         );
+//         // set token in cookie
+//         res.cookie("myCookie", token, { expire: Date.now() + 86400 });
+//         // return user info to the frontend
+//         const { _id, username, role,email } = user;
+//         res.json({ token, user: { _id, username, email, role  } });
+
+
+//         // If login is successful, send user data without password
+//         const { password, ...others } = user._doc;
+//         return res.status(200).json(others);
+//     }
+//     catch (err) {
+//         // Handle any unexpected errors
+//         console.error(err);
+//         return res.status(400).json({ error: err.message });
+//     }
+// };
+
 exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(400).json({ error: "Email not regestered" });
+            return res.status(400).json({ error: "No such user"});
         }
 
         const validated = await bcrypt.compare(req.body.password, user.password);
         if (!validated) {
-            return res.status(400).json({ error: "Wrong password" });
+            return res.status(400).json({ error: "Wrong password"});
         }
 
         // generate login token
@@ -203,21 +245,14 @@ exports.login = async (req, res) => {
             },
             process.env.JWT_SECRET
         );
-        // set token in cookie
-        res.cookie("myCookie", token, { expire: Date.now() + 86400 });
-        // return user info to the frontend
-        const { _id, username, role } = user;
-        res.json({ token, user: { _id, username, email, role } });
-
-
         // If login is successful, send user data without password
         const { password, ...others } = user._doc;
-        return res.status(200).json(others);
+        return res.status(200).json({ token, user: others });
     }
     catch (err) {
         // Handle any unexpected errors
         console.error(err);
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({error:err.message});
     }
 };
 
@@ -233,16 +268,18 @@ exports.updateUser = async (req, res) => {
         }
         try {
             const user = await User.findByIdAndUpdate(req.params.id, {
-                $set: req.body,
+                username: req.body.username,
+                email: req.body.email,
+                password: req.body.password
             }, { new: true })
             res.status(200).json(user);
         }
         catch (err) {
-            res.status(400).json(err.message);
+            res.status(400).json({ error: err.message });
         }
     }
     else {
-        res.status(401).json("You can update only your account!!!");
+        res.status(401).json({ error: "You can update only your account!!!" });
     }
 }
 
@@ -258,14 +295,17 @@ exports.deleteUser = async (req, res) => {
             const user = await User.findByIdAndDelete(req.params.id, {
                 $set: req.body,
             }, { new: true })
+            if(!user){
+                return res.status(400).json({error:"Something went wrong"})
+            }
             res.status(200).json(user);
         }
         catch (err) {
-            return res.status(400).json(err.message);
+            return res.status(400).json({error: err.message});
         }
     }
     else {
-        res.status(401).json("You can delete only your account!!!");
+        res.status(401).json({ error: "You can delete only your account!!!" });
     }
 }
 
@@ -278,7 +318,7 @@ exports.getUser = async (req, res) => {
         res.status(200).json(others);
     }
     catch {
-        return res.status(400).json(err.message);
+        return res.status(400).json({error:err.message});
     }
 }
 
@@ -297,6 +337,9 @@ exports.getuserdetails = async (req, res) => {
     }
     res.send(user)
 }
+
+
+
 
 
 

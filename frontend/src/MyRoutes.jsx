@@ -38,7 +38,6 @@ const MyRoutes = () => {
                     <Route path='privacy' element={<Privacy />} />
                     <Route path='faq' element={<FAQ />} />
                     <Route path='verify/:token' element={<Token />} />
-
                     <Route path='/singlepost/:id' element={<SinglePost />} />
 
 

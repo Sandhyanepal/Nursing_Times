@@ -31,3 +31,26 @@ exports.updateCategory = async(req,res) =>{
     }
     res.send(category)
 }
+
+//to get category details
+exports.getCategoryDetails = async(req,res) =>{
+    let category = await Category.findById(req.params.id)
+    if(!category){
+        return res.status(400).json({error:"Something went wrong"})
+    }
+    res.send(category)
+}
+
+
+exports.deleteCategory = async(req, res) =>{
+    try{
+        let category = await Category.findByIdAndDelete(req.params.id)
+        if (!category) {
+            return res.status(400).json({error: "Category not found"})
+        }
+        res.send({msg: "Category deleted successfully"})
+    }
+    catch(error){
+        return res.status(400).json({ error: error.message})
+    }
+}

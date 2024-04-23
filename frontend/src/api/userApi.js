@@ -22,6 +22,12 @@ export const verifyUser = (token) => {
 }
 
 
+export const getUserInfo = (id) => {
+    return fetch(`${API}/getuserdetails/${id}`)
+        .then(response => response.json())
+        .catch(error => console.log(error))
+}
+
 // LOGIN
 export const login = (user) => {
     return fetch(`${API}/login`, {
@@ -37,7 +43,7 @@ export const login = (user) => {
 
 // TO KEEP LOGGED IN
 export const authenticate = (data) => {
-    localStorage.setItem('jwt', JSON.stringify({user:data}))
+    localStorage.setItem('jwt', JSON.stringify(data))
 
 }
 
@@ -81,3 +87,44 @@ export const forgetpassword=user=>{
     })
     .catch(err=>console.log(err))
 }
+
+
+// Update user
+export const updateuser = async (id, userData, token) => {
+    console.log(userData)
+    try {
+        const response = await fetch(`${API}/updateuser/${id}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json", 
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(userData)
+        });
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while updating user info." };
+    }
+};
+
+// Delete user
+export const deleteuser = async (userId,id) => {
+    try {
+        const response = await fetch(`${API}/deleteuser/${id}`, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({userId})
+        });
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while deleting the user." };
+    }
+};
+
+

@@ -39,12 +39,12 @@ const MyRoutes = () => {
                     <Route path='faq' element={<FAQ />} />
                     <Route path='verify/:token' element={<Token />} />
                     <Route path='/singlepost/:id' element={<SinglePost />} />
+                    <Route path='/settings' element={<Settings />} />   
 
 
                 </Route>
                 {/* For admin dashboard */}
                 <Route path='/admindashboard' element={<AdminDashboard />} />
-                <Route path='/settings' element={<Settings />} />
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
                 <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>

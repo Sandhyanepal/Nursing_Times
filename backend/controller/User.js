@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 const Token = require('../models/token')
 const crypto = require('crypto')
 const sendEmail = require('../utils/emailSender');
+const jwt = require("jsonwebtoken"); //authorization-login
+const { expressjwt } = require("express-jwt");
 
 // REGISTER
 exports.register = async (req, res) => {
@@ -55,7 +57,7 @@ exports.register = async (req, res) => {
 
     }
     catch (err) {
-        res.status(400).json(err.message);
+        res.status(400).json({error: err.message});
     }
 }
 
@@ -206,8 +208,8 @@ exports.resetPassword = async (req, res) => {
 //         // set token in cookie
 //         res.cookie("myCookie", token, { expire: Date.now() + 86400 });
 //         // return user info to the frontend
-//         const { _id, username, role } = user;
-//         res.json({ token, user: { _id, username, email, role } });
+//         const { _id, username, role,email } = user;
+//         res.json({ token, user: { _id, username, email, role  } });
 
 
 //         // If login is successful, send user data without password
@@ -225,22 +227,32 @@ exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(400).json("No such user");
+            return res.status(400).json({ error: "No such user"});
         }
 
         const validated = await bcrypt.compare(req.body.password, user.password);
         if (!validated) {
-            return res.status(400).json("Wrong password");
+            return res.status(400).json({ error: "Wrong password"});
         }
 
+        // generate login token
+        const token = jwt.sign(
+            {
+                _id: user._id,
+                role: user.role,
+                username: user.username,
+                email: user.email,
+            },
+            process.env.JWT_SECRET
+        );
         // If login is successful, send user data without password
         const { password, ...others } = user._doc;
-        return res.status(200).json(others);
+        return res.status(200).json({ token, user: others });
     }
     catch (err) {
         // Handle any unexpected errors
         console.error(err);
-        return res.status(400).json(err.message);
+        return res.status(400).json({error:err.message});
     }
 };
 
@@ -248,47 +260,86 @@ exports.login = async (req, res) => {
 
 
 // UPDATE
+// exports.updateUser = async (req, res) => {
+//     if (req.body.userId === req.params.id) {
+//         if (req.body.password) {
+//             const salt = await bcrypt.genSalt(10);
+//             req.body.password = await bcrypt.hash(req.body.password, salt);
+//         }
+//         try {
+//             const user = await User.findByIdAndUpdate(req.params.id, {
+//                 username: req.body.username,
+//                 email: req.body.email,
+//                 password: req.body.password
+//             }, { new: true })
+//             res.status(200).json(user);
+//         }
+//         catch (err) {
+//             res.status(400).json({ error: err.message });
+//         }
+//     }
+//     else {
+//         res.status(401).json({ error: "You can update only your account!!!" });
+//     }
+// }
 exports.updateUser = async (req, res) => {
-    if (req.body.userId === req.params.id) {
+    try {
+        // Ensure the user is updating their own account
+        if (req.body.userId !== req.params.id) {
+            return res.status(401).json({ error: "You can update only your account!!!" });
+        }
+
+        // Generate a new hashed password if provided
         if (req.body.password) {
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);
         }
-        try {
-            const user = await User.findByIdAndUpdate(req.params.id, {
-                $set: req.body,
-            }, { new: true })
-            res.status(200).json(user);
+
+        // Update user information
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        }, { new: true });
+
+        // Check if the user exists and return updated user data
+        if (!updatedUser) {
+            return res.status(404).json({ error: "User not found" });
         }
-        catch (err) {
-            res.status(400).json(err.message);
-        }
+
+        // Return updated user data
+        return res.status(200).json(updatedUser);
+    } catch (err) {
+        // Handle any unexpected errors
+        console.error(err);
+        return res.status(400).json({ error: err.message });
     }
-    else {
-        res.status(401).json("You can update only your account!!!");
-    }
-}
+};
+
 
 
 //  DELETE
 exports.deleteUser = async (req, res) => {
     if (req.body.userId === req.params.id) {
-        if (req.body.password) {
-            const salt = await bcrypt.genSalt(10);
-            req.body.password = await bcrypt.hash(req.body.password, salt);
-        }
+        // if (req.body.password) {
+        //     const salt = await bcrypt.genSalt(10);
+        //     req.body.password = await bcrypt.hash(req.body.password, salt);
+        // }
         try {
             const user = await User.findByIdAndDelete(req.params.id, {
                 $set: req.body,
             }, { new: true })
+            if(!user){
+                return res.status(400).json({error:"Something went wrong"})
+            }
             res.status(200).json(user);
         }
         catch (err) {
-            return res.status(400).json(err.message);
+            return res.status(400).json({error: err.message});
         }
     }
     else {
-        res.status(401).json("You can delete only your account!!!");
+        res.status(401).json({ error: "You can delete only your account!!!" });
     }
 }
 
@@ -301,7 +352,7 @@ exports.getUser = async (req, res) => {
         res.status(200).json(others);
     }
     catch {
-        return res.status(400).json(err.message);
+        return res.status(400).json({error:err.message});
     }
 }
 
@@ -320,6 +371,9 @@ exports.getuserdetails = async (req, res) => {
     }
     res.send(user)
 }
+
+
+
 
 
 

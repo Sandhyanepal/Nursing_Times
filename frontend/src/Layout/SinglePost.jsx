@@ -46,7 +46,7 @@ const SinglePost = () => {
         try {
             const response = await deletepost(post._id, id)
             console.log(response);
-            console.log(response)
+            // console.log(response)
             if (response.error) {
                 setSuccess(false)
                 setError(response.error)
@@ -94,14 +94,18 @@ const SinglePost = () => {
         }
     }
 
-
+    const showSuccess = () => {
+        if (success) {
+            return <div className='text-green-500 text-lg font-bold text-center'>"Your profile has been updated successfully."</div>
+        }
+    }
 
 
     return (
         <div className='w-11/12 m-auto'>
 
             {showError()}
-            {/* {showSuccess()} */}
+            {showSuccess()}
 
             <div className="singlePost">
                 <div className="singlePostWrapper flex flex-col">

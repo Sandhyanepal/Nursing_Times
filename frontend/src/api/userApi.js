@@ -89,7 +89,7 @@ export const forgetpassword=user=>{
 }
 
 
-
+// Update user
 export const updateuser = async (id, userData, token) => {
     console.log(userData)
     try {
@@ -106,6 +106,24 @@ export const updateuser = async (id, userData, token) => {
     } catch (error) {
         console.error(error);
         return { error: "An error occurred while updating user info." };
+    }
+};
+
+// Delete user
+export const deleteuser = async (userId,id) => {
+    try {
+        const response = await fetch(`${API}/deleteuser/${id}`, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({userId})
+        });
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while deleting the user." };
     }
 };
 

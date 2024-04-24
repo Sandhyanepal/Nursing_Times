@@ -20,9 +20,7 @@ const Home = () => {
     }, [])
 
 
-    
-
-    return (
+        return (
         <div >
             <Banner />
             

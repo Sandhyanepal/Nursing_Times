@@ -19,9 +19,14 @@ import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
 import ResetPassword from './Pages/ResetPassword'
 import UpdateCategory from './Pages/category/UpdateCategory'
+<<<<<<< HEAD
 import AdminHome from './Pages/admin/AdminHome'
 import AdminUsers from './Pages/admin/AdminUsers'
 import AdminPosts from './Pages/admin/AdminPosts'
+=======
+import DPost from './Pages/DashPost/DPost'
+
+>>>>>>> 4290a295031abd3f64b7a95f8920170267458a8a
 
 
 const MyRoutes = () => {
@@ -41,7 +46,6 @@ const MyRoutes = () => {
                     <Route path='privacy' element={<Privacy />} />
                     <Route path='faq' element={<FAQ />} />
                     <Route path='verify/:token' element={<Token />} />
-
                     <Route path='/singlepost/:id' element={<SinglePost />} />
                     <Route path='/settings' element={<Settings />} />   
 
@@ -58,6 +62,7 @@ const MyRoutes = () => {
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
                 <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
+                <Route path='/admin/posts' element={<DPost/>}/>
 
 
             </Routes>

@@ -23,9 +23,7 @@ const Index = () => {
      const handleDelete = id => e => {
         setDeleteSuccess(false)
         console.log(id)
-        // let result = confirm("Are you sure you want to delete this category")
         const confirmed = window.confirm("Are you sure you want to delete this category")
-        // console.log(result)
         if(confirmed === true){
             deleteCategory(id)
             .then(data=>{
@@ -39,10 +37,6 @@ const Index = () => {
             })
         }
      }
-
-    //  const showSuccess = () =>(
-    //     success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
-    // )
 
   return (
     <div className='flex'> 

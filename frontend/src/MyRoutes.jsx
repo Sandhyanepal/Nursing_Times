@@ -19,6 +19,8 @@ import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
 import ResetPassword from './Pages/ResetPassword'
 import UpdateCategory from './Pages/category/UpdateCategory'
+import DPost from './Pages/DashPost/DPost'
+
 
 
 const MyRoutes = () => {
@@ -48,6 +50,7 @@ const MyRoutes = () => {
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
                 <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
+                <Route path='/admin/posts' element={<DPost/>}/>
 
 
             </Routes>

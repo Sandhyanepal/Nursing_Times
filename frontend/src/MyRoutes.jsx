@@ -19,14 +19,11 @@ import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
 import ResetPassword from './Pages/ResetPassword'
 import UpdateCategory from './Pages/category/UpdateCategory'
-<<<<<<< HEAD
 import AdminHome from './Pages/admin/AdminHome'
 import AdminUsers from './Pages/admin/AdminUsers'
 import AdminPosts from './Pages/admin/AdminPosts'
-=======
 import DPost from './Pages/DashPost/DPost'
 
->>>>>>> 4290a295031abd3f64b7a95f8920170267458a8a
 
 
 const MyRoutes = () => {

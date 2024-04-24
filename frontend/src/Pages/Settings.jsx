@@ -52,11 +52,7 @@ const Settings = () => {
                     setError(response.error)
                 } else {
                     console.log('User updated successfully:', response);
-                    // setUser(response);
-                    // console.log(response)
-                    // setUsername(response.username);
-                    // setEmail(response.email);
-                    // setUpdateMode(false);
+
                     setSuccess(true)
                     setError('')
                     window.location.reload()
@@ -79,8 +75,8 @@ const Settings = () => {
 
         try {
             const response = await deleteuser(user._id, id)
+            console.log(user._id)
             console.log(response);
-            // console.log(response)
             if (response.error) {
                 setSuccess(false)
                 setError(response.error)

@@ -23,7 +23,7 @@ function logout(){
         <>
         
             <header className='md:flex sm:w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3 text-center sticky top-0 bg-white z-10'>
-                <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic md:text-start text-gray-600">NursingTimes</Link>
+                <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic md:text-start text-gray-600">Nursing<span className='text-yellow-500'>Times</span></Link>
                 <div className=" w-3/6">
                     <ul className='list-unstyle text-xl md:flex md:justify-around'>
                         <li><Link to="/">Home</Link></li>

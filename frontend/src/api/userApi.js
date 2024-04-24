@@ -110,7 +110,7 @@ export const updateuser = async (id, userData, token) => {
 };
 
 // Delete user
-export const deleteuser = async (userId,id) => {
+export const deleteuser = async (userId, id) => {
     try {
         const response = await fetch(`${API}/deleteuser/${id}`, {
             method: "DELETE",

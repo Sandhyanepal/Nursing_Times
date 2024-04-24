@@ -19,6 +19,9 @@ import ForgetPassword from './Pages/ForgetPassword'
 import Add from './Pages/category/Add'
 import ResetPassword from './Pages/ResetPassword'
 import UpdateCategory from './Pages/category/UpdateCategory'
+import AdminHome from './Pages/admin/AdminHome'
+import AdminUsers from './Pages/admin/AdminUsers'
+import AdminPosts from './Pages/admin/AdminPosts'
 
 
 const MyRoutes = () => {
@@ -45,6 +48,12 @@ const MyRoutes = () => {
 
                 </Route>
                 {/* For admin dashboard */}
+                <Route path='/adminhome' element={<AdminHome/>}/>
+                <Route path='/adminusers' element={<AdminUsers/>}/>
+                <Route path='/adminposts' element={<AdminPosts/>}/>
+
+
+
                 <Route path='/admindashboard' element={<AdminDashboard />} />
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>

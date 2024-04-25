@@ -81,3 +81,60 @@ tbody tr:last-child td:first-child{
     @apply bg-green-600 hover:bg-green-500
     active:bg-green-700;
 }
+
+
+
+/* For Admin Profile Page */
+
+.adminprofile-grid{
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 25vh 25vh 25vh 25vh;
+    /* grid-auto-rows: minmax(180px, auto); */
+}
+.box1{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:2 ;
+}
+.box2{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:3 ;
+}
+.box3{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start:2 ;
+}
+.box4{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start:3 ;
+}
+.box5{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:4 ;
+}
+.box6{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start:1 ;
+}
+.box7{
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start:1 ;
+}
+.box8{
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start:2 ;
+    grid-column-end:4 ;
+}
+.box9{
+    grid-row-start: 2;
+    grid-row-end: 5;
+    grid-column-start:4 ;
+}
+

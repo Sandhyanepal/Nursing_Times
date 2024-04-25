@@ -320,17 +320,18 @@ exports.updateUser = async (req, res) => {
 
 //  DELETE
 exports.deleteUser = async (req, res) => {
-    if (req.body.userId === req.params.id) {
+    // if (req.body.userId === req.params.id) {
         // if (req.body.password) {
         //     const salt = await bcrypt.genSalt(10);
         //     req.body.password = await bcrypt.hash(req.body.password, salt);
         // }
         try {
-            const user = await User.findByIdAndDelete(req.params.id, {
-                $set: req.body,
-            }, { new: true })
+            const user = await User.findByIdAndDelete(req.params.id)
+            //     , {
+            //     $set: req.body,
+            // }, { new: true })
             if(!user){
-                return res.status(400).json({error:"Something went wrong"})
+                return res.status(400).json({error:"User not found."})
             }
             res.status(200).json(user);
         }
@@ -338,10 +339,10 @@ exports.deleteUser = async (req, res) => {
             return res.status(400).json({error: err.message});
         }
     }
-    else {
-        res.status(401).json({ error: "You can delete only your account!!!" });
-    }
-}
+//     else {
+//         res.status(401).json({ error: "You can delete only your account!!!" });
+//     }
+// }
 
 
 //  GET USER

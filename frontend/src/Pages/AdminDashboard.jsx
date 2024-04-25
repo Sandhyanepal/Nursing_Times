@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   }, [location.search]);
 
     return (
-        <div className='flex mt-10 '>
+        <div className='flex'>
             <AdminSidebar />
             <div className='w-3/4 p-5'>
                 {tab === 'profile' && <AdminProfile/>}

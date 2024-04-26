@@ -14,7 +14,7 @@ const Home = () => {
         const fetchPosts = async () =>{
            const res = await axios.get(`${API}/getallposts`)
            console.log(res)
-           setPosts(res.data)
+           setPosts(res?.data)
         }
         fetchPosts()
     }, [])

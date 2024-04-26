@@ -1,38 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import { deleteuser, isAuthenticate, updateuser } from '../api/userApi'
+import { authenticate, deleteuser, getUserInfo, isAuthenticate, updateuser } from '../api/userApi'
 // import { API } from '../config'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 const Settings = () => {
 
     // let { user } = isAuthenticate()
-    const { id } = useParams()
+    const id = isAuthenticate()?.user._id
 
-    const [user, setUser] = useState(isAuthenticate().user);
-    // console.log(user);
+    const [user, setUser] = useState({});
     const { token } = isAuthenticate()
-    // console.log(token)
-
-
-    let [username, setUsername] = useState('')
-    let [email, setEmail] = useState('')
-    // let [password, setPassword] = useState('')
-
-    // let {username, email} = user
+    let { username, email } = user
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
-    // let [updateMode, setUpdateMode] = useState(false)
+
+    useEffect(() => {
+        getUserInfo(id)
+            .then(data => {
+                if (data.error) {
+                    console.log(error)
+                }
+                else {
+                    setUser(data)
+                    authenticate({ token, user: data })
+                }
+            })
+    }, [id, success])
 
 
-    // useEffect(() => {
-    //     setUser()
-    // }, [success]);
-
-
+    // To update user account 
     const handleEdit = async (e) => {
         e.preventDefault();
 
@@ -69,7 +69,7 @@ const Settings = () => {
             )
     }
 
-
+    // To delete user account
     const handleDelete = async (event) => {
         event.preventDefault()
 
@@ -104,6 +104,7 @@ const Settings = () => {
 
     const showSuccess = () => {
         if (success) {
+
             return <div className='text-green-500 text-lg font-bold text-center'>"Your profile has been updated successfully."</div>
         }
     }
@@ -119,10 +120,6 @@ const Settings = () => {
                     <h1 className='text-3xl mb-5 text-red-500'>Update Your Account</h1>
 
                     <div className=''>
-                        {/* <button
-                            className='mb-5 w-20 py-1 rounded-lg bg-yellow-500 text-white'
-                            onClick={() => setUpdateMode(true)}
-                        >Edit</button> */}
                         <button className='bg-red-500 py-1 w-32 rounded-md text-white ml-3' onClick={handleDelete}>DeleteAccount</button>
                     </div>
 
@@ -137,27 +134,13 @@ const Settings = () => {
                         <input type="file" id='fileInput' style={{ display: 'none' }} />
                     </div>
                     <label className='text-2xl mt-5 pl-1'>Username</label>
-                    {/* {
-                        updateMode ? (<input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder={user.username} onChange={e => setUsername(e.target.value)} />)
-                        :
-                    } */}
-                    <input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder={user.username} onChange={e => setUsername(e.target.value)} />
+                    <input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={user.username}
+                        onChange={e => setUser({ ...user, username: e.target.value })} />
 
                     <label className='text-2xl mt-5 pl-1'>Email</label>
-                    {/* {
-                        updateMode ? (<input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder={user.email} onChange={e => setEmail(e.target.value)} />)
-                            :
-                        } */}
-                    <input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder={user.email} onChange={e => setEmail(e.target.value)} />
+                    <input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={user.email}
+                        onChange={e => setUser({ ...user, email: e.target.value })} />
 
-                    <label className='text-2xl mt-5 pl-1'>Password</label>
-                    {/* {
-                        updateMode ? (<input type="password" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder={password} onChange={e => setPassword(e.target.value)} />)
-                            :
-                        } */}
-                    <input type="password" className='text-gray-500 my-3 py-2 pl-1 border-b-2' placeholder="**********" />
-
-                    {/* {updateMode && ( */}
                     <button className=' bg-yellow-500 py-1 w-24 rounded-md text-white mt-5 self-end' type='Submit'>Update</button>
 
                 </form>

@@ -59,7 +59,7 @@ const MyRoutes = () => {
                 <Route path='/admin/category' element={<Index/>}/>
                 <Route path='/admin/category/add' element={<Add/>}/>
                 <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
-                <Route path='/admin/posts' element={<DPost/>}/>
+                <Route path='/posts' element={<DPost/>}/>
 
 
             </Routes>

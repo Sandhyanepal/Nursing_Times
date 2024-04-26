@@ -8,8 +8,9 @@ import { deletePost } from '../../api/DashPostApi'
 
 const DPost = () => {
 
+
     const [posts, setPosts] = useState([])
-    const[limit, setLimit] = useState(4)
+    // const[limit, setLimit] = useState(4)
     const[deleteSuccess, setDeleteSuccess] = useState(4)
 
 
@@ -22,14 +23,10 @@ const DPost = () => {
         fetchPosts()
     }, [])
 
-    const showMore = () => {
-      setLimit(limit+2)
-    }
-
     const handleDelete = id => e => {
       setDeleteSuccess(false)
       console.log(id)
-      const confirmed = window.confirm("Are you sure you want to delete this category")
+      const confirmed = window.confirm("Are you sure you want to delete this post?")
       if(confirmed === true){
           deletePost(id)
           .then(data=>{
@@ -49,20 +46,18 @@ const DPost = () => {
   return (
     <div>
         <div classNameName="flex w-full">
-          {/* <Posts posts = {posts} />
-          <button className='show font-bold py-8' onClick={showMore}></button> */}
            {
                         //map garna
                         posts.map((post)=>{
-                           return <div key={post._id} className='flex flex-col w-1/2 mx-auto pb-9 pt-5'>
-                            <img className='postImg object-cover rounded w-11/12 m-auto ' src={`${API}/${post.image}`} alt="" style={{ height: '60vh' }} />
-                            <h1 className='font-bold pb-1'>{post.title}</h1>
-                            <p className='pb-1'>{post.description}</p>
-                            <div>
+                           return <div key={post._id} className='flex flex-col w-1/2 mx-auto pb-9 pt-5 '>
+                            <img className='postImg object-cover rounded w-11/12 m-auto' src={`${API}/${post.image}`} alt="" style={{ height: '60vh' }} />
+                            <h1 className='font-bold pb-1 ps-6 pt-1'>{post.title}</h1>
+                            <p className='pb-2 ps-6'>{post.description}</p>
+                            <div className='ps-6'>
                                 {/* <Link href={`/admin/category/update/${category._id}`}> */}
                                 {/* <Link to={`/admin/post/${post._id}`} className='update button rounded-s-md' >Update</Link> */}
                                 {/* </Link> */}
-                                <button className='delete button rounded-e-md' onClick={handleDelete(post._id)}>Delete</button>
+                                <button className='postbutton bg-red-600 p-2 rounded-md ' onClick={handleDelete(post._id)}>Delete</button>
                             </div>
                            </div> 
                         })

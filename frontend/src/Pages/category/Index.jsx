@@ -43,7 +43,7 @@ const Index = () => {
         <AdminSidebar/>
         <div className='text-center w-full text-xl mt-5'>
             <h1 className='underline text-2xl pb-8'>Categories</h1>
-            <table className='m-auto'>
+            <table className='m-auto '>
                 <thead>
                     <tr>
                         <td>S.NO.</td>
@@ -70,15 +70,18 @@ const Index = () => {
 
                     }
                 </tbody>
-                <tfoot>
+                {/* <tfoot>
                     <tr>
                         <td colSpan={3}>
-                            <Link to='/admin/category/add' className='add button rounded-md'>Add New Category</Link>
                         </td>
                     </tr>
-                </tfoot>
+                </tfoot> */}
             </table>
+                       <Link to='/admin/category/add' className='py-10'>
+                            <button className='add button rounded-md'>Add New Category</button>
+                        </Link>
         </div>
+        
     </div>
   )
 }

@@ -38,11 +38,8 @@ const Add = () => {
 
     return (
      <div className='flex'>
-        {/* {redirect()} */}
         <AdminSidebar/>
         <div className=" w-full text-lg mt-5">
-            {/* <h1 className="underline">Add Category</h1> */}
-
             <form className='p-5 w-1/2 m-auto mt-5 rounded-lg py-10 shadow-xl'>
                 <h2 className='pb-4 font-bold text-2xl text-center'>Add Category</h2>
                 <label htmlFor="category_name">Category Name:</label>

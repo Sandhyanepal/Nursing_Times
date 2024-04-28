@@ -2,11 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* global variable for color */
+/* .yellow{
+        rgb(234, 179, 8)
+    } 
+    .gray{  
+        rgb(75, 85, 99)
+    }
+*/
+
+
+/* For Header */
 .header-right {
     display: flex;
     justify-content: center;
 }
 
+
+/* For Banner */
 @media (min-width: 768px){
     .bannerTitleLg{
         position: absolute;
@@ -14,6 +28,8 @@
     }
 }
 
+
+/* For Write Page */
 .writeIcon{
     width: 30px;
     height: 30px;
@@ -25,11 +41,15 @@
     cursor: pointer;
 }
 
+
+/* For login page */
 .login{
     background-image: url("https://images.pexels.com/photos/1166643/pexels-photo-1166643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size: cover;
-    /* object-fit: cover; */
 }
+
+
+/* For Register Page */
 .register{
     background-image: url("https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size: cover;
@@ -42,6 +62,9 @@
     }
 }
 
+
+
+/* For category page */
 td{
     border: 1px solid gray;
     padding: 5px 15px;
@@ -84,12 +107,12 @@ tbody tr:last-child td:first-child{
 
 
 
+
 /* For Admin Profile Page */
 
 .adminprofile-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr ;
     grid-template-rows: 25vh 25vh ;
-    /* grid-auto-rows: minmax(180px, auto); */
 }
 .box1{
     grid-row-start: 1;
@@ -111,11 +134,6 @@ tbody tr:last-child td:first-child{
     grid-row-end: 3;
     grid-column-start:3 ;
 }
-/* .box5{
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start:4 ; */
-/* } */
 .box6{
     grid-row-start: 1;
     grid-row-end: 3;
@@ -126,15 +144,4 @@ tbody tr:last-child td:first-child{
     grid-row-end: 3;
     grid-column-start:4 ;
 }
-/* .box8{
-    grid-row-start: 3;
-    grid-row-end: 5;
-    grid-column-start:2 ;
-    grid-column-end:4 ;
-}
-.box9{
-    grid-row-start: 2;
-    grid-row-end: 5;
-    grid-column-start:4 ;
-} */
 

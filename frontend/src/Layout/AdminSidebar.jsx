@@ -6,7 +6,8 @@ const AdminSidebar = () => {
 
 
   return (
-    <div className=' bg-gray-300 relative'>
+         
+    <div className=' bg-gray-300 relative' style={{height:'100vh'}} >
 
 
       <div className='topbar flex gap-8 m-8'>
@@ -29,17 +30,17 @@ const AdminSidebar = () => {
           <h1>Homepage</h1>
           </Link></li>
 
-          <li><Link to='/users' className='flex items-center gap-3 my-4'>
+          <li><Link to='/adminusers' className='flex items-center gap-3 my-4'>
           <i className="fa-regular fa-user"/>           
           <h1>Users</h1>
           </Link></li>
 
-          <li><Link to='/posts' className='flex items-center gap-3 my-4'>
+          <li><Link to='/adminposts' className='flex items-center gap-3 my-4'>
             <i className="fa-regular fa-newspaper"></i>
             <h1>Posts</h1>
           </Link></li>
 
-          <li><Link to='/posts' className='flex items-center gap-3 my-4'>
+          <li><Link to='' className='flex items-center gap-3 my-4'>
           <i class="fa-regular fa-envelope"></i>
             <h1>Message</h1>
           </Link></li>

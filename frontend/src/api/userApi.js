@@ -128,3 +128,10 @@ export const deleteuser = async (userId, id) => {
 };
 
 
+// Get all users
+export const getallusers = async () =>{
+    const result = await fetch(`${API}/getallusers`)
+    return result.json()
+}
+
+

@@ -88,7 +88,7 @@ tbody tr:last-child td:first-child{
 
 .adminprofile-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr ;
-    grid-template-rows: 25vh 25vh 25vh 25vh;
+    grid-template-rows: 25vh 25vh ;
     /* grid-auto-rows: minmax(180px, auto); */
 }
 .box1{
@@ -101,7 +101,7 @@ tbody tr:last-child td:first-child{
     grid-row-end: 2;
     grid-column-start:3 ;
 }
-.box3{
+.box5{
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start:2 ;
@@ -111,22 +111,22 @@ tbody tr:last-child td:first-child{
     grid-row-end: 3;
     grid-column-start:3 ;
 }
-.box5{
+/* .box5{
     grid-row-start: 1;
     grid-row-end: 2;
-    grid-column-start:4 ;
-}
+    grid-column-start:4 ; */
+/* } */
 .box6{
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start:1 ;
 }
 .box7{
-    grid-row-start: 3;
-    grid-row-end: 5;
-    grid-column-start:1 ;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start:4 ;
 }
-.box8{
+/* .box8{
     grid-row-start: 3;
     grid-row-end: 5;
     grid-column-start:2 ;
@@ -136,5 +136,17 @@ tbody tr:last-child td:first-child{
     grid-row-start: 2;
     grid-row-end: 5;
     grid-column-start:4 ;
+} */
+
+
+
+
+
+/* css globally */
+:root {
+    --icon-color: #ffa500;
 }
 
+.icon-bg {
+    background-color: var(--icon-color);
+}

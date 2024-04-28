@@ -39,9 +39,11 @@ const Index = () => {
      }
 
   return (
-      <div className='flex'> 
-      <AdminSidebar/>
-        <div className='text-center w-full text-xl mt-5'>
+    <>
+    
+    <div className='flex'> 
+        <AdminSidebar/>
+        <div className='text-center w-full text-xl mt-5' >
             <h1 className='underline text-2xl pb-8'>Categories</h1>
             <table className='m-auto '>
                 <thead>
@@ -81,8 +83,15 @@ const Index = () => {
                             <button className='add button rounded-md'>Add New Category</button>
                         </Link>
         </div>
-        
+
+
+        {/* Footer */}
     </div>
+        <div className="admin- flex justify-around py-3  bg-gray-400">
+          <span className='font-bold'>NursingTimes</span>
+          <span className='text-xs'>&copy; Nursing Times Admin Dashboard</span>
+        </div>
+    </>
   )
 }
 

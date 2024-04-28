@@ -4,6 +4,7 @@ import { API } from '../../config'
 //import Posts from '../../Layout/Posts'
 //import { Link } from 'react-router-dom'
 import { deletePost } from '../../api/DashPostApi'
+import AdminSidebar from '../../Layout/AdminSidebar'
 // import { deletepost } from '../../api/postApi'
 
 const DPost = () => {
@@ -11,7 +12,7 @@ const DPost = () => {
 
     const [posts, setPosts] = useState([])
     // const[limit, setLimit] = useState(4)
-    const[deleteSuccess, setDeleteSuccess] = useState(4)
+    const[setDeleteSuccess] = useState(4)
 
 
     useEffect(()=>{
@@ -44,8 +45,11 @@ const DPost = () => {
     
 
   return (
-    <div>
+    <div className='flex'>
+        <AdminSidebar/>
         <div classNameName="flex w-full">
+        {/* <div className='text-center w-full text-xl mt-5' style={{height:'100vh'}}> */}
+
            {
                         //map garna
                         posts.map((post)=>{
@@ -63,6 +67,7 @@ const DPost = () => {
                         })
                     }
         </div>
+     {/* </div> */}
     </div>
   )
 }

@@ -6,7 +6,7 @@ const AdminSidebar = () => {
 
 
   return (
-    <div className=' bg-gray-300 relative'>
+    <div className=' bg-gray-300 relative ' style={{height:'100vh'}}>
 
 
       <div className='topbar flex gap-8 m-8'>

@@ -2,22 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Post from './Post'
 import { getAllPost } from '../api/postApi'
 
-const Posts = () => {
+const Posts = ({posts}) => {
+// const Posts = (params) => {
+//   let posts = params.post
 
-  let [posts, setPosts] = useState([])
   let [limit, setLimit] = useState(4)
 
   useEffect(() => {
-    getAllPost()
-      .then(data => {
-        if (data.error) {
-          console.log(data.error)
-        }
-        else {
-          console.log(data)
-          setPosts(data)
-        }
-      })
+    
   }, [])
 
   const showMore = () => {
@@ -26,16 +18,16 @@ const Posts = () => {
 
   return (
     <>
-    <div className='posts  w-4/5'>
+    
       {
         posts.slice(0,limit).map((post)=>{
           return <Post post = {post}/>
         })
       }
 
-
-    </div>
       <button className='absolute' onClick={showMore}>Show more</button>
+
+   
     
     </>
   )

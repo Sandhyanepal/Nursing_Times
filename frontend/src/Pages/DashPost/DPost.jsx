@@ -61,8 +61,6 @@ const DPost = () => {
                             </div>
                            </div> 
                         })
-
-
                     }
         </div>
     </div>

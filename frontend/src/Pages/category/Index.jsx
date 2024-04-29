@@ -43,7 +43,9 @@ const Index = () => {
     
     <div className='flex'> 
         <AdminSidebar/>
-        <div className='text-center w-full text-xl mt-5' >
+        <div className='text-center w-full text-xl mt-5' 
+        // style={{height:'100vh'}}
+        >
             <h1 className='underline text-2xl pb-8'>Categories</h1>
             <table className='m-auto '>
                 <thead>

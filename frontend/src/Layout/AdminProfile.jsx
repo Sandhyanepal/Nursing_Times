@@ -53,8 +53,6 @@ const AdminProfile = () => {
   return (
     <div className='ml-12 w-full mr-12'>
 
-      {/* <h1 className=' '>Dashboard</h1> */}
-
       <h1 className='text-5xl font-bold' style={{marginTop:'68px'}}>Welcome</h1>
       <h1 className='text-4xl font-bold mt-5'>to DashBoard</h1>
 
@@ -103,26 +101,7 @@ const AdminProfile = () => {
 
         </div>
 
-        {/* <div className='box3 p-5 border-2 rounded-md flex'>
-          <div className="info">
-            <i class="fa-regular fa-heart pr-3 text-xl"></i>
-            <span className='font-semibold text-xl'>Total Likes</span>
-            <h1 className='py-3 text-xl'>11.22</h1>
-            <p >view all</p>
-          </div>
-          <div className="chartinfo w-3/5 ">
-            <ResponsiveContainer width="99%" height="85%">
-              <LineChart width={300} height={100} data={data}>
-                <Tooltip
-                  contentStyle={{ backgroundColor: 'transparent', border: 'none' }}
-                  labelStyle={{ display: 'none' }}
-                  position={{ x: 20, y: 70 }} />
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
-            <p className='text-xs text-end'> <span className='text-red-500 font-bold'>45%</span> <br /> this month</p>
-          </div>
-        </div> */}
+      
 
         <div className='box4 p-5 border-2 rounded-md flex'>
           <div className="info">
@@ -190,10 +169,6 @@ const AdminProfile = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        {/* <div className='box8 p-5 border-2 rounded-md'>Box7</div>
-        <div className='box9 p-5 border-2 rounded-md'>
-
-        </div> */}
       </div>
 
 

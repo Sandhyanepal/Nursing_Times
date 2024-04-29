@@ -183,45 +183,6 @@ exports.resetPassword = async (req, res) => {
 
 
 // LOGIN
-// exports.login = async (req, res) => {
-//     try {
-//         const user = await User.findOne({ email: req.body.email });
-//         if (!user) {
-//             return res.status(400).json({ error: "Email not regestered" });
-//         }
-
-//         const validated = await bcrypt.compare(req.body.password, user.password);
-//         if (!validated) {
-//             return res.status(400).json({ error: "Wrong password" });
-//         }
-
-//         // generate login token
-//         const token = jwt.sign(
-//             {
-//                 _id: user._id,
-//                 role: user.role,
-//                 username: user.username,
-//                 email: user.email,
-//             },
-//             process.env.JWT_SECRET
-//         );
-//         // set token in cookie
-//         res.cookie("myCookie", token, { expire: Date.now() + 86400 });
-//         // return user info to the frontend
-//         const { _id, username, role,email } = user;
-//         res.json({ token, user: { _id, username, email, role  } });
-
-
-//         // If login is successful, send user data without password
-//         const { password, ...others } = user._doc;
-//         return res.status(200).json(others);
-//     }
-//     catch (err) {
-//         // Handle any unexpected errors
-//         console.error(err);
-//         return res.status(400).json({ error: err.message });
-//     }
-// };
 
 exports.login = async (req, res) => {
     try {
@@ -373,6 +334,12 @@ exports.getuserdetails = async (req, res) => {
     res.send(user)
 }
 
+
+// Get all users
+exports.getAllUsers = async(req,res) =>{
+    let users = await User.find()
+    res.status(200).json(users)
+}
 
 
 

@@ -57,10 +57,10 @@ const MyRoutes = () => {
                     <Route path='/adminusers' element={<AdminUsers/>}/>
                     <Route path='/adminposts' element={<AdminPosts/>}/>
 
-                    {/* <Route path='/admindashboard' element={<AdminDashboard />} />
+                    {/* <Route path='/admindashboard' element={<AdminDashboard />} /> */}
                     <Route path='/admin/category' element={<Index/>}/>
                     <Route path='/admin/category/add' element={<Add/>}/>
-                    <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/> */}
+                    <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
                 {/* </Route> */}
 
 

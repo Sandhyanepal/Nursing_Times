@@ -3,13 +3,13 @@ import { submitUserMessage } from '../api/messageApi';
 
 const Contact = () => {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  let [name, setName] = useState('');
+  let [email, setEmail] = useState('');
+  let [message, setMessage] = useState('');
 
   
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
 
   const handleSubmit = (e) =>{
     e.preventDefault();

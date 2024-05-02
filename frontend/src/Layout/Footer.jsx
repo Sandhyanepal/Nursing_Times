@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { submitUserMessage } from "../api/messageApi";
 
 function Footer() {
+
+  let [email, setEmail] = useState('');
+
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    submitUserMessage({ email })
+    .then(data =>{
+      if(data.error){
+        setError(data.error)
+        setSuccess(false)
+      }
+      else{
+        setError('')
+        setSuccess(true)
+        setEmail('')
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
+  const showError = () => {
+    if(error){
+      return <div className='font-bold text-red-700 underline text-xl text-center'>{error}</div>
+    }
+  }
+
+  const showSuccess = () => {
+    if(success){
+        return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
+    }
+}
+
+
   return (
     <footer className=" text-center mt-11 text-white bg-gray-600 absolute ">
       <div className="footer w-11/12 m-auto flex flex-col md:flex-row  pt-3 justify-between" >
@@ -42,9 +79,11 @@ function Footer() {
               <i className="fa-brands fa-instagram text-lg md:text-2xl"></i>
             </Link>
           </div>
+          {showError()}
+          {showSuccess()}
           <form className="flex flex-wrap pt-3 gap-2 justify-center">
-            <input className=" p-2 rounded-md mt-1" type="email" placeholder="Enter email" />
-            <button className=" bg-yellow-500 p-2 rounded-lg mt-1 ">Subscribe</button>
+            <input className=" p-2 rounded-md mt-1 text-black" type="email" placeholder="Enter email" onChange={e=>setEmail(e.target.value)}/>
+            <button className=" bg-yellow-500 p-2 rounded-lg mt-1" onClick={handleSubmit}>Subscribe</button>
           </form>
         </div>
 

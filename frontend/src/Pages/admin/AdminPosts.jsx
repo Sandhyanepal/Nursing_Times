@@ -8,13 +8,13 @@ import AdminSidebar from '../../Layout/AdminSidebar'
 import { Link, useParams } from 'react-router-dom'
 
 
-const AdminPosts = ({ post }) => {
+const AdminPosts = () => {
 
     const { id } = useParams()
 
     const [posts, setPosts] = useState([])
     // const[limit, setLimit] = useState(4)
-    const [deleteSuccess, setDeleteSuccess] = useState(4)
+    const [deleteSuccess, setDeleteSuccess] = useState(false)
 
     useEffect(() => {
         getAllPost()
@@ -27,15 +27,15 @@ const AdminPosts = ({ post }) => {
                     setPosts(data)
                 }
             })
-    }, [])
+    }, [deleteSuccess])
 
-    const handleDelete =(event) => {
-        event.preventDefault()
+    const handleDelete =(postId) => {
+        // event.preventDefault()
         // setDeleteSuccess(false)
         // console.log(id)
         const confirmed = window.confirm("Are you sure you want to delete this post?")
         if (confirmed === true) {
-            deletepost(post._id, id)
+            deletepost( postId)
                 .then(data => {
                     if (data.error) {
                         alert(data.error)

@@ -24,6 +24,10 @@ const postSchema = new mongoose.Schema(
             required: true,
             ref: "Category",
         },
+        views: {
+            type: Number,
+            default: 0, // Initialize the views count to 0
+          },
     },
     {timestamps: true}
 );

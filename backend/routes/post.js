@@ -11,5 +11,4 @@ router.get('/getpostbycategory/:category_name', getPostByCategory);
 router.get('/getallposts', getAllPosts);
 
 
-
 module.exports = router;

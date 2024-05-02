@@ -218,31 +218,6 @@ exports.login = async (req, res) => {
 };
 
 
-
-
-// UPDATE
-// exports.updateUser = async (req, res) => {
-//     if (req.body.userId === req.params.id) {
-//         if (req.body.password) {
-//             const salt = await bcrypt.genSalt(10);
-//             req.body.password = await bcrypt.hash(req.body.password, salt);
-//         }
-//         try {
-//             const user = await User.findByIdAndUpdate(req.params.id, {
-//                 username: req.body.username,
-//                 email: req.body.email,
-//                 password: req.body.password
-//             }, { new: true })
-//             res.status(200).json(user);
-//         }
-//         catch (err) {
-//             res.status(400).json({ error: err.message });
-//         }
-//     }
-//     else {
-//         res.status(401).json({ error: "You can update only your account!!!" });
-//     }
-// }
 exports.updateUser = async (req, res) => {
     try {
         // Ensure the user is updating their own account

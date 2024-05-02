@@ -149,6 +149,12 @@ const SinglePost = () => {
                 </div>
             </div>
 
+      <div className="container mx-auto mt-4">
+        <div className="gridgrid-cols m-4 ml-20">
+          <h3 className='font-normal text-lg'>Comments</h3>
+        </div>
+      </div>
+
         </div>
     )
 }

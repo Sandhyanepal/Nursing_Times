@@ -128,6 +128,22 @@ exports.getAllPosts = async (req, res) => {
     res.send(posts);
 }
 
+//comment
+exports.comment = (req, res) => {
+    let comment = req.body.comment
+    comment.postedBy = req.body.userId
+
+    post = Post.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
+    },{ new: true })
+    if(!comment){
+        return res.status(400).json({ error: "Something went wrong" });
+    }
+    res.send(comment);
+}
+
+
+
 
 
 

@@ -52,8 +52,7 @@ const About = () => {
           <img
             src="https://static.vecteezy.com/system/resources/previews/027/395/212/non_2x/doctor-lady-friendly-smiling-arms-crossed-png.png"
             alt=""
-            className="w-2/5 justify-center mt-7 rounded-3xl shadow-lg ml-15"
-          />
+            className="w-2/5 justify-center mt-7 rounded-3xl shadow-lg ml-15" />
         </div>
         <div className="aboutpara w-3/5 md:mr-28 sm-md: flex flex-wrap m-auto pt-9 lg:pt-0 ">
           <p className="pb-3">
@@ -69,7 +68,7 @@ const About = () => {
             <br />
             Kati was awarded Nurse of the Year by the Charlotte Business
             Journal, and named one of the Great 100 Nurses of North Carolina,
-            both in 2015. Kati is also a published author with the American
+            both in 2015. Kati is also a published author with the American 
             Nurses Association.
           </p>
 
@@ -130,18 +129,16 @@ const About = () => {
 
             <div className="float-left w-1/3">
               <img src="https://static.vecteezy.com/system/resources/previews/027/395/212/non_2x/doctor-lady-friendly-smiling-arms-crossed-png.png" alt="" className='w-full' />
-            </div>
-
+            </div>           
             <h1 className='text-black font-bold text-lg'>KATE KLEBER</h1>
             <h1 className='text-black font-bold text-lg'>MSN, </h1>
             <h1 className='text-black font-bold text-lg pb-2'>RN</h1>
             <h2 className='font-bold text-gray-600 '>FOUNDER OF </h2>
             <h2 className='font-bold text-gray-600 pb-4'>NURSING TIMES</h2>
 
-            <p>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
+            <p className='text-lg'>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
 
-
-            <div className="contacticons flex flex-wrap justify-between w-full text-yellow-500  pt-2">
+            <div className="contacticons flex flex-wrap justify-around md:justify-between w-full text-yellow-500  pt-2">
               <Link to="">
                 <i class="fa-brands fa-facebook text-2xl"></i>
               </Link>

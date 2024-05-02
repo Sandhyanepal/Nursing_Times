@@ -22,7 +22,12 @@ const Post = ({ post }) => {
         <div className="postDate mt-2 italic text-gray-500">{new Date(post.createdAt).toDateString()}</div>
         <p className='postDesc mt-2 line-clamp-3 text-ellipsis'>{post.description}</p>
       </div>
-
+      
+      {/* <div className="container mx-auto">
+        <div className="gridgrid-cols m-4">
+          <h3>Comments</h3>
+        </div>
+      </div> */}
     </div>
   )
 }

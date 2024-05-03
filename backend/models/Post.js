@@ -24,11 +24,15 @@ const postSchema = new mongoose.Schema(
             required: true,
             ref: "Category",
         },
-        comments: {
-            type: String,
-            created: [{type:Date, default:Date.now}],
-            postedBy: {type: ObjectId, ref:"User"},
-        },
+        // comments: {
+        //     type: String,
+        //     created: [{type:Date, default:Date.now}],
+        //     postedBy: {type: ObjectId, ref:"User"},
+        // },
+        comments: [{
+            comment: {type: String},
+            postedBy: {type:ObjectId, ref:"User"}
+        }],
     },
     {timestamps: true}
 );

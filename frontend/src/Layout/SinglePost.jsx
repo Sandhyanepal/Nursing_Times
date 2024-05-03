@@ -100,7 +100,10 @@ const SinglePost = () => {
         }
     }
 
-
+    useEffect(()=>{
+        
+    })
+    
     return (
         <div className='w-11/12 m-auto'>
 
@@ -150,8 +153,10 @@ const SinglePost = () => {
             </div>
 
       <div className="container mx-auto mt-4">
-        <div className="gridgrid-cols m-4 ml-20">
+        <div className="gridgrid-cols m-4">
           <h3 className='font-normal text-lg'>Comments</h3>
+          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' />
+          <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3'>Submit</button>
         </div>
       </div>
 

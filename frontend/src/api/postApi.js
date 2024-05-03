@@ -23,14 +23,16 @@ export const addpost = (formData) => {
 
 
 export const deletepost = async (postId,id) => {
+// export const deletepost = async (id) => {
+
     try {
-        const response = await fetch(`${API}/deletepost/${id}`, {
+        const response = await fetch(`${API}/deletepost/${postId}`, {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({postId})
+            body: JSON.stringify({id})
         });
         return response.json();
     } catch (error) {

@@ -15,10 +15,13 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: false,
         },
-        username: {
-            type: String,
+        userId: {
+            type: ObjectId,
             required: true,
+            ref: "User",
+
         },
+        // replace username with user id
         category:{
             type: ObjectId,
             required: true,

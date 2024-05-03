@@ -6,7 +6,7 @@ exports.addpost = async (req, res) => {
         let post = await Post.create({
             title: req.body.title,
             description: req.body.description,
-            username: req.body.username,
+            userId: req.body.userId,
             category: req.body.category,
             image: req.file?.path
         })
@@ -38,20 +38,23 @@ exports.updatePost = async (req, res) => {
 
 //Delete post
 exports.deletePost = async (req, res) => {
-    if (req.body.postId === req.params.id) {
-        try {
-            let post = await Post.findByIdAndDelete(req.params.id, {
-                $set: req.body,
-            }, { new: true })
-            res.status(200).json({ success: "Post Deleted!!!" })
-        }
-        catch (err) {
-            res.status(400).json(err.message);
-        }
+    let post = await Post.findById(req.params.id).populate('userId')
+    if (!post) {
+        return res.status(400).json({ error: "POst not found" })
     }
-    else {
-        res.status(401).json({ error: "You can delete only your posts!!!" });
+    if(post.userId.role!= 1){
+        if (post.userId !== req.body.id) {
+            return res.status(401).json({ error: "You can delete only your posts!!!" });
+        }
+
     }
+    post = await Post.findByIdAndDelete(req.params.id)
+
+    if(!post){
+        return res.status(400).json({error:"Something went wrong"})
+    }
+    res.status(200).json({ success: "Post Deleted!!!" })
+
 }
 
 // exports.deletePost = async (req, res) => {
@@ -103,7 +106,7 @@ exports.getPost = async (req, res) => {
     // Increment views count
     await incrementPostViews(req.params.id);
 
-    let post = await Post.findById(req.params.id);
+    let post = await Post.findById(req.params.id).populate('userId');
     if (!post) {
         return res.status(400).json({ error: "Post not found" })
     }
@@ -112,7 +115,7 @@ exports.getPost = async (req, res) => {
 
 //Get Posts by Category
 exports.getPostByCategory = async (req, res) => {
-    let posts = await Post.find({ category: req.params.category_name });
+    let posts = await Post.find({ category: req.params.category_name }).populate('userId');
     if (!posts) {
         return res.status(400).json({ error: "Something went wrong" });
     }
@@ -121,7 +124,7 @@ exports.getPostByCategory = async (req, res) => {
 
 //get all post
 exports.getAllPosts = async (req, res) => {
-    let posts = await Post.find()
+    let posts = await Post.find().populate('userId')
     if (!posts) {
         return res.status(400).json({ error: "Something went wrong" });
     }
@@ -135,8 +138,8 @@ exports.comment = (req, res) => {
 
     post = Post.findByIdAndUpdate(req.params.id, {
         $set: req.body,
-    },{ new: true })
-    if(!comment){
+    }, { new: true })
+    if (!comment) {
         return res.status(400).json({ error: "Something went wrong" });
     }
     res.send(comment);

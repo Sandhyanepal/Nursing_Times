@@ -278,7 +278,7 @@ exports.deleteUser = async (req, res) => {
 //     else {
 //         res.status(401).json({ error: "You can delete only your account!!!" });
 //     }
-// }
+// // }
 
 
 //  GET USER
@@ -314,6 +314,26 @@ exports.getuserdetails = async (req, res) => {
 exports.getAllUsers = async(req,res) =>{
     let users = await User.find()
     res.status(200).json(users)
+}
+
+
+// admin
+exports.requireAdmin = (req, res, next) => {
+    expressjwt({
+        secret: process.env.JWT_SECRET,
+        algorithms: ['HS256'],
+        userProperty: 'auth'
+    })(req, res, (error) => {
+        if(error) {
+            return res.status(401).json({error: "You need to login to access this resources."})
+        }
+        else if(req.auth.role !== 'admin'){
+            return res.status(403).json({error: "You don't have permission to access this resource."})
+        }
+        else{
+            next()
+        }
+    })
 }
 
 

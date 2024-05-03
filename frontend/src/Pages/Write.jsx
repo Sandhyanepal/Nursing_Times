@@ -80,6 +80,7 @@ const Write = () => {
             formData.append("image", image)
             formData.append("username", user.username)
             formData.append("category", category)
+            formData.append("userId",user._id)
 
 
 

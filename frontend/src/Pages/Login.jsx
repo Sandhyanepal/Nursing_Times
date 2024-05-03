@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { authenticate, login } from '../api/userApi'
+import { authenticate, isAuthenticate, login } from '../api/userApi'
 
 const Login = () => {
 
@@ -26,8 +26,8 @@ const Login = () => {
           else {
             setSuccess(true)
             setError('')
-            setUser(data)
             authenticate(data)
+            setUser(data)
           }
         })
     }
@@ -47,8 +47,8 @@ const Login = () => {
 
   const redirect = () => {
     if (success) {
-      if (user.role === 1) {
-        return navigate('/admindashboard')
+      if (isAuthenticate().user.role === '1' ) {
+        return navigate('/dashboard')
       }
       else {
         return navigate('/')

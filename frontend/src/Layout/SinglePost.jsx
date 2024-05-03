@@ -45,6 +45,7 @@ const SinglePost = () => {
 
         try {
             const response = await deletepost(post._id, id)
+            // const response = await deletepost( id)
             console.log(response);
             // console.log(response)
             if (response.error) {
@@ -123,7 +124,7 @@ const SinglePost = () => {
                             <h1 className='singlePostTitle text-center  text-3xl font-bold flex flex-col w-11/12 m-auto'>
                                 {post.title}
 
-                                {post.username === user?.username && (
+                                 {post.userId?.username === user?.username  && (
                                     <div className="singlePostEdit flex gap-5 self-end">
 
                                         <i className="fa-regular fa-pen-to-square text-green-500 cursor-pointer text-2xl" onClick={() => setUpdateMode(true)}></i>
@@ -136,7 +137,7 @@ const SinglePost = () => {
                     </div>
 
                     <div className="singlePostInfo flex justify-between mt-5 w-11/12 m-auto">
-                        <h1>Author: <b>{post.username}</b></h1>
+                        <h1>Author: <b>{post.userId?.username}</b></h1>
                         <h2>{new Date(post.createdAt).toDateString()}</h2>
                     </div>
 

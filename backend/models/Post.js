@@ -15,24 +15,27 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: false,
         },
-        username: {
-            type: String,
+        userId: {
+            type: ObjectId,
             required: true,
+            ref: "User",
+
         },
+        // replace username with user id
         category:{
             type: ObjectId,
             required: true,
             ref: "Category",
         },
-        // comments: {
-        //     type: String,
-        //     created: [{type:Date, default:Date.now}],
-        //     postedBy: {type: ObjectId, ref:"User"},
-        // },
-        comments: [{
-            comment: {type: String},
-            postedBy: {type:ObjectId, ref:"User"}
-        }],
+        views: {
+            type: Number,
+            default: 0, // Initialize the views count to 0
+          },
+        comments: {
+            type: String,
+            created: [{type:Date, default:Date.now}],
+            postedBy: {type: ObjectId, ref:"User"},
+        },
     },
     {timestamps: true}
 );

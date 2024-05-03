@@ -21,6 +21,7 @@ import UpdateCategory from './Pages/category/UpdateCategory'
 import AdminHome from './Pages/admin/AdminHome'
 import AdminUsers from './Pages/admin/AdminUsers'
 import AdminPosts from './Pages/admin/AdminPosts'
+import AdminRoute from './selectiveRoutes/AdminRoute'
 // import AdminLayout from './Layout/AdminLayout'
 
 
@@ -51,8 +52,7 @@ const MyRoutes = () => {
                 {/* For admin dashboard */}
 
                 {/* <Route path='/adminhome' element={<AdminLayout/>}> */}
-
-                
+<Route path='/' element = {<AdminRoute/>}>
                     <Route path='/dashboard' element={<AdminHome/>}/>
                     <Route path='/adminusers' element={<AdminUsers/>}/>
                     <Route path='/adminposts' element={<AdminPosts/>}/>
@@ -61,6 +61,8 @@ const MyRoutes = () => {
                     <Route path='/admin/category' element={<Index/>}/>
                     <Route path='/admin/category/add' element={<Add/>}/>
                     <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
+</Route>
+                
                 {/* </Route> */}
 
 

@@ -3,8 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { addpost } from '../api/postApi'
 import { isAuthenticate } from '../api/userApi'
 import { getAllCategory } from '../api/categoryApi'
+import { useNavigate } from 'react-router-dom'
 
 const Write = () => {
+
+  let navigate = useNavigate()
+
 
     let { user } = isAuthenticate()
     let [categories, setCategories] = useState([])
@@ -60,6 +64,14 @@ const Write = () => {
     const handleSubmit = async event => {
         event.preventDefault()
 
+         // Check if the user is authenticated
+         if (!user) {
+            // Redirect to the login page if the user is not authenticated
+            navigate('/login');
+            return;
+        }
+
+
         // parsing form data instead of json
         try {
             const formData = new FormData()
@@ -68,6 +80,7 @@ const Write = () => {
             formData.append("image", image)
             formData.append("username", user.username)
             formData.append("category", category)
+            formData.append("userId",user._id)
 
 
 
@@ -101,13 +114,13 @@ const Write = () => {
 
     const showError = () => {
         if (error) {
-            return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            return <div className='font-bold text-red-700 underline text-xl pt-2 text-center'>{error}</div>
         }
     }
 
     const showSuccess = () => {
         if (success) {
-            return <div className='text-green-500 text-lg font-bold'>"Your post has been added successfully."</div>
+            return <div className='text-green-500 text-xl font-bold text-center py-5'>"Your post has been added successfully."</div>
         }
     }
 

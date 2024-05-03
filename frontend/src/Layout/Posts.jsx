@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Post from './Post'
-import { getAllPost } from '../api/postApi'
+// import { getAllPost } from '../api/postApi'
 
 const Posts = ({posts}) => {
 // const Posts = (params) => {
@@ -25,7 +25,7 @@ const Posts = ({posts}) => {
         })
       }
 
-      <button className='absolute' onClick={showMore}>Show more</button>
+      <button className='absolute bg-yellow-500 mt-2 p-1 text-white rounded-md' onClick={showMore}>Show more</button>
 
    
     

@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { submitUserMessage } from "../api/messageApi";
 
 
 const About = () => {
+
+  let [name, setName] = useState('')
+  let [email, setEmail] = useState('')
+
+  let [error, setError] = useState('')
+  let [success, setSuccess] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitUserMessage({name, email})
+    .then(data =>{
+      if(data.error){
+        setError(data.error)
+        setSuccess(false)
+      }
+      else{
+        setError('')
+        setSuccess(true)
+        setName('')
+        setEmail('')
+      }
+    })
+    .catch(err => console.log(err))
+  }
+  
+
+  const showError = () => {
+    if(error){
+      return <div className='font-bold text-red-700 underline text-lg py-2 text-center'>{error}</div>
+    }
+  }
+
+  const showSuccess = () => {
+    if(success){
+        return <div className='text-green-500 text-xl font-bold text-center pt-5'>"Message Sent"</div>
+    }
+}
+
   return (
     <>
 
@@ -80,6 +119,9 @@ const About = () => {
 
       {/* Form part */}
 
+      {showError()}
+      {showSuccess()}
+
       <div className="containerdivision sm:w-4/5 mx-auto pt-16 lg:flex">
 
       <div className="contactfounder pb-10 lg:w-1/2 px-5 ">
@@ -129,10 +171,12 @@ const About = () => {
             <h2 className='text-2xl text-gray-600 font-bold'>updates from Nursing Times</h2>
             <p className='text-xl pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
 
+           
+
             <form className="pt-10 text-center flex flex-col">
-              <input type="text" placeholder='Name' className='border-2  p-2' />
-              <input type="text" placeholder='Email' className='border-2  p-2 my-3' />
-              <button className='text-center bg-yellow-500 text-white rounded-lg p-2'>SUBSCRIBE</button>
+              <input type="text" placeholder='Name' className='border-2  p-2' onChange={e=> setName(e.target.value)}/>
+              <input type="email" placeholder='Email' className='border-2  p-2 my-3' onChange={e=>setEmail(e.target.value)}/>
+              <button className='text-center bg-yellow-500 text-white rounded-lg p-2' onClick={handleSubmit}>SUBSCRIBE</button>
             </form>
 
           </div>

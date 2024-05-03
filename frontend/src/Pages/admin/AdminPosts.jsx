@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { API } from '../../config'
-//import Posts from '../../Layout/Posts'
-//import { Link } from 'react-router-dom'
-// import { deletePost } from '../../api/DashPostApi'
 import { deletepost, getAllPost } from '../../api/postApi'
 import AdminSidebar from '../../Layout/AdminSidebar'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { isAuthenticate } from '../../api/userApi'
 
 
-const AdminPosts = ({ post }) => {
+const AdminPosts = () => {
 
-    const { id } = useParams()
+    const {user} = isAuthenticate()
 
     const [posts, setPosts] = useState([])
     // const[limit, setLimit] = useState(4)
-    const [deleteSuccess, setDeleteSuccess] = useState(4)
+    const [deleteSuccess, setDeleteSuccess] = useState(false)
 
     useEffect(() => {
         getAllPost()
@@ -27,15 +25,15 @@ const AdminPosts = ({ post }) => {
                     setPosts(data)
                 }
             })
-    }, [])
+    }, [deleteSuccess])
 
-    const handleDelete =(event) => {
-        event.preventDefault()
+    const handleDelete = postId => (event) => {
+        // event.preventDefault()
         // setDeleteSuccess(false)
         // console.log(id)
         const confirmed = window.confirm("Are you sure you want to delete this post?")
         if (confirmed === true) {
-            deletepost(post._id, id)
+            deletepost( postId, user._id)
                 .then(data => {
                     if (data.error) {
                         alert(data.error)
@@ -70,9 +68,9 @@ const AdminPosts = ({ post }) => {
                                 <p className='pb-2  line-clamp-2 text-ellipsis'>{post.description}</p>
                                 <div className=' flex gap-3'>
 
-                                    <Link to={`/singlepost/${post._id}`} className='bg-yellow-500 p-1 rounded-md text-white'>Read More</Link>
+                                    <Link to={`/singlepost/${post._id}`} className='bg-yellow-500 p-1 rounded-md text-white '>Read More</Link>
 
-                                    <button className=' bg-red-500 p-1 rounded-md text-white' onClick={handleDelete}>Delete</button>
+                                    <button className=' bg-red-500 p-1 rounded-md text-white ' onClick={handleDelete(post._id)}>Delete</button>
                                 </div>
                             </div>
                             <img className='postImg object-cover rounded w-11/12 m-auto' src={`${API}/${post.image}`} alt="" style={{ height: '130px', width: '200px' }} />

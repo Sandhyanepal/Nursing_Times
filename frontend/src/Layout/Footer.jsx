@@ -80,6 +80,7 @@ function Footer() {
             </Link>
           </div>
           {showError()}
+          {/* alert({showSuccess()}) */}
           {showSuccess()}
           <form className="flex flex-wrap pt-3 gap-2 justify-center">
             <input className=" p-2 rounded-md mt-1 text-black" type="email" placeholder="Enter email" onChange={e=>setEmail(e.target.value)}/>

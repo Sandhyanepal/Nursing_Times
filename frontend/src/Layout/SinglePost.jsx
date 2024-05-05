@@ -44,7 +44,7 @@ const SinglePost = () => {
         event.preventDefault()
 
         try {
-            const response = await deletepost(post._id, id)
+            const response = await deletepost(id, user._id)
             // const response = await deletepost( id)
             console.log(response);
             // console.log(response)

@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const User = require("../models/user");
 
 //Create Post
 exports.addpost = async (req, res) => {
@@ -38,15 +39,17 @@ exports.updatePost = async (req, res) => {
 
 //Delete post
 exports.deletePost = async (req, res) => {
+    console.log(req.body)
     let post = await Post.findById(req.params.id).populate('userId')
     if (!post) {
         return res.status(400).json({ error: "POst not found" })
     }
-    if(post.userId.role!= 1){
-        if (post.userId !== req.body.id) {
+    let user = await User.findById(req.body.id)
+    if( user.role != 1){
+        if (post.userId._id != req.body.id) {
+            console.log(post)
             return res.status(401).json({ error: "You can delete only your posts!!!" });
         }
-
     }
     post = await Post.findByIdAndDelete(req.params.id)
 
@@ -57,33 +60,6 @@ exports.deletePost = async (req, res) => {
 
 }
 
-// exports.deletePost = async (req, res) => {
-//     try {
-//         // Check if the authenticated user is an admin
-//         if (req.user.role !== 'admin') {
-//             // If not admin, check if the post belongs to the authenticated user
-//             const post = await Post.findById(req.params.id);
-//             if (!post) {
-//                 return res.status(404).json({ error: "Post not found" });
-//             }
-//             // Check if the post belongs to the authenticated user
-//             if (post.username !== req.user.username) {
-//                 return res.status(403).json({ error: "You are not authorized to delete this post" });
-//             }
-//         }
-
-//         // Delete the post
-//         const deletedPost = await Post.findByIdAndDelete(req.params.id);
-//         if (!deletedPost) {
-//             return res.status(404).json({ error: "Post not found" });
-//         }
-
-//         res.status(200).json({ success: "Post deleted successfully" });
-//     } catch (error) {
-//         console.error("Error deleting post:", error);
-//         res.status(500).json({ error: "Internal server error" });
-//     }
-// };
 
 
 // Increment post views

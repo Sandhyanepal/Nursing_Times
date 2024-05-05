@@ -21,7 +21,7 @@ const AdminUsers = () => {
 
     return (
         <div className='flex'>
-        <AdminSidebar/>
+        {/* <AdminSidebar/> */}
 
         <div className='ml-12 '>
 

@@ -22,7 +22,7 @@ import AdminHome from './Pages/admin/AdminHome'
 import AdminUsers from './Pages/admin/AdminUsers'
 import AdminPosts from './Pages/admin/AdminPosts'
 import AdminRoute from './selectiveRoutes/AdminRoute'
-// import AdminLayout from './Layout/AdminLayout'
+import AdminLayout from './Layout/AdminLayout'
 
 
 
@@ -44,26 +44,25 @@ const MyRoutes = () => {
                     <Route path='/faq' element={<FAQ />} />
                     <Route path='/verify/:token' element={<Token />} />
                     <Route path='/singlepost/:id' element={<SinglePost />} />
-                    <Route path='/settings' element={<Settings />} />   
+                    <Route path='/settings' element={<Settings />} />
                 </Route>
 
 
 
                 {/* For admin dashboard */}
 
-                {/* <Route path='/adminhome' element={<AdminLayout/>}> */}
-<Route path='/' element = {<AdminRoute/>}>
-                    <Route path='/dashboard' element={<AdminHome/>}/>
-                    <Route path='/adminusers' element={<AdminUsers/>}/>
-                    <Route path='/adminposts' element={<AdminPosts/>}/>
+                <Route path='/' element={<AdminRoute />}>
+                    <Route path='admin' element={<AdminLayout />}>
+                        <Route path='dashboard' element={<AdminHome />} />
+                        <Route path='adminusers' element={<AdminUsers />} />
+                        <Route path='adminposts' element={<AdminPosts />} />
 
-                    {/* <Route path='/admindashboard' element={<AdminDashboard />} /> */}
-                    <Route path='/admin/category' element={<Index/>}/>
-                    <Route path='/admin/category/add' element={<Add/>}/>
-                    <Route path='/admin/category/update/:id' element={<UpdateCategory/>}/>
-</Route>
-                
-                {/* </Route> */}
+                        <Route path='category' element={<Index />} />
+                        <Route path='addcategory' element={<Add />} />
+                        <Route path='updatecategory/:id' element={<UpdateCategory />} />
+                    </Route>
+
+                </Route>
 
 
             </Routes>

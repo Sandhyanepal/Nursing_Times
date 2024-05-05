@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AdminSidebar from '../../Layout/AdminSidebar'
 import { addCategory } from '../../api/categoryApi'
 
 const Add = () => {
@@ -25,20 +24,12 @@ const Add = () => {
         }
     }
 
-    // const redirect = () => {
-    //     let router = useRouter()
-    //     if(success){
-    //         router.push('/admin/category')
-    //     }
-    // }
-
     const showSuccess = () =>(
         success && <div className='text-center text-green-600 text-xl font-bold'>Category has been added successfully.</div>
     )
 
     return (
      <div className='flex'>
-        <AdminSidebar/>
         <div className=" w-full text-lg mt-5">
             <form className='p-5 w-1/2 m-auto mt-5 rounded-lg py-10 shadow-xl'>
                 <h2 className='pb-4 font-bold text-2xl text-center'>Add Category</h2>

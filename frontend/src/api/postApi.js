@@ -24,7 +24,7 @@ export const addpost = (formData) => {
 
 export const deletepost = async (postId,id) => {
 // export const deletepost = async (id) => {
-
+console.log('postid',postId, "id", id)
     try {
         const response = await fetch(`${API}/deletepost/${postId}`, {
             method: "DELETE",

@@ -1,5 +1,5 @@
 const Post = require("../models/post");
-const User = require("../models/user");
+const Comment = require("../models/comments");
 
 //Create Post
 exports.addpost = async (req, res) => {
@@ -107,20 +107,48 @@ exports.getAllPosts = async (req, res) => {
     res.send(posts);
 }
 
+
 //comment
-exports.comment = (req, res) => {
-    let comment = req.body.comment
-    comment.postedBy = req.body.userId
+exports.Comment = async (req, res) => {
+  try {
+    const { comment_msg, postId, userId } = req.body;
+    const comment = new Comment({
+      comment_msg: comment_msg,
+      postedBy: userId, 
+      post: postId
+    });
+    const savedComment = await comment.save();
 
-    post = Post.findByIdAndUpdate(req.params.id, {
-        $set: req.body,
-    }, { new: true })
-    if (!comment) {
-        return res.status(400).json({ error: "Something went wrong" });
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId,
+      { $push: { comments: savedComment._id } },
+      { new: true }
+    );
+    if (!updatedPost) {
+      return res.status(404).json({ error: 'Post not found' });
     }
-    res.send(comment);
-}
+    res.json(updatedPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
 
+exports.getAllComment = async (req, res) => {
+   try{
+    const postId = req.params.postId;
+    const post = await Post.findById(postId).populate("comments")
+    if (!post) {
+        return res.status(404).json({error:"Post Not Found"})
+    }
+    const comments = post.comments
+    res.json(comments);
+   }
+   catch(err)
+   {
+    res.status(400).json({error: err.message})
+   }
+}
 
 
 

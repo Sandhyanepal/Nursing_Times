@@ -31,11 +31,10 @@ const postSchema = new mongoose.Schema(
             type: Number,
             default: 0, // Initialize the views count to 0
           },
-        comments: {
-            type: String,
-            created: [{type:Date, default:Date.now}],
-            postedBy: {type: ObjectId, ref:"User"},
-        },
+        comments: [{
+            type: ObjectId,
+             ref:"Comment",
+        }],
     },
     {timestamps: true}
 );

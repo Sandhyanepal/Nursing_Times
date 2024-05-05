@@ -58,3 +58,9 @@ export const updatepost = async (id, postData) => {
         return { error: "An error occurred while deleting the post." };
     }
 }
+
+export const viewcomment = (postId) => {
+    return fetch(`${API}/post/${postId}/comments`)
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}

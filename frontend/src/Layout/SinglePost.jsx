@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API } from '../config'
 import { isAuthenticate } from '../api/userApi'
-import { deletepost, updatepost } from '../api/postApi'
+import { deletepost, updatepost, viewcomment } from '../api/postApi'
 
 const SinglePost = () => {
 
@@ -17,6 +17,9 @@ const SinglePost = () => {
     let [title, setTitle] = useState('')
     let [desc, setDesc] = useState('')
     let [updateMode, setUpdateMode] = useState(false)
+
+    let [ comments, setComments] = useState('')
+    
 
 
     useEffect(() => {
@@ -101,9 +104,39 @@ const SinglePost = () => {
         }
     }
 
-    useEffect(()=>{
-        
-    })
+
+    // useEffect(()=>{
+    //     viewcomment(id)
+    //     .then(data => {
+    //         if(data.error){
+    //             console.log(data.error)
+    //         }
+    //         else{
+    //             console.log("viewcomment:",data)
+    //             setComments(data)
+    //         }
+    //     })
+    // },[])
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        viewcomment({comments})
+        .then(data =>{
+            if(data.error){
+                setError(data.error)
+                setSuccess(false)
+            }
+            else{
+                setError('')
+                setSuccess(true)
+                setComments('')
+            }
+        })
+        .catch(err => console.log(err))        
+    }
+
     
     return (
         <div className='w-11/12 m-auto'>
@@ -156,8 +189,19 @@ const SinglePost = () => {
       <div className="container mx-auto mt-4">
         <div className="gridgrid-cols m-4">
           <h3 className='font-normal text-lg'>Comments</h3>
-          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' />
-          <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3'>Submit</button>
+          
+          {/* {
+                    comments.map((cmnt) => {
+                        return <div key={cmnt._id} className='flex w-3/5 py-5  ml-16'>
+                            <div className='w-2/5'>
+                                <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
+                                <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy}</p>
+                            </div>
+                        </div>
+                    })
+                } */}
+          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setComments(e.target.value)}/>
+          <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3' onClick={handleSubmit}>Submit</button>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const Comment = require("../models/comments");
 
 //Create Post
 exports.addpost = async (req, res) => {
@@ -131,51 +132,21 @@ exports.getAllPosts = async (req, res) => {
     res.send(posts);
 }
 
+
 //comment
-// exports.comment = (req, res) => {
-    // let comment = req.body.comment
-    // comment.postedBy = req.body.userId
-
-    // post = Post.findByIdAndUpdate(req.params.id, {
-    //     $set: req.body,
-    // },{ new: true })
-    // if(!comment){
-    //     return res.status(400).json({ error: "Something went wrong" });
-    // }
-    // res.send(comment);
-
-//     const comment={
-//         comment: req.body.text,
-//         postedBy: req.user._id
-//     }
-//     post = Post.findByIdAndUpdate(req.body.postId,{
-//         $push: {comments:comment}
-//     },{
-//         new: true
-//     })
-//     .exec((err, result) => {
-//         if (err) {
-//                 return res.status(400).json({ error: "Something went wrong" });
-//         }
-//         else{
-//         res.json(result)
-//         }
-// })
-// }
-
-
-
-
 exports.Comment = async (req, res) => {
   try {
-    const { text, postId, userId } = req.body;
-    const comment = {
-      comment: text,
-      postedBy: userId
-    };
+    const { comment_msg, postId, userId } = req.body;
+    const comment = new Comment({
+      comment_msg: comment_msg,
+      postedBy: userId, 
+      post: postId
+    });
+    const savedComment = await comment.save();
+
     const updatedPost = await Post.findByIdAndUpdate(
       postId,
-      { $push: { comments: comment } },
+      { $push: { comments: savedComment._id } },
       { new: true }
     );
     if (!updatedPost) {
@@ -188,7 +159,21 @@ exports.Comment = async (req, res) => {
   }
 };
 
-
+exports.getAllComment = async (req, res) => {
+   try{
+    const postId = req.params.postId;
+    const post = await Post.findById(postId).populate("comments")
+    if (!post) {
+        return res.status(404).json({error:"Post Not Found"})
+    }
+    const comments = post.comments
+    res.json(comments);
+   }
+   catch(err)
+   {
+    res.status(400).json({error: err.message})
+   }
+}
 
 
 

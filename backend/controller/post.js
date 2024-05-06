@@ -1,4 +1,4 @@
-const Post = require("../models/post");
+const Post = require("../models/Post");
 const Comment = require("../models/comments");
 
 //Create Post
@@ -133,7 +133,7 @@ exports.getAllPosts = async (req, res) => {
 }
 
 
-//comment
+//Add comment
 exports.Comment = async (req, res) => {
   try {
     const { comment_msg, postId, userId } = req.body;
@@ -159,22 +159,15 @@ exports.Comment = async (req, res) => {
   }
 };
 
-exports.getAllComment = async (req, res) => {
-   try{
-    const postId = req.params.postId;
-    const post = await Post.findById(postId).populate("comments")
-    if (!post) {
-        return res.status(404).json({error:"Post Not Found"})
-    }
-    const comments = post.comments
-    res.json(comments);
-   }
-   catch(err)
-   {
-    res.status(400).json({error: err.message})
-   }
-}
 
+// Get comments
+exports.getAllComment = async (req, res) => {
+    const comments = await Comment.find({post: req.params.postId}).populate('postedBy')
+    if(!comments){
+        res.status(400).json({error:"Something went wrong"})
+    }
+    res.send(comments)
+}
 
 
 

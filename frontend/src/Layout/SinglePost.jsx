@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API } from '../config'
 import { isAuthenticate } from '../api/userApi'
-import { deletepost, updatepost, viewcomment } from '../api/postApi'
+import { deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
 
 const SinglePost = () => {
 
@@ -12,13 +12,16 @@ const SinglePost = () => {
     let [post, setPost] = useState({})
 
     let [error, setError] = useState('')
-    let [success, setSuccess] = useState(false)
+    let [success, setSuccess] = useState('')
 
     let [title, setTitle] = useState('')
     let [desc, setDesc] = useState('')
     let [updateMode, setUpdateMode] = useState(false)
 
-    let [ comments, setComments] = useState('')
+    let [ comments, setComments] = useState([])
+    
+    let [commentInput, setCommentInput] = useState('');
+
     
 
 
@@ -75,11 +78,11 @@ const SinglePost = () => {
         try {
             const response = await updatepost(id, { title, description: desc })
             if (response.error) {
-                setSuccess(false)
+                setSuccess('')
                 setError(response.error)
             }
             else {
-                setSuccess(true)
+                setSuccess('Your post has been updated')
                 setError('')
                 window.location.reload()
 
@@ -88,7 +91,7 @@ const SinglePost = () => {
         catch (error) {
             console.error('Error:', error);
             setError('An error occurred while editing the post.');
-            setSuccess(false);
+            setSuccess('');
         }
     }
 
@@ -100,38 +103,40 @@ const SinglePost = () => {
 
     const showSuccess = () => {
         if (success) {
-            return <div className='text-green-500 text-lg font-bold text-center'>"Your profile has been updated successfully."</div>
+            return <div className='text-green-500 text-lg font-bold text-center'>{success}</div>
         }
     }
 
 
-    // useEffect(()=>{
-    //     viewcomment(id)
-    //     .then(data => {
-    //         if(data.error){
-    //             console.log(data.error)
-    //         }
-    //         else{
-    //             console.log("viewcomment:",data)
-    //             setComments(data)
-    //         }
-    //     })
-    // },[])
+    useEffect(()=>{
+        viewcomment(id)
+        .then(data => {
+            if(data.error){
+                console.log(data.error)
+            }
+            else{
+                console.log("viewcomment:",data)
+                setComments(data)
+            }
+        })
+    },[id, success])
 
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        viewcomment({comments})
+        setSuccess(false)
+        const postId = id;
+        postcomment(postId, commentInput, user._id)
         .then(data =>{
             if(data.error){
+                setSuccess('')
                 setError(data.error)
-                setSuccess(false)
             }
             else{
+                setSuccess('')
                 setError('')
-                setSuccess(true)
-                setComments('')
+                setCommentInput('');
             }
         })
         .catch(err => console.log(err))        
@@ -190,17 +195,17 @@ const SinglePost = () => {
         <div className="gridgrid-cols m-4">
           <h3 className='font-normal text-lg'>Comments</h3>
           
-          {/* {
+          {
                     comments.map((cmnt) => {
                         return <div key={cmnt._id} className='flex w-3/5 py-5  ml-16'>
                             <div className='w-2/5'>
                                 <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
-                                <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy}</p>
+                                <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy?.username}</p>
                             </div>
                         </div>
                     })
-                } */}
-          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setComments(e.target.value)}/>
+                } 
+          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput}/>
           <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3' onClick={handleSubmit}>Submit</button>
         </div>
       </div>

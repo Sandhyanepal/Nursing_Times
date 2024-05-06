@@ -60,7 +60,22 @@ export const updatepost = async (id, postData) => {
 }
 
 export const viewcomment = (postId) => {
-    return fetch(`${API}/post/${postId}/comments`)
+    // localhost:5000/posts/6634a6494898062b01c271d2/comments
+    return fetch(`${API}/posts/${postId}/comments`)
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }
+
+
+export const postcomment = (postId, comment, userId) => {
+    return fetch(`${API}/posts/${postId}/comments`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ comment_msg: comment, postId, userId })
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
+

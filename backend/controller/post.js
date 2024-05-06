@@ -45,7 +45,7 @@ exports.deletePost = async (req, res) => {
         return res.status(400).json({ error: "POst not found" })
     }
     let user = await User.findById(req.body.id)
-    if( user.role != 1){
+    if (user.role != 1) {
         if (post.userId._id != req.body.id) {
             console.log(post)
             return res.status(401).json({ error: "You can delete only your posts!!!" });
@@ -53,8 +53,8 @@ exports.deletePost = async (req, res) => {
     }
     post = await Post.findByIdAndDelete(req.params.id)
 
-    if(!post){
-        return res.status(400).json({error:"Something went wrong"})
+    if (!post) {
+        return res.status(400).json({ error: "Something went wrong" })
     }
     res.status(200).json({ success: "Post Deleted!!!" })
 
@@ -110,48 +110,61 @@ exports.getAllPosts = async (req, res) => {
 
 //comment
 exports.Comment = async (req, res) => {
-  try {
-    const { comment_msg, postId, userId } = req.body;
-    const comment = new Comment({
-      comment_msg: comment_msg,
-      postedBy: userId, 
-      post: postId
-    });
-    const savedComment = await comment.save();
+    try {
+        const { comment_msg, postId, userId } = req.body;
+        const comment = new Comment({
+            comment_msg: comment_msg,
+            postedBy: userId,
+            post: postId
+        });
+        const savedComment = await comment.save();
 
-    const updatedPost = await Post.findByIdAndUpdate(
-      postId,
-      { $push: { comments: savedComment._id } },
-      { new: true }
-    );
-    if (!updatedPost) {
-      return res.status(404).json({ error: 'Post not found' });
+        const updatedPost = await Post.findByIdAndUpdate(
+            postId,
+            { $push: { comments: savedComment._id } },
+            { new: true }
+        );
+        if (!updatedPost) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        res.json(updatedPost);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-    res.json(updatedPost);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
-  }
 };
 
+
+// View comment
 exports.getAllComment = async (req, res) => {
-   try{
-    const postId = req.params.postId;
-    const post = await Post.findById(postId).populate("comments")
-    if (!post) {
-        return res.status(404).json({error:"Post Not Found"})
+    const comments = await Comment.find({ post: req.params.postId }).populate('postedBy')
+    if (!comments) {
+        res.status(400).json({ error: "Something went wrong" })
     }
-    const comments = post.comments
-    res.json(comments);
-   }
-   catch(err)
-   {
-    res.status(400).json({error: err.message})
-   }
+    res.send(comments)
 }
 
 
+// Delete comment
+exports.deleteComment = async (req, res) => {
+    const commentId = req.params.id;
+    let comment = await Comment.findById(commentId);
 
+    if (!comment) {
+        return res.status(404).json({ error: 'Comment not found' });
+    }
+
+    let user = await User.findById(req.body.id)
+    if (user.role != 1) {
+        if (comment.author !== req.user.id) {
+            return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+        }
+    }
+    await comment.remove();
+
+    res.json({ success: 'Comment deleted successfully' });
+
+}
 
 
 

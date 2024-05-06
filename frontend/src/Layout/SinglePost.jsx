@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API } from '../config'
 import { isAuthenticate } from '../api/userApi'
+<<<<<<< HEAD
 import { deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
+=======
+import { deletecomment, deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
 const SinglePost = () => {
 
@@ -18,11 +22,19 @@ const SinglePost = () => {
     let [desc, setDesc] = useState('')
     let [updateMode, setUpdateMode] = useState(false)
 
+<<<<<<< HEAD
     let [ comments, setComments] = useState([])
     
     let [commentInput, setCommentInput] = useState('');
 
     
+=======
+    let [comments, setComments] = useState([])
+
+    let [commentInput, setCommentInput] = useState('');
+
+
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
 
     useEffect(() => {
@@ -108,6 +120,7 @@ const SinglePost = () => {
     }
 
 
+<<<<<<< HEAD
     useEffect(()=>{
         viewcomment(id)
         .then(data => {
@@ -120,6 +133,20 @@ const SinglePost = () => {
             }
         })
     },[id, success])
+=======
+    useEffect(() => {
+        viewcomment(id)
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error)
+                }
+                else {
+                    console.log("viewcomment:", data)
+                    setComments(data)
+                }
+            })
+    }, [id, success])
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
 
 
@@ -128,6 +155,7 @@ const SinglePost = () => {
         setSuccess(false)
         const postId = id;
         postcomment(postId, commentInput, user._id)
+<<<<<<< HEAD
         .then(data =>{
             if(data.error){
                 setSuccess('')
@@ -140,9 +168,46 @@ const SinglePost = () => {
             }
         })
         .catch(err => console.log(err))        
+=======
+            .then(data => {
+                if (data.error) {
+                    setSuccess('')
+                    setError(data.error)
+                }
+                else {
+                    setSuccess('COmment Added')
+                    setError('')
+                    setCommentInput('');
+                }
+            })
+            .catch(err => console.log(err))
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
     }
 
-    
+    const deleteCmn = (e) => {
+        e.preventDefault();
+        const confirmed = window.confirm("Are you sure you want to delete this comment?");
+        if (confirmed) {
+            deletecomment(id)
+                .then(response => {
+                    if (response.ok) {
+                        alert('Comment Deleted.');
+                    } else {
+                        alert('An error occurred while deleting the comment.');
+                    }
+                })
+                .catch(err => {
+                    console.error('Error deleting comment:', err);
+                    alert('An error occurred while deleting the comment.');
+                });
+        }
+    }
+
+
+
+
+
+
     return (
         <div className='w-11/12 m-auto'>
 
@@ -162,7 +227,7 @@ const SinglePost = () => {
                             <h1 className='singlePostTitle text-center  text-3xl font-bold flex flex-col w-11/12 m-auto'>
                                 {post.title}
 
-                                 {post.userId?.username === user?.username  && (
+                                {post.userId?.username === user?.username && (
                                     <div className="singlePostEdit flex gap-5 self-end">
 
                                         <i className="fa-regular fa-pen-to-square text-green-500 cursor-pointer text-2xl" onClick={() => setUpdateMode(true)}></i>
@@ -191,6 +256,7 @@ const SinglePost = () => {
                 </div>
             </div>
 
+<<<<<<< HEAD
       <div className="container mx-auto mt-4">
         <div className="gridgrid-cols m-4">
           <h3 className='font-normal text-lg'>Comments</h3>
@@ -209,6 +275,37 @@ const SinglePost = () => {
           <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3' onClick={handleSubmit}>Submit</button>
         </div>
       </div>
+=======
+            <div className="container mx-auto mt-4 w-11/12">
+                <div className="gridgrid-cols m-4">
+                    <h3 className=' text-xl font-bold py-5'>Comments</h3>
+
+
+                    <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput} />
+                    <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3 ' onClick={handleSubmit}>Comment</button>
+
+
+
+                    {
+                        comments.map((cmnt) => {
+                            return <div key={cmnt._id} className='flex  py-3 pl-5'>
+                                <div className='flex justify-between w-full'>
+                                    <div className='w-2/5'>
+                                        <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
+                                        <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy?.username}</p>
+                                    </div>
+                                    <i className="fa-solid fa-trash text-red-500" onClick={deleteCmn}></i>
+                                </div>
+
+                            </div>
+                        })
+                    }
+
+
+
+                </div>
+            </div>
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
         </div>
     )

@@ -6,7 +6,7 @@ const AdminHome = () => {
   return (
     <>
       <div className='flex'>
-        <AdminSidebar />
+        {/* <AdminSidebar /> */}
         <AdminProfile />
       </div>
       <footer className="admin- flex justify-around py-3  bg-gray-400">

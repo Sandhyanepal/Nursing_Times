@@ -24,7 +24,7 @@ export const addpost = (formData) => {
 
 export const deletepost = async (postId,id) => {
 // export const deletepost = async (id) => {
-
+console.log('postid',postId, "id", id)
     try {
         const response = await fetch(`${API}/deletepost/${postId}`, {
             method: "DELETE",
@@ -62,6 +62,34 @@ export const updatepost = async (id, postData) => {
 export const viewcomment = (postId) => {
     // localhost:5000/posts/6634a6494898062b01c271d2/comments
     return fetch(`${API}/posts/${postId}/comments`)
+<<<<<<< HEAD
+=======
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
+
+export const postcomment = (postId, comment, userId) => {
+    return fetch(`${API}/posts/${postId}/comments`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ comment_msg: comment, postId, userId })
+    })
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}
+
+
+export const deletecomment = (id) =>{
+    return fetch(`${API}/deletecomment/${id}`, {
+        method:"DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({id})
+    })
+>>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }

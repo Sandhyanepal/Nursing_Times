@@ -217,7 +217,7 @@ exports.login = async (req, res) => {
     }
 };
 
-
+// Update user
 exports.updateUser = async (req, res) => {
     try {
         // Ensure the user is updating their own account
@@ -254,7 +254,7 @@ exports.updateUser = async (req, res) => {
 
 
 
-//  DELETE
+//  DELETE User
 exports.deleteUser = async (req, res) => {
     // if (req.body.userId === req.params.id) {
         // if (req.body.password) {
@@ -263,9 +263,6 @@ exports.deleteUser = async (req, res) => {
         // }
         try {
             const user = await User.findByIdAndDelete(req.params.id)
-            //     , {
-            //     $set: req.body,
-            // }, { new: true })
             if(!user){
                 return res.status(400).json({error:"User not found."})
             }

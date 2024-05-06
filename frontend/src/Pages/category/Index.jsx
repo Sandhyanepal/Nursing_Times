@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AdminSidebar from '../../Layout/AdminSidebar'
 import {  deleteCategory, getAllCategory } from '../../api/categoryApi'
 import { Link } from 'react-router-dom'
 
@@ -41,13 +40,12 @@ const Index = () => {
   return (
     <>
     
-    <div className='flex'> 
-        <AdminSidebar/>
-        <div className='text-center w-full text-xl mt-5' 
+    <div className=''> 
+        <div className='text-center text-xl mt-5' 
         // style={{height:'100vh'}}
         >
             <h1 className='underline text-2xl pb-8'>Categories</h1>
-            <table className='m-auto '>
+            <table className='m-auto'>
                 <thead>
                     <tr>
                         <td>S.NO.</td>
@@ -63,10 +61,8 @@ const Index = () => {
                             <td>{i+1}</td>
                             <td>{category.category_name}</td>
                             <td>
-                                {/* <Link href={`/admin/category/update/${category._id}`}> */}
-                                <Link to={`/admin/category/update/${category._id}`} className='update button rounded-s-md' >Update</Link>
-                                {/* </Link> */}
-                                <button className='delete button rounded-e-md' onClick={handleDelete(category._id)}>Delete</button>
+                                <Link to={`../updatecategory/${category._id}`} className='update button rounded-s-md' >Update</Link>
+                                <button className='delete button rounded-e-md my-2' onClick={handleDelete(category._id)}>Delete</button>
                             </td>
                            </tr> 
                         })
@@ -81,18 +77,18 @@ const Index = () => {
                     </tr>
                 </tfoot> */}
             </table>
-                       <Link to='/admin/category/add' className='py-10'>
-                            <button className='add button rounded-md'>Add New Category</button>
+                       <Link to='../addcategory' className='py-10'>
+                            <button className='add button rounded-md mt-5'>Add New Category</button>
                         </Link>
         </div>
 
 
         {/* Footer */}
     </div>
-        <div className="admin- flex justify-around py-3  bg-gray-400">
+        {/* <div className="admin- flex justify-around py-3  bg-gray-400">
           <span className='font-bold'>NursingTimes</span>
           <span className='text-xs'>&copy; Nursing Times Admin Dashboard</span>
-        </div>
+        </div> */}
     </>
   )
 }

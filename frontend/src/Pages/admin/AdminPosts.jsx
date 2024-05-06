@@ -41,7 +41,7 @@ const AdminPosts = () => {
                     }
                     else {
                         setDeleteSuccess(true)
-                        alert(data.msg)
+                        alert('Post Deleted.')
                     }
                 })
         }
@@ -53,7 +53,7 @@ const AdminPosts = () => {
     return (
         <div className='flex'>
 
-            <AdminSidebar />
+            {/* <AdminSidebar /> */}
             <div classNameName=" ">
 
                 <h1 className='text-5xl font-semibold ml-12' style={{ marginTop: '68px' }}>Posts</h1>

@@ -29,10 +29,6 @@ const UpdateCategory = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        // if(typeof window !== 'undefined'){
-        //     let {token} = isAuthenticate()
-        //     setToken(token)
-        // }
 
         updateCategory(id, category_name)
         .then(data=>{
@@ -50,23 +46,13 @@ const UpdateCategory = () => {
         }
     }
 
-    // const redirect = () => {
-    //     let router = useRouter()
-    //     if(success){
-    //         router.push('/admin/category')
-    //     }
-    // }
-
     const showSuccess = () =>(
         success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
     )
 
     return (
      <div className='flex'>
-        {/* {redirect()} */}
-        <AdminSidebar/>
         <div className=" w-full text-lg mt-5">
-            {/* <h1 className="underline">Add Category</h1> */}
 
             <form className='p-5 w-1/2 m-auto mt-5 rounded-lg py-10 shadow-xl'>
                 <h2 className='pb-4 font-bold text-2xl text-center'>Update Category</h2>

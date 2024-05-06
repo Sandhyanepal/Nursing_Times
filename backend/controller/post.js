@@ -39,52 +39,27 @@ exports.updatePost = async (req, res) => {
 
 //Delete post
 exports.deletePost = async (req, res) => {
+    console.log(req.body)
     let post = await Post.findById(req.params.id).populate('userId')
     if (!post) {
         return res.status(400).json({ error: "POst not found" })
     }
-    if(post.userId.role!= 1){
-        if (post.userId !== req.body.id) {
+    let user = await User.findById(req.body.id)
+    if (user.role != 1) {
+        if (post.userId._id != req.body.id) {
+            console.log(post)
             return res.status(401).json({ error: "You can delete only your posts!!!" });
         }
-
     }
     post = await Post.findByIdAndDelete(req.params.id)
 
-    if(!post){
-        return res.status(400).json({error:"Something went wrong"})
+    if (!post) {
+        return res.status(400).json({ error: "Something went wrong" })
     }
     res.status(200).json({ success: "Post Deleted!!!" })
 
 }
 
-// exports.deletePost = async (req, res) => {
-//     try {
-//         // Check if the authenticated user is an admin
-//         if (req.user.role !== 'admin') {
-//             // If not admin, check if the post belongs to the authenticated user
-//             const post = await Post.findById(req.params.id);
-//             if (!post) {
-//                 return res.status(404).json({ error: "Post not found" });
-//             }
-//             // Check if the post belongs to the authenticated user
-//             if (post.username !== req.user.username) {
-//                 return res.status(403).json({ error: "You are not authorized to delete this post" });
-//             }
-//         }
-
-//         // Delete the post
-//         const deletedPost = await Post.findByIdAndDelete(req.params.id);
-//         if (!deletedPost) {
-//             return res.status(404).json({ error: "Post not found" });
-//         }
-
-//         res.status(200).json({ success: "Post deleted successfully" });
-//     } catch (error) {
-//         console.error("Error deleting post:", error);
-//         res.status(500).json({ error: "Internal server error" });
-//     }
-// };
 
 
 // Increment post views
@@ -135,38 +110,60 @@ exports.getAllPosts = async (req, res) => {
 
 //Add comment
 exports.Comment = async (req, res) => {
-  try {
-    const { comment_msg, postId, userId } = req.body;
-    const comment = new Comment({
-      comment_msg: comment_msg,
-      postedBy: userId, 
-      post: postId
-    });
-    const savedComment = await comment.save();
+    try {
+        const { comment_msg, postId, userId } = req.body;
+        const comment = new Comment({
+            comment_msg: comment_msg,
+            postedBy: userId,
+            post: postId
+        });
+        const savedComment = await comment.save();
 
-    const updatedPost = await Post.findByIdAndUpdate(
-      postId,
-      { $push: { comments: savedComment._id } },
-      { new: true }
-    );
-    if (!updatedPost) {
-      return res.status(404).json({ error: 'Post not found' });
+        const updatedPost = await Post.findByIdAndUpdate(
+            postId,
+            { $push: { comments: savedComment._id } },
+            { new: true }
+        );
+        if (!updatedPost) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        res.json(updatedPost);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
-    res.json(updatedPost);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
-  }
 };
 
 
-// Get comments
+// View comment
 exports.getAllComment = async (req, res) => {
-    const comments = await Comment.find({post: req.params.postId}).populate('postedBy')
-    if(!comments){
-        res.status(400).json({error:"Something went wrong"})
+    const comments = await Comment.find({ post: req.params.postId }).populate('postedBy')
+    if (!comments) {
+        res.status(400).json({ error: "Something went wrong" })
     }
     res.send(comments)
+}
+
+
+// Delete comment
+exports.deleteComment = async (req, res) => {
+    const commentId = req.params.id;
+    let comment = await Comment.findById(commentId);
+
+    if (!comment) {
+        return res.status(404).json({ error: 'Comment not found' });
+    }
+
+    let user = await User.findById(req.body.id)
+    if (user.role != 1) {
+        if (comment.author !== req.user.id) {
+            return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+        }
+    }
+    await comment.remove();
+
+    res.json({ success: 'Comment deleted successfully' });
+
 }
 
 

@@ -18,11 +18,11 @@ const SinglePost = () => {
     let [desc, setDesc] = useState('')
     let [updateMode, setUpdateMode] = useState(false)
 
-    let [comments, setComments] = useState([])
-
+    let [ comments, setComments] = useState([])
+    
     let [commentInput, setCommentInput] = useState('');
 
-
+    
 
 // To fetch the post
     useEffect(() => {
@@ -129,18 +129,18 @@ const SinglePost = () => {
         setSuccess(false)
         const postId = id;
         postcomment(postId, commentInput, user._id)
-            .then(data => {
-                if (data.error) {
-                    setSuccess('')
-                    setError(data.error)
-                }
-                else {
-                    setSuccess('Comment Added')
-                    setError('')
-                    setCommentInput('');
-                }
-            })
-            .catch(err => console.log(err))
+        .then(data =>{
+            if(data.error){
+                setSuccess('')
+                setError(data.error)
+            }
+            else{
+                setSuccess('')
+                setError('')
+                setCommentInput('');
+            }
+        })
+        .catch(err => console.log(err))        
     }
 
 
@@ -217,9 +217,6 @@ const SinglePost = () => {
                     )}
                 </div>
             </div>
-
-
-            {/* For comment section */}
 
             <div className="container mx-auto mt-4 w-11/12">
                 <div className="gridgrid-cols m-4">

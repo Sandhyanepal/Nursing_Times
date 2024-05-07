@@ -1,4 +1,4 @@
-const Post = require("../models/post");
+const Post = require("../models/Post");
 const Comment = require("../models/comments");
 const User = require("../models/user")
 
@@ -109,7 +109,7 @@ exports.getAllPosts = async (req, res) => {
 }
 
 
-//comment
+//Add comment
 exports.Comment = async (req, res) => {
     try {
         const { comment_msg, postId, userId } = req.body;
@@ -147,29 +147,6 @@ exports.getAllComment = async (req, res) => {
 
 
 // Delete comment
-// exports.deleteComment = async (req, res) => {
-//     const commentId = req.params.id;
-//     let comment = await Comment.findById(commentId);
-
-//     if (!comment) {
-//         return res.status(404).json({ error: 'Comment not found' });
-//     }
-
-//     // Check if the user is an admin, the owner of the post, or the author of the comment
-//     if (req.user.role === 'admin' || 
-//     (comment.post.userId.toString() === req.user.id) || 
-//     ( comment.postedBy._id.toString() === req.user.id)) {
-//     // Allow deletion by admin, owner of the post, or author of the comment
-//     await Comment.findByIdAndDelete(commentId);
-//     return res.json({ success: 'Comment deleted successfully' });
-// }
-
-//     // return res.status(403).json({ error: 'Unauthorized to delete this comment' });
-
-// return res.status(500).json({ error: 'An error occurred while deleting the comment' });
-
-// }
-
 exports.deleteComment = async (req, res) => {
     const commentId = req.params.id;
     try {
@@ -203,4 +180,6 @@ exports.deleteComment = async (req, res) => {
         return res.status(500).json({ error: 'An error occurred while deleting the comment' });
     }
 };
+
+
 

@@ -1,5 +1,6 @@
 const Post = require("../models/post");
 const Comment = require("../models/comments");
+const User = require("../models/user")
 
 //Create Post
 exports.addpost = async (req, res) => {
@@ -146,25 +147,60 @@ exports.getAllComment = async (req, res) => {
 
 
 // Delete comment
+// exports.deleteComment = async (req, res) => {
+//     const commentId = req.params.id;
+//     let comment = await Comment.findById(commentId);
+
+//     if (!comment) {
+//         return res.status(404).json({ error: 'Comment not found' });
+//     }
+
+//     // Check if the user is an admin, the owner of the post, or the author of the comment
+//     if (req.user.role === 'admin' || 
+//     (comment.post.userId.toString() === req.user.id) || 
+//     ( comment.postedBy._id.toString() === req.user.id)) {
+//     // Allow deletion by admin, owner of the post, or author of the comment
+//     await Comment.findByIdAndDelete(commentId);
+//     return res.json({ success: 'Comment deleted successfully' });
+// }
+
+//     // return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+
+// return res.status(500).json({ error: 'An error occurred while deleting the comment' });
+
+// }
+
 exports.deleteComment = async (req, res) => {
     const commentId = req.params.id;
-    let comment = await Comment.findById(commentId);
+    try {
+        // Find the comment by its ID and populate the associated user fields
+        let comment = await Comment.findById(commentId)
+            .populate('post', 'userId') // Populating the 'post' field to access 'userId'
+            .populate('postedBy'); // Populating the 'postedBy' field to access 'role'
 
-    if (!comment) {
-        return res.status(404).json({ error: 'Comment not found' });
-    }
-
-    let user = await User.findById(req.body.id)
-    if (user.role != 1) {
-        if (comment.author !== req.user.id) {
-            return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+            console.log('Comment:', comment); // Log the populated comment object
+            
+        if (!comment) {
+            return res.status(404).json({ error: 'Comment not found' });
         }
+
+        // Check if the user is an admin, the owner of the post, or the author of the comment
+        let user = await User.findById(req.body.id)
+        console.log("user",user)
+
+        if (user.role == 1 || 
+            (comment.post.userId.toString() == user._id) || 
+            (comment.postedBy._id.toString() == user._id)) {
+            // Allow deletion by admin, owner of the post, or author of the comment
+            await Comment.findByIdAndDelete(commentId);
+            return res.json({ success: 'Comment deleted successfully' });
+        }
+
+        // If none of the above conditions are met, user is not authorized to delete the comment
+        return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        return res.status(500).json({ error: 'An error occurred while deleting the comment' });
     }
-    await comment.remove();
-
-    res.json({ success: 'Comment deleted successfully' });
-
-}
-
-
+};
 

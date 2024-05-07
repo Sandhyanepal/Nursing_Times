@@ -24,7 +24,7 @@ const SinglePost = () => {
 
 
 
-
+// To fetch the post
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -46,20 +46,21 @@ const SinglePost = () => {
     }, [id]);
 
 
+// To delete the post
     const handleDelete = async (event) => {
         event.preventDefault()
 
         try {
-            const response = await deletepost(post._id, id)
+            const response = await deletepost(post._id, user._id)
+            // console("Userid",id)
             // const response = await deletepost( id)
             console.log(response);
-            // console.log(response)
             if (response.error) {
-                setSuccess(false)
+                setSuccess('')
                 setError(response.error)
             }
             else {
-                setSuccess(true)
+                setSuccess("Post Deleted.")
                 setError('')
                 window.location.replace('/')
             }
@@ -71,7 +72,7 @@ const SinglePost = () => {
         }
     }
 
-
+// To edit the post
     const handleEdit = async (event) => {
         event.preventDefault()
 
@@ -107,7 +108,7 @@ const SinglePost = () => {
         }
     }
 
-
+// To fetch all the comments
     useEffect(() => {
         viewcomment(id)
             .then(data => {
@@ -122,7 +123,7 @@ const SinglePost = () => {
     }, [id, success])
 
 
-
+// For Adding comment
     const handleSubmit = (e) => {
         e.preventDefault();
         setSuccess(false)
@@ -134,7 +135,7 @@ const SinglePost = () => {
                     setError(data.error)
                 }
                 else {
-                    setSuccess('COmment Added')
+                    setSuccess('Comment Added')
                     setError('')
                     setCommentInput('');
                 }
@@ -142,29 +143,32 @@ const SinglePost = () => {
             .catch(err => console.log(err))
     }
 
-    const deleteCmn = (e) => {
-        e.preventDefault();
-        const confirmed = window.confirm("Are you sure you want to delete this comment?");
-        if (confirmed) {
-            deletecomment(id)
-                .then(response => {
-                    if (response.ok) {
-                        alert('Comment Deleted.');
-                    } else {
-                        alert('An error occurred while deleting the comment.');
-                    }
-                })
-                .catch(err => {
-                    console.error('Error deleting comment:', err);
-                    alert('An error occurred while deleting the comment.');
-                });
+
+
+// For deleting comment
+    const deleteCmn = (cid) => async e => {
+        // e.preventDefault();
+        try{
+            const response = await deletecomment(cid, user._id)
+            console.log(user._id)
+            console.log(response)
+            if(response.error){
+                setSuccess('')
+                setError(response.error)
+            }
+            else{
+                setSuccess('Comment Deleted')
+                setError('')
+            }
         }
+        catch(error){
+            console.error('Error:', error);
+            setError('An error occurred while deleting the comment.');
+            setSuccess('');
+        }
+
     }
-
-
-
-
-
+        
 
     return (
         <div className='w-11/12 m-auto'>
@@ -214,6 +218,9 @@ const SinglePost = () => {
                 </div>
             </div>
 
+
+            {/* For comment section */}
+
             <div className="container mx-auto mt-4 w-11/12">
                 <div className="gridgrid-cols m-4">
                     <h3 className=' text-xl font-bold py-5'>Comments</h3>
@@ -232,7 +239,7 @@ const SinglePost = () => {
                                         <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
                                         <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy?.username}</p>
                                     </div>
-                                    <i className="fa-solid fa-trash text-red-500" onClick={deleteCmn}></i>
+                                    <i className="fa-solid fa-trash text-red-500" onClick={deleteCmn(cmnt._id)}></i>
                                 </div>
 
                             </div>

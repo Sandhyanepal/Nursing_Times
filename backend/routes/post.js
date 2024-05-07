@@ -1,7 +1,7 @@
 const express = require('express')
 const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts, Comment, getAllComment, deleteComment } = require('../controller/post');
 const upload = require('../utils/fileUpload');
-const { requireAdmin } = require('../controller/User');
+// const { requireAdmin } = require('../controller/User');
 const router = express.Router()
 
 router.post('/addpost',  upload.single('image'), addpost);

@@ -79,8 +79,8 @@ export const postcomment = (postId, comment, userId) => {
 }
 
 
-export const deletecomment = (id) =>{
-    return fetch(`${API}/deletecomment/${id}`, {
+export const deletecomment = (commentId,id) =>{
+    return fetch(`${API}/deletecomment/${commentId}`, {
         method:"DELETE",
         headers: {
             "Content-Type": "application/json"

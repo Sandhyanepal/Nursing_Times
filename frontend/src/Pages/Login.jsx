@@ -48,7 +48,7 @@ const Login = () => {
   const redirect = () => {
     if (success) {
       if (isAuthenticate().user.role === '1' ) {
-        return navigate('/dashboard')
+        return navigate('/admin/dashboard')
       }
       else {
         return navigate('/')

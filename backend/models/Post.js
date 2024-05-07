@@ -19,7 +19,6 @@ const postSchema = new mongoose.Schema(
             type: ObjectId,
             required: true,
             ref: "User",
-
         },
         // replace username with user id
         category:{

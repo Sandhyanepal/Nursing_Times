@@ -1,6 +1,6 @@
 const Post = require("../models/Post");
 const Comment = require("../models/comments");
-const User = require("../models/user");
+const User = require("../models/user")
 
 //Create Post
 exports.addpost = async (req, res) => {
@@ -103,12 +103,32 @@ exports.getPostByCategory = async (req, res) => {
 
 //get all post
 exports.getAllPosts = async (req, res) => {
-  let posts = await Post.find().populate("userId");
-  if (!posts) {
-    return res.status(400).json({ error: "Something went wrong" });
-  }
-  res.send(posts);
+    let posts = await Post.find().populate('userId')
+    if (!posts) {
+        return res.status(400).json({ error: "Something went wrong" });
+    }
+    res.send(posts);
+}
+
+// Get post by user
+exports.getPostsByUser = async (req, res) => {
+    let userId = req.params.userId;
+    try {
+        let posts = await Post.find({ userId }).populate('userId');
+
+        console.log("Posts:", posts);
+
+;        if (!posts) {
+            return res.status(404).json({ error: 'Posts not found' });
+        }
+        res.send(posts);
+        
+    } catch (error) {
+        console.error('Error fetching posts by user:', error);
+        res.status(500).json({ error: 'An error occurred while fetching posts by user' });
+    }
 };
+
 
 //Add comment
 exports.Comment = async (req, res) => {
@@ -149,41 +169,49 @@ exports.getAllComment = async (req, res) => {
 
 // Delete comment
 exports.deleteComment = async (req, res) => {
-  const commentId = req.params.id;
-  try {
-    // Find the comment by its ID and populate the associated user fields
-    let comment = await Comment.findById(commentId)
-      .populate("post", "userId") // Populating the 'post' field to access 'userId'
-      .populate("postedBy"); // Populating the 'postedBy' field to access 'role'
+    const commentId = req.params.id;
+    try {
+        // Find the comment by its ID and populate the associated user fields
+        let comment = await Comment.findById(commentId)
+            .populate('post', 'userId') // Populating the 'post' field to access 'userId'
+            .populate('postedBy'); // Populating the 'postedBy' field to access 'role'
 
-    console.log("Comment:", comment); // Log the populated comment object
+            console.log('Comment:', comment); // Log the populated comment object
+            
+        if (!comment) {
+            return res.status(404).json({ error: 'Comment not found' });
+        }
 
-    if (!comment) {
-      return res.status(404).json({ error: "Comment not found" });
+        // Check if the user is an admin, the owner of the post, or the author of the comment
+        let user = await User.findById(req.body.id)
+        console.log("user",user)
+
+        if (user.role == 1 || 
+            (comment.post.userId?.toString() == user._id) || 
+            (comment.postedBy._id?.toString() == user._id)) {
+            // Allow deletion by admin, owner of the post, or author of the comment
+            await Comment.findByIdAndDelete(commentId);
+            return res.json({ success: 'Comment deleted successfully' });
+        }
+
+        // If none of the above conditions are met, user is not authorized to delete the comment
+        return res.status(403).json({ error: 'Unauthorized to delete this comment' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        return res.status(500).json({ error: 'An error occurred while deleting the comment' });
     }
-
-    // Check if the user is an admin, the owner of the post, or the author of the comment
-    let user = await User.findById(req.body.id);
-    console.log("user", user);
-
-    if (
-      user.role == 1 ||
-      (comment.post.userId.toString() == user._id) ||
-      (comment.postedBy._id.toString() == user._id)
-    ) {
-      // Allow deletion by admin, owner of the post, or author of the comment
-      await Comment.findByIdAndDelete(commentId);
-      return res.json({ success: "Comment deleted successfully" });
-    }
-
-    // If none of the above conditions are met, user is not authorized to delete the comment
-    return res
-      .status(403)
-      .json({ error: "Unauthorized to delete this comment" });
-  } catch (error) {
-    console.error("Error deleting comment:", error);
-    return res
-      .status(500)
-      .json({ error: "An error occurred while deleting the comment" });
-  }
 };
+
+
+
+//     // If none of the above conditions are met, user is not authorized to delete the comment
+//     return res
+//       .status(403)
+//       .json({ error: "Unauthorized to delete this comment" });
+//   } catch (error) {
+//     console.error("Error deleting comment:", error);
+//     return res
+//       .status(500)
+//       .json({ error: "An error occurred while deleting the comment" });
+//   }
+// };

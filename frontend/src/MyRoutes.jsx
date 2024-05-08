@@ -23,6 +23,7 @@ import AdminUsers from './Pages/admin/AdminUsers'
 import AdminPosts from './Pages/admin/AdminPosts'
 import AdminRoute from './selectiveRoutes/AdminRoute'
 import AdminLayout from './Layout/AdminLayout'
+import UserPosts from './Pages/admin/UserPosts'
 
 
 
@@ -60,6 +61,8 @@ const MyRoutes = () => {
                         <Route path='category' element={<Index />} />
                         <Route path='addcategory' element={<Add />} />
                         <Route path='updatecategory/:id' element={<UpdateCategory />} />
+
+                        <Route path='userposts/:id' element={<UserPosts/>}/>
                     </Route>
 
                 </Route>

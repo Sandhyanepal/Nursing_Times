@@ -12,6 +12,12 @@ export const getpost = () => {
     .catch(error=>console.log(error))
 }
 
+export const getpostsbyuser = (userId) => {
+    return fetch(`${API}/posts/user/${userId}`)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+};
+
 export const addpost = (formData) => {
     return fetch(`${API}/addpost`,{
         method: "POST",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getallusers } from '../../api/userApi'
-import AdminSidebar from '../../Layout/AdminSidebar'
+import { Link } from 'react-router-dom'
 
 const AdminUsers = () => {
 
@@ -21,7 +21,6 @@ const AdminUsers = () => {
 
     return (
         <div className='flex'>
-        {/* <AdminSidebar/> */}
 
         <div className='ml-12 '>
 
@@ -40,7 +39,7 @@ const AdminUsers = () => {
                             <div className='px-5'>
                                 <h1 className='pb-1 font-semibold'>{user.username}</h1>
                                 <p className='pb-1'>{user.email}</p>
-                                <button className='my-1 p-1 bg-yellow-500 text-white rounded-md'>View Posts</button>
+                                <Link to={`../userposts/${user._id}`} className='my-1 p-1 bg-yellow-500 text-white rounded-md'>View Posts</Link>
                             </div>
 
                         </div>

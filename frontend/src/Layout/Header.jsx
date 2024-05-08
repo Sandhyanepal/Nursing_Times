@@ -56,7 +56,16 @@ function logout(){
                     }} className='bg-gray-200 rounded-md'>
                         <div className='flex flex-col py-2 '>
                             <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
-                            <Link to='/admindashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</Link>
+
+                            {
+                                user && user.role == 1 &&
+                            <Link to='/admin/dashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</Link>
+                            }
+
+                            
+
+
+
                             <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Account Settings</Link>
                             {
                                 user && (

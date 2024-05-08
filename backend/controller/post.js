@@ -108,6 +108,25 @@ exports.getAllPosts = async (req, res) => {
     res.send(posts);
 }
 
+// Get post by user
+exports.getPostsByUser = async (req, res) => {
+    let userId = req.params.userId;
+    try {
+        let posts = await Post.find({ userId }).populate('userId');
+
+        console.log("Posts:", posts);
+
+;        if (!posts) {
+            return res.status(404).json({ error: 'Posts not found' });
+        }
+        res.send(posts);
+        
+    } catch (error) {
+        console.error('Error fetching posts by user:', error);
+        res.status(500).json({ error: 'An error occurred while fetching posts by user' });
+    }
+};
+
 
 //Add comment
 exports.Comment = async (req, res) => {
@@ -166,8 +185,8 @@ exports.deleteComment = async (req, res) => {
         console.log("user",user)
 
         if (user.role == 1 || 
-            (comment.post.userId.toString() == user._id) || 
-            (comment.postedBy._id.toString() == user._id)) {
+            (comment.post.userId?.toString() == user._id) || 
+            (comment.postedBy._id?.toString() == user._id)) {
             // Allow deletion by admin, owner of the post, or author of the comment
             await Comment.findByIdAndDelete(commentId);
             return res.json({ success: 'Comment deleted successfully' });

@@ -11,3 +11,4 @@ export const submitUserMessage = (message) =>{
     .then(response => response.json())
     .catch(error => console.log(error))
 }
+

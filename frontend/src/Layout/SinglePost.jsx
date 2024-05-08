@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API } from '../config'
 import { isAuthenticate } from '../api/userApi'
-<<<<<<< HEAD
-import { deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
-=======
 import { deletecomment, deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
->>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
 const SinglePost = () => {
 
@@ -22,21 +18,13 @@ const SinglePost = () => {
     let [desc, setDesc] = useState('')
     let [updateMode, setUpdateMode] = useState(false)
 
-<<<<<<< HEAD
     let [ comments, setComments] = useState([])
     
     let [commentInput, setCommentInput] = useState('');
 
     
-=======
-    let [comments, setComments] = useState([])
 
-    let [commentInput, setCommentInput] = useState('');
-
-
->>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
-
-
+// To fetch the post
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -58,20 +46,21 @@ const SinglePost = () => {
     }, [id]);
 
 
+// To delete the post
     const handleDelete = async (event) => {
         event.preventDefault()
 
         try {
-            const response = await deletepost(post._id, id)
+            const response = await deletepost(post._id, user._id)
+            // console("Userid",id)
             // const response = await deletepost( id)
             console.log(response);
-            // console.log(response)
             if (response.error) {
-                setSuccess(false)
+                setSuccess('')
                 setError(response.error)
             }
             else {
-                setSuccess(true)
+                setSuccess("Post Deleted.")
                 setError('')
                 window.location.replace('/')
             }
@@ -83,7 +72,7 @@ const SinglePost = () => {
         }
     }
 
-
+// To edit the post
     const handleEdit = async (event) => {
         event.preventDefault()
 
@@ -119,21 +108,7 @@ const SinglePost = () => {
         }
     }
 
-
-<<<<<<< HEAD
-    useEffect(()=>{
-        viewcomment(id)
-        .then(data => {
-            if(data.error){
-                console.log(data.error)
-            }
-            else{
-                console.log("viewcomment:",data)
-                setComments(data)
-            }
-        })
-    },[id, success])
-=======
+// To fetch all the comments
     useEffect(() => {
         viewcomment(id)
             .then(data => {
@@ -146,16 +121,14 @@ const SinglePost = () => {
                 }
             })
     }, [id, success])
->>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
 
 
-
+// For Adding comment
     const handleSubmit = (e) => {
         e.preventDefault();
         setSuccess(false)
         const postId = id;
         postcomment(postId, commentInput, user._id)
-<<<<<<< HEAD
         .then(data =>{
             if(data.error){
                 setSuccess('')
@@ -168,45 +141,34 @@ const SinglePost = () => {
             }
         })
         .catch(err => console.log(err))        
-=======
-            .then(data => {
-                if (data.error) {
-                    setSuccess('')
-                    setError(data.error)
-                }
-                else {
-                    setSuccess('COmment Added')
-                    setError('')
-                    setCommentInput('');
-                }
-            })
-            .catch(err => console.log(err))
->>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
     }
 
-    const deleteCmn = (e) => {
-        e.preventDefault();
-        const confirmed = window.confirm("Are you sure you want to delete this comment?");
-        if (confirmed) {
-            deletecomment(id)
-                .then(response => {
-                    if (response.ok) {
-                        alert('Comment Deleted.');
-                    } else {
-                        alert('An error occurred while deleting the comment.');
-                    }
-                })
-                .catch(err => {
-                    console.error('Error deleting comment:', err);
-                    alert('An error occurred while deleting the comment.');
-                });
+
+
+// For deleting comment
+    const deleteCmn = (cid) => async e => {
+        // e.preventDefault();
+        try{
+            const response = await deletecomment(cid, user._id)
+            console.log(user._id)
+            console.log(response)
+            if(response.error){
+                setSuccess('')
+                setError(response.error)
+            }
+            else{
+                setSuccess('Comment Deleted')
+                setError('')
+            }
         }
+        catch(error){
+            console.error('Error:', error);
+            setError('An error occurred while deleting the comment.');
+            setSuccess('');
+        }
+
     }
-
-
-
-
-
+        
 
     return (
         <div className='w-11/12 m-auto'>
@@ -256,35 +218,13 @@ const SinglePost = () => {
                 </div>
             </div>
 
-<<<<<<< HEAD
-      <div className="container mx-auto mt-4">
-        <div className="gridgrid-cols m-4">
-          <h3 className='font-normal text-lg'>Comments</h3>
-          
-          {
-                    comments.map((cmnt) => {
-                        return <div key={cmnt._id} className='flex w-3/5 py-5  ml-16'>
-                            <div className='w-2/5'>
-                                <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
-                                <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy?.username}</p>
-                            </div>
-                        </div>
-                    })
-                } 
-          <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput}/>
-          <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3' onClick={handleSubmit}>Submit</button>
-        </div>
-      </div>
-=======
             <div className="container mx-auto mt-4 w-11/12">
                 <div className="gridgrid-cols m-4">
                     <h3 className=' text-xl font-bold py-5'>Comments</h3>
 
-
                     <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput} />
                     <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3 ' onClick={handleSubmit}>Comment</button>
-
-
+                    
 
                     {
                         comments.map((cmnt) => {
@@ -294,19 +234,14 @@ const SinglePost = () => {
                                         <h1 className='font-bold pb-1 pt-1'>{cmnt.comment_msg}</h1>
                                         <p className='pb-2  line-clamp-2 text-ellipsis'>{cmnt.postedBy?.username}</p>
                                     </div>
-                                    <i className="fa-solid fa-trash text-red-500" onClick={deleteCmn}></i>
+                                    <i className="fa-solid fa-trash text-red-500" onClick={deleteCmn(cmnt._id)}></i>
                                 </div>
 
                             </div>
                         })
                     }
-
-
-
                 </div>
             </div>
->>>>>>> 50a81dbab72bec7b716cb08aef35aacf8bb31226
-
         </div>
     )
 }

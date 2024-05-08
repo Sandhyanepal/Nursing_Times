@@ -22,7 +22,6 @@ exports.register = async (req, res) => {
         return res.status(400).json({ error: "Email already registered." });
     }
 
-
     try {
         const salt = await bcrypt.genSalt(10);
         const hashed_password = await bcrypt.hash(req.body.password, salt);

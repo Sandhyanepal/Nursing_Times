@@ -31,3 +31,14 @@ exports.submitUserMessage = async (req, res) => {
         res.status(400).json({success:false, error: error.message});
     }
 }
+
+//get all messages
+exports.getAllMessage = async(req,res)=>{
+    try{
+        message = await Message.find();
+        res.send(message)
+    }
+    catch(err){
+        return res.status(400).json({error:"Something went wrong"})
+    }
+}

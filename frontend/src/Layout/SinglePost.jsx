@@ -222,11 +222,9 @@ const SinglePost = () => {
                 <div className="gridgrid-cols m-4">
                     <h3 className=' text-xl font-bold py-5'>Comments</h3>
 
-
                     <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput} />
                     <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white mt-3 ' onClick={handleSubmit}>Comment</button>
-
-
+                    
 
                     {
                         comments.map((cmnt) => {
@@ -242,12 +240,8 @@ const SinglePost = () => {
                             </div>
                         })
                     }
-
-
-
                 </div>
             </div>
-
         </div>
     )
 }

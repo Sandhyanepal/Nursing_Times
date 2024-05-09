@@ -11,3 +11,10 @@ export const submitUserMessage = (message) =>{
     .then(response => response.json())
     .catch(error => console.log(error))
 }
+
+//getallmessage
+export const getallmessage=()=>{
+    return fetch(`${API}/getAllMessage`)
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}

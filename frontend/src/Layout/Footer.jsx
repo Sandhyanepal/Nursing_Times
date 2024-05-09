@@ -83,7 +83,7 @@ function Footer() {
           {/* alert({showSuccess()}) */}
           {showSuccess()}
           <form className="flex flex-wrap pt-3 gap-2 justify-center">
-            <input className=" p-2 rounded-md mt-1 text-black" type="email" placeholder="Enter email" onChange={e=>setEmail(e.target.value)}/>
+            <input className=" p-2 rounded-md mt-1 text-black" type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
             <button className=" bg-yellow-500 p-2 rounded-lg mt-1" onClick={handleSubmit}>Subscribe</button>
           </form>
         </div>

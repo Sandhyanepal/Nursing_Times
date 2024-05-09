@@ -68,7 +68,6 @@ export const updatepost = async (id, postData) => {
 export const viewcomment = (postId) => {
     // localhost:5000/posts/6634a6494898062b01c271d2/comments
     return fetch(`${API}/posts/${postId}/comments`)
-
     .then(res=>res.json())
     .catch(err=>console.log(err))
 }

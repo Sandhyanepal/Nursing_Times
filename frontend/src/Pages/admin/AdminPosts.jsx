@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { deletepost, getAllPost } from '../../api/postApi'
-import { isAuthenticate } from '../../api/userApi'
+import { getAllPost } from '../../api/postApi'
+// import { isAuthenticate } from '../../api/userApi'
 import PostView from '../../Layout/PostView'
 
 
 const AdminPosts = () => {
 
-    const { user } = isAuthenticate()
+    // const { user } = isAuthenticate()
 
     const [posts, setPosts] = useState([])
     // const[limit, setLimit] = useState(4)

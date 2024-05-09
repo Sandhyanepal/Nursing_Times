@@ -6,6 +6,7 @@ const Contact = () => {
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
   let [message, setMessage] = useState('');
+  
 
   
   let [error, setError] = useState('')
@@ -62,13 +63,13 @@ const Contact = () => {
             {showSuccess()}
             <div className="form-top md:flex pb-2 gap-3 ">
 
-                <input type="text" placeholder='Enter your name' className='border p-2 w-full mb-2 md:mb-0' onChange={e => setName(e.target.value)}/>
+                <input type="text" placeholder='Enter your name' value={name} className='border p-2 w-full mb-2 md:mb-0' onChange={e => setName(e.target.value)}/>
 
-                <input type="email" placeholder='Enter your email' className='border p-2 w-full' onChange={e =>setEmail(e.target.value)}/>
+                <input type="email" placeholder='Enter your email' value={email} className='border p-2 w-full' onChange={e =>setEmail(e.target.value)}/>
 
             </div>
 
-            <textarea name="" id="" rows="10" placeholder='Message' className='border w-full p-2 resize-none' onChange={e => setMessage(e.target.value)}></textarea>
+            <textarea name="" id="" rows="10" placeholder='Message' value={message} className='border w-full p-2 resize-none' onChange={e => setMessage(e.target.value)}></textarea>
           </form>
 
           <div className="flex justify-end">

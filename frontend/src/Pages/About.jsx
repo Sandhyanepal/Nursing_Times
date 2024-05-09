@@ -174,8 +174,8 @@ const About = () => {
            
 
             <form className="pt-10 text-center flex flex-col">
-              <input type="text" placeholder='Name' className='border-2  p-2' onChange={e=> setName(e.target.value)}/>
-              <input type="email" placeholder='Email' className='border-2  p-2 my-3' onChange={e=>setEmail(e.target.value)}/>
+              <input type="text" placeholder='Name' className='border-2  p-2' value={name} onChange={e=> setName(e.target.value)}/>
+              <input type="email" placeholder='Email' className='border-2  p-2 my-3' value={email} onChange={e=>setEmail(e.target.value)}/>
               <button className='text-center bg-yellow-500 text-white rounded-lg p-2' onClick={handleSubmit}>SUBSCRIBE</button>
             </form>
 

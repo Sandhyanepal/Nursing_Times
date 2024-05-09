@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { getallusers } from '../../api/userApi'
+import {  deleteuser, getallusers } from '../../api/userApi'
 import { Link } from 'react-router-dom'
 
 const AdminUsers = () => {
 
+
     let [user, setUser] = useState([])
+
+    // let [error, setError] = useState('')
+    let [success, setSuccess] = useState(false)
 
     useEffect(() => {
         getallusers()
@@ -17,7 +21,26 @@ const AdminUsers = () => {
                     setUser(data)
                 }
             })
-    }, [])
+    }, [success])
+
+    const handleDelete = (id) => async event => {
+        event.preventDefault()
+
+        const confirmed = window.confirm("Are you sure you want to delete this user?")
+        if (confirmed === true) {
+            deleteuser(id)
+            .then(data =>{
+                if(data.error){
+                    alert(data.error)
+                    setSuccess(false)
+                }
+                else{
+                    setSuccess(true)
+                    alert("User Deleted")
+                }
+            })
+        }
+    }
 
     return (
         <div className='flex'>
@@ -44,7 +67,7 @@ const AdminUsers = () => {
 
                         </div>
                         <div className=''>
-                            <button className='bg-red-500 p-1 text-white rounded-md '>Delete User</button>
+                            <button className='bg-red-500 p-1 text-white rounded-md' onClick={handleDelete(user._id)}>Delete User</button>
                         </div>
                     </div>
                 ))

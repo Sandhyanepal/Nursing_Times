@@ -74,8 +74,7 @@ const Settings = () => {
         event.preventDefault()
 
         try {
-            const response = await deleteuser(user._id, id)
-            console.log(user._id)
+            const response = await deleteuser(id)
             console.log(response);
             if (response.error) {
                 setSuccess(false)
@@ -90,7 +89,7 @@ const Settings = () => {
         }
         catch (error) {
             console.error('Error:', error);
-            setError('An error occurred while deleting the post.');
+            setError('An error occurred while deleting the user.');
             setSuccess(false);
         }
     }

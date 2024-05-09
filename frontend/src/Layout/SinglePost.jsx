@@ -117,7 +117,7 @@ const SinglePost = () => {
                 }
                 else {
                     console.log("viewcomment:", data)
-                    setComments(data)
+                    setComments(data.reverse())
                 }
             })
     }, [id, success])

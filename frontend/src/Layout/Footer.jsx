@@ -5,13 +5,19 @@ import { submitUserMessage } from "../api/messageApi";
 function Footer() {
 
   let [email, setEmail] = useState('');
+  let [name, setName] = useState('');
+  const [message] = useState('I would like to know more about this website.');
 
   let [error, setError] = useState('')
   let [success, setSuccess] = useState(false)
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    submitUserMessage({ email })
+
+    const name = email.substring(0, email.indexOf('@'));
+    setName(name);
+
+    submitUserMessage({ email, name, message })
     .then(data =>{
       if(data.error){
         setError(data.error)
@@ -82,8 +88,11 @@ function Footer() {
           {showError()}
           {/* alert({showSuccess()}) */}
           {showSuccess()}
+
           <form className="flex flex-wrap pt-3 gap-2 justify-center">
             <input className=" p-2 rounded-md mt-1 text-black" type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
+            <input type="hidden" value={name} />
+            <input type="hidden" value={message} />
             <button className=" bg-yellow-500 p-2 rounded-lg mt-1" onClick={handleSubmit}>Subscribe</button>
           </form>
         </div>

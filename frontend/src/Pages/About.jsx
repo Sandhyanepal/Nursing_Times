@@ -7,13 +7,14 @@ const About = () => {
 
   let [name, setName] = useState('')
   let [email, setEmail] = useState('')
+  const [message] = useState('I would like to subscribe.');
 
   let [error, setError] = useState('')
   let [success, setSuccess] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitUserMessage({name, email})
+    submitUserMessage({name, email, message})
     .then(data =>{
       if(data.error){
         setError(data.error)
@@ -136,7 +137,7 @@ const About = () => {
             <h2 className='font-bold text-gray-600 '>FOUNDER OF </h2>
             <h2 className='font-bold text-gray-600 pb-4'>NURSING TIMES</h2>
 
-            <p className='text-lg'>The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
+            <p >The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
 
             <div className="contacticons flex flex-wrap justify-around md:justify-between w-full text-yellow-500  pt-2">
               <Link to="">
@@ -169,13 +170,14 @@ const About = () => {
           <div className="p-3 w-full border-2 rounded-xl">
             <h2 className='text-2xl text-gray-600 font-bold mt-3'>Sign-up for email</h2>
             <h2 className='text-2xl text-gray-600 font-bold'>updates from Nursing Times</h2>
-            <p className='text-xl pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
+            <p className='text-lg pt-4'>Trust me, you'll be as happy to see these arrives in your inbox as you are when you see a therapeutic blood sugar level.</p>
 
            
 
             <form className="pt-10 text-center flex flex-col">
               <input type="text" placeholder='Name' className='border-2  p-2' value={name} onChange={e=> setName(e.target.value)}/>
               <input type="email" placeholder='Email' className='border-2  p-2 my-3' value={email} onChange={e=>setEmail(e.target.value)}/>
+              <input type="hidden" value={message} />
               <button className='text-center bg-yellow-500 text-white rounded-lg p-2' onClick={handleSubmit}>SUBSCRIBE</button>
             </form>
 

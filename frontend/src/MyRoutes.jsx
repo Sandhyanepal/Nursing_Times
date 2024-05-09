@@ -24,6 +24,7 @@ import AdminPosts from './Pages/admin/AdminPosts'
 import AdminRoute from './selectiveRoutes/AdminRoute'
 import AdminLayout from './Layout/AdminLayout'
 import UserPosts from './Pages/admin/UserPosts'
+import AdminMessage from './Pages/admin/AdminMessage'
 
 
 
@@ -57,6 +58,7 @@ const MyRoutes = () => {
                         <Route path='dashboard' element={<AdminHome />} />
                         <Route path='adminusers' element={<AdminUsers />} />
                         <Route path='adminposts' element={<AdminPosts />} />
+                        <Route path='adminmessage' element={<AdminMessage/>}/>
 
                         <Route path='category' element={<Index />} />
                         <Route path='addcategory' element={<Add />} />

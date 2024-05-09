@@ -12,3 +12,9 @@ export const submitUserMessage = (message) =>{
     .catch(error => console.log(error))
 }
 
+//getallmessage
+export const getallmessage=()=>{
+    return fetch(`${API}/getAllMessage`)
+    .then(res=>res.json())
+    .catch(err=>console.log(err))
+}

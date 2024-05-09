@@ -41,7 +41,7 @@ const AdminSidebar = () => {
               <h1>Posts</h1>
             </Link></li>
 
-            <li><Link to='' className='flex items-center gap-3 my-4'>
+            <li><Link to='adminmessage' className='flex items-center gap-3 my-4'>
               <i class="fa-regular fa-envelope"></i>
               <h1>Message</h1>
             </Link></li>

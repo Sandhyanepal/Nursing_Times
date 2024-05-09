@@ -1,3 +1,4 @@
+// const usermessage = require('../models/usermessage');
 const Usermessage = require('../models/usermessage');
 const sendEmail = require('../utils/emailSender');
 
@@ -34,11 +35,14 @@ exports.submitUserMessage = async (req, res) => {
 
 //get all messages
 exports.getAllMessage = async(req,res)=>{
-    try{
-        message = await Message.find();
+    // try{
+        let message = await Usermessage.find();
+        if(!message){
+            return res.status(400).json({error: "No message found."})
+        }
         res.send(message)
-    }
-    catch(err){
-        return res.status(400).json({error:"Something went wrong"})
-    }
+//     }
+//     catch(error){
+//         return res.status(400).json({error:"Something went wrong"})
+//     }
 }

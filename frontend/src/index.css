@@ -71,7 +71,6 @@ td{
 }
 thead{
     font-weight: bold;
-    /* background-color: rgb(249, 163, 3); */
     border: 0;
 }
 thead tr td:first-child{
@@ -79,7 +78,6 @@ thead tr td:first-child{
 }
 thead tr td:last-child{
     border-top-right-radius: 10px;
-    /* border: 1px solid gray; */
 }
 tbody tr:last-child td:last-child{
     border-bottom-right-radius: 10px;

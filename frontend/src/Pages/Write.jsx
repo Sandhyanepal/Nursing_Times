@@ -166,10 +166,12 @@ const Write = () => {
                             onChange={handleChange('title')}
                         />
                     </div>
-                    <label htmlFor="">Category</label>
 
+                    <div className="flex gap-2 pl-40 pb-4">
+
+                    <label htmlFor="" className='text-lg'>Category</label>
                     <select name="category" id="" defaultValue={""} onChange={handleChange('category')}>
-                        <option value="" disabled>Choose Category</option>
+                        <option value="" disabled >Choose Category</option>
                         {
                             categories.length > 0 &&
                             categories.map(category => {
@@ -177,6 +179,7 @@ const Write = () => {
                             })
                         }
                     </select>
+                    </div>
 
                     <div className="writeFormGroup ml-40 text-xl">
 

@@ -110,7 +110,9 @@ export const updateuser = async (id, userData, token) => {
 };
 
 // Delete user
-export const deleteuser = async (userId, id) => {
+// export const deleteuser = async (userId, id) => {
+export const deleteuser = async (id) => {
+
     try {
         const response = await fetch(`${API}/deleteuser/${id}`, {
             method: "DELETE",
@@ -118,7 +120,7 @@ export const deleteuser = async (userId, id) => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({userId})
+            // body: JSON.stringify({userId})
         });
         return response.json();
     } catch (error) {

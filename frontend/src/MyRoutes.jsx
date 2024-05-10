@@ -25,6 +25,7 @@ import AdminRoute from './selectiveRoutes/AdminRoute'
 import AdminLayout from './Layout/AdminLayout'
 import UserPosts from './Pages/admin/UserPosts'
 import AdminMessage from './Pages/admin/AdminMessage'
+import MessageView from './Layout/MessageView'
 
 
 
@@ -65,6 +66,7 @@ const MyRoutes = () => {
                         <Route path='updatecategory/:id' element={<UpdateCategory />} />
 
                         <Route path='userposts/:id' element={<UserPosts/>}/>
+                        <Route path ='messageview/:id'element={<MessageView/>}/>
                     </Route>
 
                 </Route>

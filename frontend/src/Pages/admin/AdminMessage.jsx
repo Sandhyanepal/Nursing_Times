@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getallmessage } from "../../api/messageApi";
+import { Link } from "react-router-dom";
 
 const AdminMessage = () => {
   let [message, setMessage] = useState([]);
@@ -10,26 +11,22 @@ const AdminMessage = () => {
         console.log(data.error);
       } else {
         console.log(data);
-        setMessage(data);
+        setMessage(data.reverse());
       }
     });
   }, []);
 
   return (
     <div>
-      <h1 className="font-semibold text-5xl ml-11 pb-12 pt-12">Messages</h1>
+      <h1 className="font-semibold text-5xl pl-11 pb-12 pt-12">Messages</h1>
       {message.map((msg) => {
         return (
-          <div key={msg._id} className="w-3/5 pl-12 pb-4">
-            <h1 className="font-bold text-lg">{msg.name}</h1>
-            <div className="flex gap-1">
-              <h1 className="font-semibold">Email:</h1>
-              <h2>{msg.email}</h2>
-            </div>
-            <div className="flex gap-1">
-              <p className="font-semibold">Message:</p>
-              <p>{msg.message}</p>
-            </div>
+          <div key={msg._id} className="w-11/12 pl-12 pb-2">
+            <Link to={`../messageview/${msg._id}`} className="flex pb-2">
+              <h1 className="font-bold  w-1/5">{msg.name}</h1>
+              <p className="font-semibold pl-9">{msg.message}</p>
+            </Link>
+            <hr />
           </div>
         );
       })}

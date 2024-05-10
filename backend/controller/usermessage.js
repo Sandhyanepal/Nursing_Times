@@ -11,7 +11,7 @@ exports.submitUserMessage = async (req, res) => {
             message: req.body.message
         })
         const savedUserMessage = await
-        usermessage.save();
+            usermessage.save();
 
         sendEmail({
             from: "noreply@something.com",
@@ -29,20 +29,24 @@ exports.submitUserMessage = async (req, res) => {
     }
     catch (error) {
         console.error("error in sending message:", error);
-        res.status(400).json({success:false, error: error.message});
+        res.status(400).json({ success: false, error: error.message });
     }
 }
 
 //get all messages
-exports.getAllMessage = async(req,res)=>{
-    // try{
-        let message = await Usermessage.find();
-        if(!message){
-            return res.status(400).json({error: "No message found."})
-        }
-        res.send(message)
-//     }
-//     catch(error){
-//         return res.status(400).json({error:"Something went wrong"})
-//     }
+exports.getAllMessage = async (req, res) => {
+    let message = await Usermessage.find();
+    if (!message) {
+        return res.status(400).json({ error: "No message found." })
+    }
+    res.send(message);
+}
+
+// get message by id
+exports.getMessage = async(req,res) => {
+    let  message = await Usermessage.findById(req.params.id);
+    if(!message){
+    return res.status(400).json({ error: "Message not found" });
+    }
+    res.send(message)
 }

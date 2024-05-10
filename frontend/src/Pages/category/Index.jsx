@@ -36,7 +36,7 @@ const Index = () => {
 
   return (
     <>
-        <div className="w-11/12 m-auto ">
+      <div className="w-11/12 m-auto ">
           <h1 className="font-semibold text-5xl" style={{ marginTop: '68px' }}>Categories</h1>
         <div className=" text-xl mt-12">
           <table >

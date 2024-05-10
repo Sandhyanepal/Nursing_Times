@@ -254,27 +254,41 @@ exports.updateUser = async (req, res) => {
 
 
 //  DELETE User
+// exports.deleteUser = async (req, res) => {
+//         try {
+//             const user = await User.findByIdAndDelete(req.params.id)
+//             if(!user){
+//                 return res.status(400).json({error:"User not found."})
+//             }
+//             res.status(200).json(user);
+//         }
+//         catch (err) {
+//             return res.status(400).json({error: err.message});
+//         }
+//     }
+
 exports.deleteUser = async (req, res) => {
-    // if (req.body.userId === req.params.id) {
-        // if (req.body.password) {
-        //     const salt = await bcrypt.genSalt(10);
-        //     req.body.password = await bcrypt.hash(req.body.password, salt);
-        // }
-        try {
-            const user = await User.findByIdAndDelete(req.params.id)
-            if(!user){
-                return res.status(400).json({error:"User not found."})
-            }
-            res.status(200).json(user);
-        }
-        catch (err) {
-            return res.status(400).json({error: err.message});
+    let user = await User.findById(req.params.id)
+
+    if(!user){
+        return res.status(400).json({ error: "User not found" })
+    }
+
+    if(user.role != 1){
+        if(req.params.id != user._id){
+            return res.status(401).json({ error: 'Unauthorized to delete this account.' });
         }
     }
-//     else {
-//         res.status(401).json({ error: "You can delete only your account!!!" });
-//     }
-// // }
+
+    user = await User.findByIdAndDelete(req.params.id)
+
+    if (!user) {
+        return res.status(400).json({ error: "Something went wrong" })
+    }
+    res.status(200).json({ success: "User Deleted!!!" })
+}
+
+
 
 
 //  GET USER
@@ -323,7 +337,7 @@ exports.requireAdmin = (req, res, next) => {
         if(error) {
             return res.status(401).json({error: "You need to login to access this resources."})
         }
-        else if(req.auth.role !== 'admin'){
+        else if(req.auth.role != 1){
             return res.status(403).json({error: "You don't have permission to access this resource."})
         }
         else{

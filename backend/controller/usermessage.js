@@ -41,3 +41,12 @@ exports.getAllMessage = async (req, res) => {
     }
     res.send(message);
 }
+
+// get message by id
+exports.getMessage = async(req,res) => {
+    let  message = await Usermessage.findById(req.params.id);
+    if(!message){
+    return res.status(400).json({ error: "Message not found" });
+    }
+    res.send(message)
+}

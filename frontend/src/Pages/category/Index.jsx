@@ -36,15 +36,14 @@ const Index = () => {
 
   return (
     <>
-      <div className="">
-        <div className="text-center text-xl mt-5">
-          <h1 className="font-semibold text-3xl pb-8">Categories</h1>
-          <table className="m-auto">
-            <thead>
-              <tr>
-                <td>S.NO.</td>
-                <td>Category Name</td>
-                <td>Action</td>
+      <div className="w-11/12 m-auto ">
+          <h1 className="font-semibold text-5xl" style={{ marginTop: '68px' }}>Categories</h1>
+        <div className=" text-xl mt-12">
+          <table >
+            <thead  >
+              <tr >
+                <td className="border-none ">Category Name</td>
+                <td className="border-none text-center">Action</td>
               </tr>
             </thead>
             <tbody>
@@ -52,15 +51,15 @@ const Index = () => {
                 //map garna
                 Category.map((category, i) => {
                   return (
-                    <tr key={i}>
-                      <td>{i + 1}</td>
-                      <td>{category.category_name}</td>
-                      <td>
+                    <tr key={i} >
+                      <td className="border-none">{category.category_name}</td>
+                      <td className="border-none">
                         <Link
-                          to={`../updatecategory/${category._id}`}
-                          className="update button rounded-s-md"
+                          to={`../updatecategory/${category._id}`}><button
+                          className="update button rounded-s-md "
                         >
                           Update
+                          </button>
                         </Link>
                         <button
                           className="delete button rounded-e-md my-2"
@@ -75,7 +74,7 @@ const Index = () => {
               }
             </tbody>
           </table>
-          <Link to="../addcategory" className="py-10">
+          <Link to="../addcategory" className="py-10 pl-4">
             <button className="add button rounded-md mt-5">
               Add New Category
             </button>

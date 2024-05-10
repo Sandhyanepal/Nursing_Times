@@ -1,8 +1,9 @@
 const express = require('express')
-const { submitUserMessage, getAllMessage } = require('../controller/usermessage')
+const { submitUserMessage, getAllMessage, getMessage } = require('../controller/usermessage')
 const router = express.Router()
 
 router.post('/submitusermessage', submitUserMessage)
-router.get('/getAllMessage', getAllMessage)
+router.get('/getallmessage', getAllMessage)
+router.get('/getmessage/:id', getMessage)
 
 module.exports = router

@@ -71,7 +71,6 @@ td{
 }
 thead{
     font-weight: bold;
-    background-color: rgb(249, 163, 3);
     border: 0;
 }
 thead tr td:first-child{
@@ -79,7 +78,6 @@ thead tr td:first-child{
 }
 thead tr td:last-child{
     border-top-right-radius: 10px;
-    /* border: 1px solid gray; */
 }
 tbody tr:last-child td:last-child{
     border-bottom-right-radius: 10px;
@@ -92,16 +90,16 @@ tbody tr:last-child td:first-child{
     padding: 5px 10px;
     color: white;
 }
-.delete{
-    @apply bg-orange-600 hover:bg-orange-500
+.update{
+    @apply bg-yellow-500 hover:bg-yellow-400
     active:bg-red-700;
 }
-.update{
-    @apply bg-blue-600 hover:bg-blue-500
+.delete{
+    @apply bg-red-500 hover:bg-red-400
     active:bg-blue-700;
 }
 .add{
-    @apply bg-green-600 hover:bg-green-500
+    @apply bg-gray-500 hover:bg-gray-400
     active:bg-green-700;
 }
 

@@ -72,8 +72,13 @@ const Index = () => {
           </Link>
         </div>
       </div>
+      
     </>
   );
 };
 
 export default Index;
+
+
+
+

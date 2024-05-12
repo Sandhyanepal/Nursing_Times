@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AdminSidebar from '../../Layout/AdminSidebar'
+// import AdminSidebar from '../../Layout/AdminSidebar'
 import { getCategoryDetails, updateCategory } from '../../api/categoryApi'
 import { useParams } from 'react-router-dom'
 //import { isAuthenticate } from '../../api/userApi'
@@ -54,8 +54,8 @@ const UpdateCategory = () => {
      <div className='flex'>
         <div className=" w-full text-lg mt-5">
 
-            <form className='p-5 w-1/2 m-auto mt-5 rounded-lg py-10 shadow-xl'>
-                <h2 className='pb-4 font-bold text-2xl text-center'>Update Category</h2>
+            <form className='p-5 md:w-1/2 w-11/12 m-auto mt-5 rounded-lg py-10 shadow-xl'>
+                <h2 className='pb-4 font-bold md:text-2xl sm:text-xl text-lg text-center'>Update Category</h2>
                 <label htmlFor="category_name">Category Name:</label>
                 <input type="text" id='category_name' className='px-5 py-2
                  w-10/12 rounded-md border-2' 
@@ -63,7 +63,7 @@ const UpdateCategory = () => {
                  value={category_name}
                  />
 
-                <button className='button add mt-2 w-3/12 rounded-md' onClick={handleSubmit}>Update</button>
+                <button className='button add mt-2 lg:w-3/12 md:w-4/12 rounded-md sm:text-lg text-base' onClick={handleSubmit}>Update</button>
             </form>
             {showError()}
             {showSuccess()}

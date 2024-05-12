@@ -10,7 +10,7 @@ const AdminPosts = () => {
 
     const [posts, setPosts] = useState([])
     // const[limit, setLimit] = useState(4)
-    const [deleteSuccess, setDeleteSuccess] = useState(false)
+    const [deleteSuccess] = useState(false)
 
     useEffect(() => {
         getAllPost()

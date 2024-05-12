@@ -117,7 +117,7 @@ const SinglePost = () => {
                 }
                 else {
                     console.log("viewcomment:", data)
-                    setComments(data.reverse())
+                    setComments(data)
                 }
             })
     }, [id, success])
@@ -218,7 +218,6 @@ const SinglePost = () => {
                 </div>
             </div>
 
-            {/* For Comment Section */}
             <div className="container mx-auto mt-4 w-11/12">
                 <div className="gridgrid-cols m-4">
                     <h3 className=' text-xl font-bold py-5'>Comments</h3>

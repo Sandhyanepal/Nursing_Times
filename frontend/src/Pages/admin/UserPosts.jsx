@@ -5,9 +5,7 @@ import PostView from '../../Layout/PostView'
 
 const UserPosts = () => {
 
-
     let [posts, setPosts] = useState([])
-
     let {id} = useParams()
 
     useEffect(()=>{
@@ -22,8 +20,6 @@ const UserPosts = () => {
             }
         })
     },[id])
-
-    
 
     return (
         <div>

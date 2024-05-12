@@ -54,17 +54,10 @@ const Index = () => {
                     <tr key={i} >
                       <td className="border-none">{category.category_name}</td>
                       <td className="border-none">
-                        <Link
-                          to={`../updatecategory/${category._id}`}><button
-                          className="update button rounded-s-md "
-                        >
-                          Update
-                          </button>
+                        <Link to={`../updatecategory/${category._id}`}>
+                          <button className="update button rounded-s-md ">Update</button>
                         </Link>
-                        <button
-                          className="delete button rounded-e-md my-2"
-                          onClick={handleDelete(category._id)}
-                        >
+                        <button className="delete button rounded-e-md my-2" onClick={handleDelete(category._id)}>
                           Delete
                         </button>
                       </td>
@@ -75,9 +68,7 @@ const Index = () => {
             </tbody>
           </table>
           <Link to="../addcategory" className="py-10 pl-4">
-            <button className="add button rounded-md mt-5">
-              Add New Category
-            </button>
+            <button className="add button rounded-md mt-5">Add New Category</button>
           </Link>
         </div>
       </div>

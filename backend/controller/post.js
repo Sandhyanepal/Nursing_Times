@@ -103,7 +103,7 @@ exports.getPostByCategory = async (req, res) => {
 
 //get all post
 exports.getAllPosts = async (req, res) => {
-    let posts = await Post.find().populate('userId')
+    let posts = await Post.find().populate('userId').populate('category')
     if (!posts) {
         return res.status(400).json({ error: "Something went wrong" });
     }

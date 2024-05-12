@@ -26,9 +26,10 @@ const MessageView = () => {
     <div className='w-11/12 m-auto'>
       <div className='pt-12'>
         <h1 className='font-semibold text-lg'> <span className='font-bold text-xl'>From:</span> {message.name}</h1>
-        <h1>To: nursing times</h1>
-        <h1>Email: {message.email}</h1>
-        <h1>Message: {message.message}</h1>
+        <h1 className='font-semibold'><span className='font-semibold text-lg'>To:</span> nursing times</h1>
+        <h1 className='pb-5'><span className='font-semibold text-lg'>Email:</span> {message.email}</h1>
+        <hr />
+        <h1 className='pt-5'>{message.message}</h1>
 
       </div>
     </div>

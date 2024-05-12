@@ -24,32 +24,32 @@ const AdminSidebar = () => {
 
             <li className='py-2'><Link to='/' className='py-3'>
               <i className="fa-solid fa-house text-xl"></i>
-              <span className='text-lg pl-5'>Homepage</span>
+              <span className='sm:text-xl text-lg pl-5'>Homepage</span>
             </Link></li>
 
             <li className='py-2' ><Link to='adminusers' className=' '>
               <i className="fa-regular fa-user text-xl" />
-              <span className='text-lg pl-6'>Users</span>
+              <span className='sm:text-xl text-lg pl-6'>Users</span>
             </Link></li>
 
             <li className='py-2'><Link to='adminposts' className=' '>
               <i className="fa-regular fa-newspaper text-xl"></i>
-              <span className='text-lg pl-5'>Posts</span>
+              <span className='sm:text-xl text-lg pl-5'>Posts</span>
             </Link></li>
 
             <li className='py-2'><Link to='adminmessage' className=' '>
               <i class="fa-regular fa-envelope text-xl"></i>
-              <span className='text-lg pl-5'>Message</span>
+              <span className='sm:text-xl text-lg pl-5'>Message</span>
             </Link></li>
 
             <li className='py-2'><Link to='category' className='  '>
               <i className="fa-regular fa-newspaper text-xl"></i>
-              <span className='text-lg pl-5'>Category</span>
+              <span className='sm:text-xl text-lg pl-5'>Category</span>
             </Link></li>
 
             <li className='py-2'><Link to='' className=''>
               <i className="fa-solid fa-gear text-xl"></i>
-              <span className='text-lg pl-5'>Settings</span>
+              <span className='sm:text-xl text-lg pl-5'>Settings</span>
             </Link></li>
 
           </ul>
@@ -58,7 +58,7 @@ const AdminSidebar = () => {
 
       <Link to='' className='pl-8 pb-6' onClick={logout}>
         <i className="fa-solid fa-right-from-bracket text-xl" />
-        <span className='text-lg pl-5'>Logout</span>
+        <span className='sm:text-xl text-lg pl-5'>Logout</span>
       </Link>
 
     </div>

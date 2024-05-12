@@ -32,7 +32,7 @@ const Add = () => {
      <div className='flex'>
         <div className=" w-full text-lg mt-5">
             <form className='p-5 md:w-1/2 w-11/12 m-auto mt-5 rounded-lg py-10 shadow-xl'>
-                <h2 className='pb-4 font-bold md:text-2xl sm:text-lg text-lg text-center'>Add Category</h2>
+                <h2 className='pb-4 font-bold md:text-2xl sm:text-xl text-lg text-center'>Add Category</h2>
                 <label htmlFor="category_name">Category Name:</label>
                 <input type="text" id='category_name' className='px-5 py-2
                  w-10/12 rounded-md border-2' 

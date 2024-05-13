@@ -37,7 +37,7 @@ const Index = () => {
   return (
     <>
       <div className="w-11/12 m-auto ">
-          <h1 className="font-semibold sm:text-3xl md:text-4xl text-2xl pl-1" style={{ marginTop: '68px' }}>Categories</h1>
+          <h1 className="font-semibold text-5xl pl-1" style={{ marginTop: '68px' }}>Categories</h1>
         <div className="sm:text-xl text-xl mt-12">
           <table >
             <thead  >
@@ -52,7 +52,7 @@ const Index = () => {
                 Category.map((category, i) => {
                   return (
                     <tr key={i} >
-                      <td className="border-none">{category.category_name}</td>
+                      <td className="border-none sm:text-xl">{category.category_name}</td>
                       <td className="border-none">
                         <Link
                           to={`../updatecategory/${category._id}`}><button

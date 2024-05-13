@@ -38,7 +38,6 @@ const Add = () => {
                  w-10/12 rounded-md border-2' 
                  onChange={e=>setCategoryName(e.target.value)}
                  />
-
                 <button className='button add mt-2 lg:w-3/12 md:w-4/12 rounded-md sm:text-lg text-base' onClick={handleSubmit}>Add</button>
             </form>
             {showError()}

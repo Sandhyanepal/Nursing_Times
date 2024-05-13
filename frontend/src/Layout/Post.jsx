@@ -15,7 +15,7 @@ const Post = ({ post }) => {
         </Link>
 
         <div className="postCategories">
-          <div className="postCat text-orange-300 py-2">{post.category.category_name}</div>
+          <div className="postCat text-orange-300 py-2">{post.category?.category_name}</div>
         </div>
 
         

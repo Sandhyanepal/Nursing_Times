@@ -55,7 +55,7 @@ const About = () => {
             alt=""
             className="w-2/5 justify-center mt-7 rounded-3xl shadow-lg ml-15" />
         </div>
-        <div className="aboutpara w-3/5 md:mr-28 sm-md: flex flex-wrap m-auto pt-9 lg:pt-0 ">
+        <div className="aboutpara w-3/5 md:mr-28 sm-md: flex flex-wrap m-auto pt-9 lg:pt-0">
           <p className="pb-3">
             Kate Kleber, MSN RN is a nurse educator with a passion for new
             graduate nurses. She has been writing blogs, books, creating
@@ -63,11 +63,11 @@ const About = () => {
             2013. She is the owner of the FreshRN® online platform, specifically
             created to support, educate, and encourage newly licensed nurses.
             <br />
-            Kati has been a member of the profession since 2010 with experience
+            Kate has been a member of the profession since 2010 with experience
             in med-surg, stepdown, and neurocritical care. She has been a
             preceptor, mentor, charge nurse and is now a nurse educator.
             <br />
-            Kati was awarded Nurse of the Year by the Charlotte Business
+            Kate was awarded Nurse of the Year by the Charlotte Business
             Journal, and named one of the Great 100 Nurses of North Carolina,
             both in 2015. Kati is also a published author with the American 
             Nurses Association.
@@ -106,15 +106,15 @@ const About = () => {
 
         <h2 className="font-bold text-2xl pt-3 pb-2">VALUES</h2>
         <h3 className="font-bold text-yellow-500 text-lg pb-1">OWNERSHIP</h3>
-        <p className="text-lg pb-2">Foster accountability and responsibility in one’s growth as a clinician, CEO of their license, advocate for their patient, and as a human being</p>
+        <p className="text-lg pb-2">Foster accountability and responsibility in one’s growth as a clinician, CEO of their license, advocate for their patient, and as a human being.</p>
         <h3 className="font-bold text-yellow-500  text-lg pb-1">CARE</h3>
-        <p className="text-lg pb-2">Genuinely caring about and nurturing the nurse as a whole person, not just a robot to complete tasks</p>
+        <p className="text-lg pb-2">Genuinely caring about and nurturing the nurse as a whole person, not just a robot to complete tasks.</p>
         <h3 className="font-bold text-yellow-500  text-lg pb-1">HUMANITY</h3>
-        <p className="text-lg pb-2">Give nurses permission to be human, practice self-compassion, and extend empathy with boundaries</p>
+        <p className="text-lg pb-2">Give nurses permission to be human, practice self-compassion, and extend empathy with boundaries.</p>
         <h3 className="font-bold text-yellow-500  text-lg pb-1">AUTHENTICITY</h3>
-        <p className="text-lg pb-2">Come from a place of honesty and openness to facilitate meaningful learning and professional growth</p>
+        <p className="text-lg pb-2">Come from a place of honesty and openness to facilitate meaningful learning and professional growth.</p>
         <h3 className="font-bold text-yellow-500  text-lg pb-1">VITALITY</h3>
-        <p className="text-lg pb-2">Not to just survive your career, but find joy, purpose, and meaning in the work – and thrive</p>
+        <p className="text-lg pb-2">Not to just survive your career, but find joy, purpose, and meaning in the work and thrive.</p>
       </div>
 
 
@@ -137,7 +137,7 @@ const About = () => {
             <h2 className='font-bold text-gray-600 '>FOUNDER OF </h2>
             <h2 className='font-bold text-gray-600 pb-4'>NURSING TIMES</h2>
 
-            <p >The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. and warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
+            <p >The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. And warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
 
             <div className="contacticons flex flex-wrap justify-around md:justify-between w-full text-yellow-500  pt-2">
               <Link to="">

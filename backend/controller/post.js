@@ -202,16 +202,3 @@ exports.deleteComment = async (req, res) => {
     }
 };
 
-
-
-//     // If none of the above conditions are met, user is not authorized to delete the comment
-//     return res
-//       .status(403)
-//       .json({ error: "Unauthorized to delete this comment" });
-//   } catch (error) {
-//     console.error("Error deleting comment:", error);
-//     return res
-//       .status(500)
-//       .json({ error: "An error occurred while deleting the comment" });
-//   }
-// };

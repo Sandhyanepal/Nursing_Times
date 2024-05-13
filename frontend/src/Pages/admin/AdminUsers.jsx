@@ -43,19 +43,16 @@ const AdminUsers = () => {
     }
 
     return (
-        <div className='flex'>
+        <div className='flex flex-col'>
 
-        <div className='ml-12 '>
-
+        <div className='ml-12'>
             <h1 className='text-5xl font-semibold' style={{marginTop:'68px'}}>Users</h1>
-
             <div className='pt-5 ml-8 '>
 
-            
             {user && user.length > 0 ? (
                 user.map(user => (
-                    <div key={user._id} className='flex mt-8 items-center justify-between' style={{width:'30vw'}}>
-                        <div className='flex'>
+                    <div key={user._id} className='flex mt-8 flex-col md:flex-row md:items-center md:justify-between' style={{width:'30vw'}}>
+                        <div className='flex flex-col md:flex-row items-center'>
 
                             <img src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: '100px', height: '100px' }} />
 
@@ -66,7 +63,7 @@ const AdminUsers = () => {
                             </div>
 
                         </div>
-                        <div className=''>
+                        <div className='mt-3 md:mt-0'>
                             <button className='bg-red-500 p-1 text-white rounded-md' onClick={handleDelete(user._id)}>Delete User</button>
                         </div>
                     </div>
@@ -76,7 +73,6 @@ const AdminUsers = () => {
                 <p>Loading...</p>
             )}
             </div>
-
         </div>
         </div>
     )

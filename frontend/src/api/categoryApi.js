@@ -8,11 +8,12 @@ export const getAllCategory = () => {
 
 
 //add new category
-export const addCategory = (category_name) => {
+export const addCategory = (category_name, token) => {
     return fetch(`${API}/addCategory`,{
         method: "POST",
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({category_name})
     })
@@ -28,12 +29,12 @@ export const getCategoryDetails = id =>{
 }
 
 //to update category
-export const updateCategory = (id, category_name) =>{
+export const updateCategory = (id, category_name, token) =>{
     return fetch(`${API}/updateCategory/${id}`,{
         method: "PUT",
         headers:{
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({category_name})
     })
@@ -42,12 +43,12 @@ export const updateCategory = (id, category_name) =>{
 }
 
 //to delete category
-export const deleteCategory = (id) => {
+export const deleteCategory = (id, token) => {
     return fetch(`${API}/deleteCategory/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         }
     })
     .then(res=>res.json())

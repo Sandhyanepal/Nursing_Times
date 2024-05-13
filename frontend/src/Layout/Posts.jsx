@@ -3,10 +3,11 @@ import Post from './Post'
 // import { getAllPost } from '../api/postApi'
 
 const Posts = ({ posts }) => {
+  console.log("Posts.jsx:", posts)
   // const Posts = (params) => {
   //   let posts = params.post
 
-  let [limit, setLimit] = useState(4)
+  let [limit, setLimit] = useState(6)
 
   // useEffect(() => {
 
@@ -21,6 +22,8 @@ const Posts = ({ posts }) => {
 
   return (
     <>
+    
+      <h1 className='font-bold text-4xl mb-3 underline'>News</h1>
 
       {/* {
         posts.slice(0,limit).map((post)=>{

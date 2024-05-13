@@ -3,28 +3,36 @@ import { API } from '../config'
 import { Link } from 'react-router-dom'
 
 const Post = ({ post }) => {
+  // console.log("Post.jsx:",post)
+  // console.log("category:",post.category?.category_name)
+
+
   return (
-    <div className='post w-4/5 flex py-3 justify-between'>
-      <div className="postInfo flex flex-col ">
+    <div className='post flex py-3 justify-between md:w-4/5 '>
+
+      <div className="postInfo sm:w-7/12 md:w-3/5 ">
         
 
         {/* <Link to = {`${API}/getpost/${post._id}`}> */}
         <Link to={`/singlepost/${post._id}`}>
-        <div className="postTitle text-2xl mt-2">
-          {post.title}</div>
+        <h1 className="postTitle text-2xl mt-2 font-semibold">
+          {post.title}</h1>
         </Link>
 
         <div className="postCategories">
-          <div className="postCat text-orange-300 py-2">{post.category.category_name}</div>
+          <h1 className="postCat text-orange-300 py-2">{post.category?.category_name}</h1>
         </div>
 
         
         <hr />
-        <div className="postDate mt-2 italic text-gray-500">{new Date(post.createdAt).toDateString()}</div>
-        <p className='postDesc mt-2 line-clamp-3 text-ellipsis'>{post.description}</p>
+        <h1 className="postDate mt-2 italic text-gray-500">{new Date(post.createdAt).toDateString()}</h1>
+        <p className='postDesc mt-2 line-clamp-2 text-ellipsis'>{post.description}</p>
       </div>
       
-      <img className='postImg object-cover rounded  w-56' src={`${API}/${post.image}`} alt="" />
+      {post.image && (
+        <img className='postImg object-cover rounded w-36 md:w-44 h-24 object-top' src={`${API}/${post.image}`} alt="" />
+
+      )}
 
     </div>
   )

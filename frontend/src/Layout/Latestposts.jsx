@@ -12,11 +12,11 @@ const Latestposts = () => {
   }, [])
 
   return (
-    <div className='latestposts max-md:hidden w-1/5'>
+    <div className='latestposts max-md:hidden '>
 
-      <div className="flex flex-col gap-10"></div>
+      {/* <div className="flex flex-col gap-10"></div> */}
       <div>
-        <h1 className='font-medium text-2xl mb-3 text-center'>Trending <i className="fa-solid fa-arrow-trend-up"></i></h1>
+        <h1 className='font-semibold text-2xl text-center mb-3 '>Trending News <i className="fa-solid fa-arrow-trend-up"></i></h1>
         <hr className='border-b-2 border-b-black' />
         <div className='pt-10'>
           {

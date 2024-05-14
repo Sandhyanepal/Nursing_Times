@@ -19,7 +19,7 @@ const Home = () => {
 
       <div className="home flex w-11/12 m-auto mt-11">
         {posts.length > 0 ? (
-          <div className="posts  w-4/5">
+          <div className="posts w-4/5">
             <Posts posts={posts} />
           </div>
         ) : (

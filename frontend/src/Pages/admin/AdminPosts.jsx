@@ -48,7 +48,7 @@ const AdminPosts = () => {
 
     return (
         <div>
-            <h1 className='text-5xl font-semibold ml-12' style={{ marginTop: '68px' }}>Posts</h1>
+            <h1 className='text-5xl font-semibold w-4/6 mx-auto md:w-full ml-10 pt-3' style={{ marginTop: '68px' }}>Posts</h1>
             {
                 //map garna
                 posts.map((post) => {

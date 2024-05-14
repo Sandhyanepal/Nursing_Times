@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import AdminSidebar from '../../Layout/AdminSidebar'
 import { getCategoryDetails, updateCategory } from '../../api/categoryApi'
 import { useParams } from 'react-router-dom'
+import { isAuthenticate } from '../../api/userApi'
 //import { isAuthenticate } from '../../api/userApi'
 
 const UpdateCategory = () => {
@@ -9,6 +10,8 @@ const UpdateCategory = () => {
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
     // let [token, setToken] = useState('')
+
+    let { token } = isAuthenticate()
 
     let {id} = useParams()
     console.log(id)
@@ -30,7 +33,7 @@ const UpdateCategory = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        updateCategory(id, category_name)
+        updateCategory(id, category_name,token)
         .then(data=>{
             if(data.error){
                 setError(data.error)

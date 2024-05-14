@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { deleteCategory, getAllCategory } from "../../api/categoryApi";
 import { Link } from "react-router-dom";
+import { isAuthenticate } from "../../api/userApi";
 
 const Index = () => {
+
+  let {token} = isAuthenticate()
+
   let [Category, setCategory] = useState([]);
   let [deleteSuccess, setDeleteSuccess] = useState(false);
 
@@ -23,7 +27,8 @@ const Index = () => {
       "Are you sure you want to delete this category"
     );
     if (confirmed === true) {
-      deleteCategory(id).then((data) => {
+      deleteCategory(id, token)
+      .then((data) => {
         if (data.error) {
           alert(data.error);
         } else {

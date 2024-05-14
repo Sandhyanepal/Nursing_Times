@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
 import { addCategory } from '../../api/categoryApi'
+import { isAuthenticate } from '../../api/userApi'
 
 const Add = () => {
+
+    let {token} = isAuthenticate()
+
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     const handleSubmit = e => {
         e.preventDefault()
-        addCategory(category_name)
+        addCategory(category_name, token)
         .then(data=>{
             if(data.error){
                 setError(data.error)
+                setSuccess(false)
             }
             else{
                 setSuccess(true)
+                setError('')
             }
         })
     }

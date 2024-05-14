@@ -37,8 +37,6 @@ const Posts = ({ posts }) => {
 
       <button className='absolute bg-yellow-500 mt-4 p-1 text-white rounded-md' onClick={showMore}>Show more</button>
 
-
-
     </>
   )
 }

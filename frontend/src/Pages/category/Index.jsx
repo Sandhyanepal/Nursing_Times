@@ -42,12 +42,12 @@ const Index = () => {
   return (
     <>
       <div className="w-11/12 m-auto ">
-          <h1 className="font-semibold text-5xl pl-1" style={{ marginTop: '68px' }}>Categories</h1>
+          <h1 className="text-5xl font-semibold w-4/6 mx-auto md:w-full pt-3" style={{ marginTop: '68px' }}>Categories</h1>
         <div className="sm:text-xl text-xl mt-12">
           <table >
             <thead  >
               <tr >
-                <td className="border-none md:text-2xl sm:text-xl text-lg">Category Name</td>
+                <td className="border-none md:text-2xl sm:text-xl text-lg pl-6">Category Name</td>
                 <td className="border-none text-center md:text-2xl sm:text-xl text-lg">Action</td>
               </tr>
             </thead>
@@ -57,7 +57,7 @@ const Index = () => {
                 Category.map((category, i) => {
                   return (
                     <tr key={i} >
-                      <td className="border-none sm:text-xl">{category.category_name}</td>
+                      <td className="border-none sm:text-xl pl-6">{category.category_name}</td>
                       <td className="border-none">
                         <Link
                           to={`../updatecategory/${category._id}`}><button
@@ -79,8 +79,8 @@ const Index = () => {
               }
             </tbody>
           </table>
-          <Link to="../addcategory" className="py-10 pl-4">
-            <button className="add button rounded-md mt-5 sm:text-xl">
+          <Link to="../addcategory" className="py-10 pl-6">
+            <button className="add button rounded-md mt-5 md:text-xl sm:text-lg text-base">
               Add New Category
             </button>
           </Link>

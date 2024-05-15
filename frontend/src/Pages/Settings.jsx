@@ -38,8 +38,20 @@ const Settings = () => {
             userId: user._id,
             username,
             email,
-            image
+            // image
         };
+
+
+        // const imageFile = document.getElementById('fileInput').files[0];
+
+        // // Create a FormData object to store user data and image file
+        // const formData = new FormData();
+        // formData.append('userId', user._id);
+        // formData.append('username', username);
+        // formData.append('email', email);
+        // if (imageFile) {
+        //     formData.append('image', imageFile);
+        // }
 
 
         updateuser(user._id, updatedUser,
@@ -123,14 +135,18 @@ const Settings = () => {
 
                 </div>
                 <form className='settingsForm flex flex-col' onSubmit={handleEdit}>
+
                     <label className='my-3 text-xl'>Profile Picture</label>
                     <div className="settingsPP flex items-center my-3">
-                        <img src={user.image} alt="" className='w-20 h-20 rounded-2xl object-cover'/>
+                        
                         <label htmlFor="fileInput">
-                            <FontAwesomeIcon icon={faUserCircle} className='w-6 h-6 p-1 rounded-3xl bg-yellow-500 text-white flex justify-center items-center ml-3 cursor-pointer' />
+                            <FontAwesomeIcon icon={faUserCircle} className='w-6 h-6 p-1 rounded-3xl bg-yellow-500 text-white flex justify-center items-center mr-3 cursor-pointer' />
                         </label>
-                        <input type="file" id='fileInput' style={{ display: 'none' }} onChange={e => setUser({ ...user, image: e.target.value })}/>
+                        <input type="file" id='fileInput' style={{ display: 'none' }} onChange={e => setUser({ ...user, image: e.target.files[0] })} />
+                                
+                        <img src={user.image} alt="" className='w-20 h-20 rounded-2xl object-cover' />
                     </div>
+
                     <label className='text-2xl mt-5 pl-1'>Username</label>
                     <input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={user.username}
                         onChange={e => setUser({ ...user, username: e.target.value })} />

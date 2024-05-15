@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
-// import { API } from '../config'
 import { addpost } from '../api/postApi'
 import { isAuthenticate } from '../api/userApi'
 import { getAllCategory } from '../api/categoryApi'
 import { useNavigate } from 'react-router-dom'
-import { Jodit } from 'jodit-react';
+import EditorMCE from '../Test'
 
 const Write = () => {
 
     let navigate = useNavigate()
-
-    // const editorRef = useRef(null);
 
     let { user } = isAuthenticate()
     let [categories, setCategories] = useState([])
@@ -38,11 +35,8 @@ const Write = () => {
     let [success, setSuccess] = useState(false)
 
     useEffect(() => {
-        const editor = Jodit.make("#editor", {
-            "buttons": "bold,italic,underline,ul,ol,font,fontsize,paragraph,lineHeight,superscript,subscript,file,spellcheck,paste,link,symbols"
-          });
 
-        
+
 
         getAllCategory()
             .then(data => {
@@ -53,8 +47,6 @@ const Write = () => {
                     setCategories(data)
                 }
             })
-
-            
     }, [])
 
 
@@ -76,19 +68,9 @@ const Write = () => {
                 [name]: event.target.value
             })
             formData.set(name, event.target.value)
-            
-           
         }
-
         console.log(content)
     }
-
-    // const handleImageChange = event => {
-    //     setContent({
-    //         ...content,
-    //         image:event.target.files[0]
-    //     })
-    // }
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -105,7 +87,7 @@ const Write = () => {
         try {
             // const formData = new FormData()
             // formData.append('title', title)
-            // formData.append('description', description)
+            formData.append('description', description)
             // formData.append("image", image)
             formData.append("username", user.username)
             // formData.append("category", category)
@@ -151,20 +133,13 @@ const Write = () => {
         }
     }
 
-    // const handleImage = evt => {
-    //     let fileInput = document.getElementById("fileInput")
-    //     let nur = document.getElementById("nur")
-    //     const [file] = fileInput.files
-    //     if (file) {
-    //         nur.src = URL.createObjectURL(file)
-    //     }
-    //     // setContent(...content, image = 'xyz')
-    //     image = 'xyz'
-    // }
 
 
-    
-    
+    const handleEditorChange = (msg) => {
+        console.log(msg)
+        setContent({ ...content, description: msg.toString() })
+    }
+
 
     return (
         <>
@@ -172,17 +147,13 @@ const Write = () => {
             {showError()}
             {showSuccess()}
 
-            {/* <img src='' alt="" className={`w-3/5 m-auto mt-8 object-cover rounded-lg ${!image ? 'hidden' : 'block'}`} style={{ height: '500px' }}
-                id="nur"
-            /> */}
-
 
             <div className="write w-11/12 m-auto pt-9">
                 <form className='writeForm relative'>
                     <div className="writeFormGroup " runat="server">
-                        
-                        
-                        
+
+
+
                         {/* For Title */}
                         <input
                             type="text"
@@ -191,6 +162,7 @@ const Write = () => {
                             value={title}
                             onChange={handleChange('title')}
                         />
+
 
                         {/* For Category */}
                         <div className='flex flex-wrap  pb-5'>
@@ -206,13 +178,14 @@ const Write = () => {
                             </select>
                         </div>
 
+
                         {/* For Image */}
                         <div className='flex items-center '>
                             <label htmlFor="fileInput" className='pr-5'>
                                 <i className="fa-solid fa-plus writeIcon text-xl text-gray-500"></i>
                             </label>
 
-                            
+
                             <input type="file" id='fileInput' style={{ display: "none" }}
                                 onChange={handleChange('image')} />
 
@@ -224,20 +197,14 @@ const Write = () => {
                         </div>
                     </div>
 
+
                     {/* For Textarea */}
                     <div className="writeFormGroup pt-5 text-xl ">
 
-                        <textarea
-                            placeholder='Tell your story...'  className='focus:outline-none resize-none '
-                            style={{ width: "70vw", height: "50vh" }}
-                            value={description}
-                            // onChange={handleChange('description')}
-                            onKeyUp={handleChange('description')}
-                            id='editor'
-                        ></textarea>
-
+                        <EditorMCE handleEditorChange={handleEditorChange} />
 
                     </div>
+
                     <button className='absolute top-5 right-0 text-white bg-yellow-500 p-1 rounded-md'
                         onClick={handleSubmit}
                     >Publish </button>

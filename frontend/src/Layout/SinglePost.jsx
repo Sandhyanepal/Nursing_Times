@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { API } from '../config'
 import { isAuthenticate } from '../api/userApi'
 import { deletecomment, deletepost, postcomment, updatepost, viewcomment } from '../api/postApi'
-import { Jodit } from 'jodit-react';
+import EditorMCE from '../Test'
 
 
 const SinglePost = () => {
@@ -28,9 +28,6 @@ const SinglePost = () => {
 
     // To fetch the post
     useEffect(() => {
-        // const editor = Jodit.make("#editor", {
-        //     "buttons": "bold,italic,underline,ul,ol,font,fontsize,paragraph,lineHeight,superscript,subscript,file,image,spellcheck,paste,link,symbols"
-        // });
 
         const fetchData = async () => {
             try {
@@ -69,8 +66,6 @@ const SinglePost = () => {
 
         try {
             const response = await deletepost(post._id, user._id)
-            // console("Userid",id)
-            // const response = await deletepost( id)
             console.log(response);
             if (response.error) {
                 setSuccess('')
@@ -175,6 +170,11 @@ const SinglePost = () => {
 
     }
 
+    const handleEditorChange = (msg) => {
+        console.log(msg)
+        setDesc(msg.toString())
+    }
+
 
     return (
         <div className='w-11/12 m-auto'>
@@ -214,16 +214,17 @@ const SinglePost = () => {
 
                     {updateMode ?
                         (
-                        <textarea className='w-11/12 m-auto mt-5 border-b-2 p-5 h-48 resize-none' value={desc} onChange={(e) => setDesc(e.target.value)} id='editor'>{post.description}
+                        // <textarea className='w-11/12 m-auto mt-5 border-b-2 p-5 h-48 resize-none' value={desc} onChange={(e) => setDesc(e.target.value)}>{post.description}
                         
-                        </textarea>
-                    
+                        // </textarea>
+                        <EditorMCE handleEditorChange={handleEditorChange} value={desc}/>
+                            
                     
                 )
                         :
                         (
-                            <p className='w-11/12 m-auto my-5'>{post.description}
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto voluptatem culpa vel et at excepturi ea optio odio quam nulla! Deserunt in et repudiandae distinctio doloremque sed, suscipit soluta quam aliquid deleniti tenetur animi iusto.
+                            <p className='w-11/12 m-auto my-5' dangerouslySetInnerHTML={{__html:post.description}}>
+                                
                             </p>
                         )}
 

@@ -26,6 +26,7 @@ import AdminLayout from './Layout/AdminLayout'
 import UserPosts from './Pages/admin/UserPosts'
 import AdminMessage from './Pages/admin/AdminMessage'
 import MessageView from './Layout/MessageView'
+import CategoryPost from './Pages/CategoryPost'
 
 
 
@@ -48,6 +49,7 @@ const MyRoutes = () => {
                     <Route path='/verify/:token' element={<Token />} />
                     <Route path='/singlepost/:id' element={<SinglePost />} />
                     <Route path='/settings' element={<Settings />} />
+                    <Route path='/categorypost/:id' element={<CategoryPost/>}/>
                 </Route>
 
 

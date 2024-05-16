@@ -26,7 +26,7 @@ const CategoryOptions = () => {
                 {
                     categories.length > 0 &&
                     categories.map(category => {
-                        return <Link to='' key={category._id} value={category._id} className='py-1 border-2 mt-2 text-center px-1 rounded-full'>{category.category_name}</Link>
+                        return <Link to={`categorypost/${category._id}`} key={category._id} value={category._id} className='py-1 border-2 mt-2 text-center px-1 rounded-full'>{category.category_name}</Link>
                     })
                 }
             </div>

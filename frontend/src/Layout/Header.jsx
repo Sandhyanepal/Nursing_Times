@@ -19,6 +19,19 @@ const Header = () => {
     }
 
 
+    // To hide and show sidebar
+    // function showSidebar() {
+    //     const sidebar = document.querySelector('.sidebar')
+    //     sidebar.style.display = 'flex'
+    // }
+    // function hideSidebar() {
+    //     const sidebar = document.querySelector('.sidebar')
+    //     sidebar.style.display = 'none'
+    // }
+
+    let [sidebar, showSidebar]= useState(false)
+
+
     return (
         <>
 
@@ -29,7 +42,7 @@ const Header = () => {
 
                     <Link to='/' className=" text-3xl font-bold py-4 w-3/10 italic pl-3 text-gray-600">Nursing<span className='text-yellow-500'>Times</span></Link>
 
-                    <div className='md:flex w-3/4 pl-3 hidden md:block'>
+                    <div className='hideOnMobile md:flex w-3/4 pl-3 hidden  '>
                         <div className=" w-4/5 m-auto">
                             {/* <div className=" w-3/6 m-auto"> */}
                             <ul className='list-unstyle text-xl md:flex md:justify-around'>
@@ -54,10 +67,10 @@ const Header = () => {
                                 dropdown &&
                                 <div style={{
                                     // height:'400px',
-                                    // width: '250px',
+                                    width: '160px',
                                     position: 'absolute',
                                     top: '120%',
-                                    right: '33%'
+                                    right: '25%'
                                     // display: 'none',
                                 }} className='bg-gray-200 rounded-md'>
                                     <div className='flex flex-col py-2 '>
@@ -65,13 +78,13 @@ const Header = () => {
 
                                         {
                                             user && user.role == 1 &&
-                                            <Link to='/admin/dashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Dashboard</Link>
+                                            <Link to='/admin/dashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center'>Dashboard</Link>
                                         }
 
-                                        <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Account Settings</Link>
+                                        <Link to='/settings' className='border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center '>Account Settings</Link>
                                         {
                                             user && (
-                                                <li onClick={logout} className='cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1'>Logout</li>
+                                                <li onClick={logout} className='cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center'>Logout</li>
                                             )}
                                     </div>
                                 </div>
@@ -83,7 +96,7 @@ const Header = () => {
                     </div>
 
 
-                    <div className='block md:hidden pr-5 text-3xl'>
+                    <div className='menu-button md:hidden pr-5 text-3xl'  onClick={() => showSidebar(!sidebar)} >
                         <i className="fa-solid fa-bars"></i>
                     </div>
 
@@ -93,22 +106,30 @@ const Header = () => {
 
 
                 {/* For samller screen */}
-                <div className='block md:hidden pl-3'>
-                        <ul class='sidebar text-xl '>
-                            <li> <i className='fa-solid fa-xmark text-3xl'></i> </li>
 
-                            <li> <i className='fa-solid fa-magnifying-glass'></i> </li>
+                {
+                    sidebar &&
+                    <div
+                    // className='fixed md:hidden'
+                    // className={sidebar ? 'block' : 'hidden'}
+                    
+                    >
+                        <ul class='sidebar text-xl pl-10'>
+                            <li  onClick={() => showSidebar(!sidebar)} className='pt-8'> <i className='fa-solid fa-xmark text-4xl'></i> </li>
+
+                            <li > <i className='fa-solid fa-magnifying-glass pt-9'></i> </li>
 
                             {/* <li className='py-3'> <Link to="/">Home</Link> </li> */}
-                            <li className='py-3'> <Link to="/about">About</Link> </li>
-                            <li className='pb-3'> <Link to="/contact">Contacts</Link> </li>
-                            <li className='pb-3'> <Link to="/write">Community</Link> </li>
-                            <li className='pb-3'> { user && ( <Link to='/settings'>Account Settings</Link>) } </li>
-                            <li className='pb-3'> { user && user.role == 1 && <Link to='/admin/dashboard'>Dashboard</Link>} </li>
-                            <li className='pb-3'> { user && (<li onClick={logout} className='cursor-pointer'>Logout</li>)} </li>
-                            <li className='pb-3'> { !user && <Link to="/login">Login</Link> } </li>
+                            <li className='effect my-7 py-2 '> <Link to="/about" >About</Link> </li>
+                            <li className='effect mb-7 py-2  '> <Link to="/contact">Contacts</Link> </li>
+                            <li className='effect mb-7 py-2'> <Link to="/write">Community</Link> </li>
+                            {user && <li className='effect mb-7 py-2'> <Link to='/settings'>Account Settings</Link> </li>}
+                            {user && user.role == 1 &&  <li className='effect mb-7 py-2'><Link to='/admin/dashboard'>Dashboard</Link> </li>}
+                            {user && <li className='effect mb-7 py-2' onClick={logout}>  Logout </li>}
+                            {!user && <li className='effect mb-7 py-2'>  <Link to="/login">Login</Link> </li>}
                         </ul>
                     </div>
+                }
 
             </header>
         </>

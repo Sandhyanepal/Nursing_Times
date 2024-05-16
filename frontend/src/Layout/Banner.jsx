@@ -2,7 +2,7 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <div className='banner md:mt-36 mt-16'>
+    <div className='banner md:mt-32 mt-16'>
       <div className="bannerTitle flex flex-col items-center font-serif text-gray-600" >
         <span className="bannerTitleSm md:absolute md:top-32 text-2xl">Nursing Care</span>
         <span className="bannerTitleLg md:absolute  text-8xl">Blog</span>

@@ -19,7 +19,8 @@ const AdminSidebar = () => {
           </div>
         </div>
 
-        <div className="sidebar mt-10 ">
+      {/* Sidebar */}
+        <div className=" mt-10 ">
           <ul className='pl-8'>
 
             <li className='py-2'><Link to='/' className='py-3'>

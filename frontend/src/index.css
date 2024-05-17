@@ -20,11 +20,50 @@
 }
 
 
+/* for sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background-color: white;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+.sidebar .effect:hover{
+    color: white;
+    background-color: rgb(185, 184, 184);
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 950px) {
+    .hideOnMobile {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+}
+
+@media(max-width: 500px) {
+    .sidebar {
+        width: 100%;
+    }
+} 
+
+
 /* For Banner */
 @media (min-width: 768px){
     .bannerTitleLg{
         position: absolute;
-        top: 166px;
+        top: 167px;
     }
 }
 

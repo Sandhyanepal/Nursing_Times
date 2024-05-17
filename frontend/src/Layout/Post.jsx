@@ -26,7 +26,7 @@ const Post = ({ post }) => {
         
         <hr />
         <h1 className="postDate mt-2 italic text-gray-500">{new Date(post.createdAt).toDateString()}</h1>
-        <p className='postDesc mt-2 line-clamp-2 text-ellipsis'>{post.description}</p>
+        <p className='postDesc mt-2 line-clamp-2 text-ellipsis' dangerouslySetInnerHTML={{__html:post.description}}></p>
       </div>
       
       {post.image && (

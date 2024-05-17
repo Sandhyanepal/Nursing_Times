@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllPost } from '../api/postApi'
+import { Link } from 'react-router-dom'
 
 const Latestposts = () => {
   let [posts, setPosts] = useState([])
@@ -10,6 +11,9 @@ const Latestposts = () => {
         setPosts(data.slice(0, 5))
       })
   }, [])
+
+  // Reverse the order of the posts array
+  // const reversedPosts = [...posts].reverse();
 
   return (
     <div className='latestposts max-md:hidden '>
@@ -22,7 +26,7 @@ const Latestposts = () => {
           {
             posts.map((post, index) => {
               return (
-                <li className='text-2xl list-none ' key={post.id}> {index + 1}. {post.title}</li>
+                <Link to={`/singlepost/${post._id}`}> <li className='text-2xl list-none ' key={post.id}> {index + 1}. {post.title}</li></Link>
               )
             })
           }

@@ -47,7 +47,7 @@ const Contact = () => {
   return (
     <>
       <div className="contact mb-14 mt-5">
-        <div className="wrapper w-3/5 mx-auto pt-5">
+        <div className="wrapper w-4/5 mx-auto pt-5">
           <h1 className='text-center font-bold text-2xl pb-5 text-gray-600'>Contact Us!</h1>
           <h2 className=' font-bold text-2xl text-center'>We would love to hear from you!</h2>
           <p className='text-left pt-2 mt-2'>

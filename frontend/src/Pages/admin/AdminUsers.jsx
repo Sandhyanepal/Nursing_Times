@@ -47,11 +47,11 @@ const AdminUsers = () => {
 
         <div className='ml-12'>
             <h1 className='text-5xl font-semibold w-4/6 mx-auto md:w-full pt-3' style={{marginTop:'68px'}}>Users</h1>
-            <div className='pt-5 ml-8'>
+            <div className='pt-5 pl-8'>
 
             {user && user.length > 0 ? (
                 user.map(user => (
-                    <div key={user._id} className='flex mt-8 flex-col md:flex-row md:items-center md:justify-between' style={{width:'30vw'}}>
+                    <div key={user._id} className='flex mt-8 flex-col md:flex-row md:items-center md:justify-between' style={{width:'40vw'}}>
                         <div className='flex flex-col md:flex-row items-center'>
 
                             <img src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: '100px', height: '100px' }} />

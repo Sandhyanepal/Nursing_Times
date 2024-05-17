@@ -49,19 +49,19 @@ const Register = () => {
           <form className='loginForm flex flex-col'>
             <h1 className='text-3xl text-center'>Register</h1>
 
-            <label htmlFor="" className='my-3 text-xl'>Username</label>
+            <label htmlFor="" className='my-1 text-xl'>Username</label>
             <input type="text" placeholder='Enter your username' className=' pl-2 py-1' id='username' onChange={(event)=>{setUsername(event.target.value)}}/>
 
-            <label htmlFor="" className='my-3 text-xl'>Email</label>
+            <label htmlFor="" className='my-1 text-xl'>Email</label>
             <input type="text" placeholder='Enter your email' className=' pl-2 py-1' id='email' onChange={e=>setEmail(e.target.value)}/>
 
-            <label htmlFor="" className='my-3 text-xl'>Password</label>
+            <label htmlFor="" className='my-1 text-xl'>Password</label>
             <input type="password" placeholder='Enter your password' className=' pl-2 py-1' id='pwd' onChange={e=>setPassword(e.target.value)}/>
 
-            <button className='mt-5 bg-yellow-500 text-white py-1 rounded-md' onClick={handleRegister}>Register</button>
+            <button className='mt-3 bg-yellow-500 text-white py-1 rounded-md' onClick={handleRegister}>Register</button>
 
           </form>
-          <p className='mt-5 text-center'>Aready have an account? <Link to="/login" className='text-blue-600'>Login</Link></p>
+          <p className='mt-3 text-center'>Aready have an account? <Link to="/login" className='text-blue-600'>Login</Link></p>
         </div>
     </div>
   )

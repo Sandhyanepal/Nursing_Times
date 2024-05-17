@@ -6,7 +6,7 @@ const Login = () => {
 
   let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
-  let [user, setUser] = useState({})
+  let [setUser] = useState({})
 
   let [error, setError] = useState('')
   let [success, setSuccess] = useState(false)
@@ -69,19 +69,19 @@ const Login = () => {
 
           <h1 className='text-3xl text-center'>Login</h1>
 
-          <label htmlFor="" className='my-3 text-xl'>Email</label>
+          <label htmlFor="" className='my-1 text-xl'>Email</label>
           <input type="text" placeholder='Enter your email' className=' pl-2 py-1' onChange={e => setEmail(e.target.value)} />
 
-          <label htmlFor="" className='my-3 text-xl'>Password</label>
+          <label htmlFor="" className='my-1 text-xl'>Password</label>
           <input type="password" placeholder='Enter your password' className=' pl-2 py-1' onChange={e => setPassword(e.target.value)} />
 
           {showError()}
 
-          <button className='mt-5 bg-yellow-500 text-white py-1 rounded-md' onClick={handleLogin}>Login</button>
+          <button className='mt-3 bg-yellow-500 text-white py-1 rounded-md' onClick={handleLogin}>Login</button>
 
-          <Link to='/forgetpassword' className='mt-3 text-blue-600 text-start' >Forget Password?</Link>
+          <Link to='/forgetpassword' className='mt-2 text-blue-600 text-start' >Forget Password?</Link>
         </form>
-        <p className='mt-5 text-center'>Don't have an account? <Link to="/register" className='text-blue-600'>Register</Link></p>
+        <p className='mt-3 text-center'>Don't have an account? <Link to="/register" className='text-blue-600'>Register</Link></p>
       </div>
     </>
   )

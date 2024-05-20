@@ -38,6 +38,9 @@
     padding-left: 20px;
     margin-right: 20px;
 }
+/* .effect:hover{
+    color:pink
+} */
 .menu-button {
     display: none;
 }
@@ -63,7 +66,7 @@
 @media (min-width: 768px){
     .bannerTitleLg{
         position: absolute;
-        top: 167px;
+        top: 169px;
     }
 }
 
@@ -95,6 +98,7 @@
 }
 
 
+/* For footer */
 @media screen and (max-width:1140px) {
     .footer {
         flex-direction: column;
@@ -142,8 +146,9 @@ tbody tr:last-child td:first-child{
     active:bg-green-700;
 }
 
-/* For Admin Profile Page */
 
+
+/* For Admin Profile Page */
 .adminprofile-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr ;
     grid-template-rows: 25vh 25vh ;
@@ -181,13 +186,30 @@ tbody tr:last-child td:first-child{
 
 
 
-
-
-/* css globally */
-:root {
-    --icon-color: #ffa500;
+/* Admin Sidebar */
+.adminside h1{
+    display: none; 
+}
+.topbar .logo{
+    display: block; 
 }
 
-.icon-bg {
-    background-color: var(--icon-color);
+@media screen and (max-width:375px) {
+    .topbar .logo{
+        display: none; 
+    }
+}
+@media screen and (min-width:375px) {
+    .adminside h1{
+        display: block;
+    }
+    .topbar .logo1{
+        display: none; 
+    }
+}
+
+
+/* For all paragraphs */
+p{
+    text-align: justify;
 }

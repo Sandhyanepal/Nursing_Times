@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <>
       <div className="w-11/12 m-auto ">
-          <h1 className="text-5xl font-semibold w-4/6 mx-auto md:w-full pt-3" style={{ marginTop: '68px' }}>Categories</h1>
+          <h1 className="text-5xl font-semibold md:w-full" style={{ marginTop: '68px' }}>Categories</h1>
         <div className="sm:text-xl text-xl mt-12">
           <table >
             <thead  >

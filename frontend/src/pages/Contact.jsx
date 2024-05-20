@@ -47,10 +47,10 @@ const Contact = () => {
   return (
     <>
       <div className="contact mb-14 mt-5">
-        <div className="wrapper w-4/5 mx-auto pt-5">
+        <div className="wrapper w-11/12 lg:w-3/4 mx-auto pt-5">
           <h1 className='text-center font-bold text-2xl pb-5 text-gray-600'>Contact Us!</h1>
           <h2 className=' font-bold text-2xl text-center'>We would love to hear from you!</h2>
-          <p className='text-left pt-2 mt-2'>
+          <p className='pt-2 mt-2'>
             If you have an idea for a podcast episode or blog post,
             have a suggestion for a valuable resource for new graduate nurses,
             general feedback, or want to request use of any of our copyright protected

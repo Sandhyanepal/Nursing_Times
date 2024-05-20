@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { getAllPost } from '../api/postApi'
+import { getpostsbyviews } from '../api/postApi'
 import { Link } from 'react-router-dom'
 
 const Latestposts = () => {
   let [posts, setPosts] = useState([])
 
-  useEffect(() => {
-    getAllPost()
-      .then(data => {
-        setPosts(data.slice(0, 5))
-      })
-  }, [])
+  // useEffect(() => {
+  //   getAllPost()
+  //     .then(data => {
+  //       setPosts(data.slice(0, 5))
+  //     })
+  // }, [])
+  useEffect(()=>{
+    getpostsbyviews()
+    .then(data => {
+      setPosts(data.slice(0, 5))
+    })
+  },[])
 
   // Reverse the order of the posts array
   // const reversedPosts = [...posts].reverse();

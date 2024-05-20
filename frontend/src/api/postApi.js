@@ -83,6 +83,15 @@ export const updatepost = async (id, postData) => {
 }
 
 
+// To fetch posts according to views
+export const getpostsbyviews = async () => {
+    return fetch(`${API}/getpostsbyviews`)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+
+}
+
+
 // To fetch all the comments of particular post
 export const viewcomment = (postId) => {
     // localhost:5000/posts/6634a6494898062b01c271d2/comments

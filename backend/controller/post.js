@@ -90,6 +90,17 @@ exports.getPost = async (req, res) => {
   res.send(post);
 };
 
+// To get post sorted by views
+exports.getAllPostsSortedByViews = async (req, res) => {
+  try {
+    let posts = await Post.find().sort({ views: -1 }).populate("userId");
+    res.send(posts);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
 //Get Posts by Category
 exports.getPostByCategory = async (req, res) => {
   let posts = await Post.find({ category: req.params.category_name }).populate(

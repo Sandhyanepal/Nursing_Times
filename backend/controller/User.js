@@ -219,8 +219,9 @@ exports.login = async (req, res) => {
 // Update user
 exports.updateUser = async (req, res) => {
     try {
+        console.log(req.body.userId, req.params.id)
         // Ensure the user is updating their own account
-        if (req.body.userId !== req.params.id) {
+        if (req.body.userId != req.params.id) {
             return res.status(401).json({ error: "You can update only your account!!!" });
         }
 
@@ -234,7 +235,8 @@ exports.updateUser = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            image: req.file.path
         }, { new: true });
 
         // Check if the user exists and return updated user data

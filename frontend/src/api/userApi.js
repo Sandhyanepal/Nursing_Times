@@ -97,10 +97,9 @@ export const updateuser = async (id, userData, token) => {
             method: "PUT",
             headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json", 
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(userData)
+            body: userData
         });
         return response.json();
     } catch (error) {

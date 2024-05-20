@@ -120,7 +120,7 @@ const Header = () => {
                             <li > <i className='fa-solid fa-magnifying-glass pt-9'></i> </li>
 
                             {/* <li className='py-3'> <Link to="/">Home</Link> </li> */}
-                            <li className='effect my-7 py-2 '> <Link to="/about" >About</Link> </li>
+                            <li className='effect my-7 py-2'> <Link to="/about" >About</Link> </li>
                             <li className='effect mb-7 py-2  '> <Link to="/contact">Contacts</Link> </li>
                             <li className='effect mb-7 py-2'> <Link to="/write">Community</Link> </li>
                             {user && <li className='effect mb-7 py-2'> <Link to='/settings'>Account Settings</Link> </li>}

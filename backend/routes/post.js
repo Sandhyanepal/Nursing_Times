@@ -1,5 +1,5 @@
 const express = require('express')
-const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts, Comment, getAllComment, deleteComment, getPostsByUser } = require('../controller/post');
+const { addpost, updatePost, getPost, deletePost, getPostByCategory, getAllPosts, Comment, getAllComment, deleteComment, getPostsByUser, getAllPostsSortedByViews } = require('../controller/post');
 const upload = require('../utils/fileUpload');
 // const { requireAdmin } = require('../controller/User');
 const router = express.Router()
@@ -14,6 +14,7 @@ router.get('/posts/user/:userId', getPostsByUser);
 router.post('/posts/:postId/comments', Comment)
 router.get('/posts/:postId/comments', getAllComment)
 router.delete('/deletecomment/:id', deleteComment)
+router.get('/getpostsbyviews', getAllPostsSortedByViews)
 
 
 module.exports = router;

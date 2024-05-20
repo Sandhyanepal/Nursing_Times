@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { authenticate, deleteuser, getUserInfo, isAuthenticate, updateuser } from '../api/userApi'
+import { API } from '../config'
 
 const Settings = () => {
 
@@ -10,10 +11,12 @@ const Settings = () => {
 
     const [user, setUser] = useState({});
     const { token } = isAuthenticate()
-    let { username, email, image } = user
+    let { username, email, image, _id } = user
 
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
+
+    let [imageSelected, setImageSelected] = useState(false)
 
 
     useEffect(() => {
@@ -23,6 +26,7 @@ const Settings = () => {
                     console.log(error)
                 }
                 else {
+                    console.log(data)
                     setUser(data)
                     authenticate({ token, user: data })
                 }
@@ -35,26 +39,26 @@ const Settings = () => {
         e.preventDefault();
 
         const updatedUser = {
-            userId: user._id,
+            userId: _id,
             username,
             email,
             // image
         };
 
 
-        // const imageFile = document.getElementById('fileInput').files[0];
+        const imageFile = document.getElementById('fileInput').files[0];
 
-        // // Create a FormData object to store user data and image file
-        // const formData = new FormData();
-        // formData.append('userId', user._id);
-        // formData.append('username', username);
-        // formData.append('email', email);
-        // if (imageFile) {
-        //     formData.append('image', imageFile);
-        // }
+        // Create a FormData object to store user data and image file
+        const formData = new FormData;
+        formData.append('userId', _id);
+        formData.append('username', username);
+        formData.append('email', email);
+        if (imageFile) {
+            formData.append('image', imageFile);
+        }
 
 
-        updateuser(user._id, updatedUser,
+        updateuser(user._id, formData,
             token)
             .then(response => {
                 console.log(response);
@@ -138,21 +142,29 @@ const Settings = () => {
 
                     <label className='my-3 text-xl'>Profile Picture</label>
                     <div className="settingsPP flex items-center my-3">
-                        
+
                         <label htmlFor="fileInput">
                             <FontAwesomeIcon icon={faUserCircle} className='w-6 h-6 p-1 rounded-3xl bg-yellow-500 text-white flex justify-center items-center mr-3 cursor-pointer' />
                         </label>
-                        <input type="file" id='fileInput' style={{ display: 'none' }} onChange={e => setUser({ ...user, image: e.target.files[0] })} />
-                                
-                        <img src={user.image} alt="" className='w-20 h-20 rounded-2xl object-cover' />
+                        <input type="file" id='fileInput' style={{ display: 'none' }} onChange={e => {
+                            setImageSelected(true)
+                            setUser({ ...user, image: URL.createObjectURL(e.target.files[0]) })
+                        }
+                        } />
+
+                        {imageSelected ?
+                            <img src={user.image} alt="" className='w-20 h-20 rounded-2xl object-cover' />
+                            :
+                            <img src={`${API}/${image}`} alt="" className='w-20 h-20 rounded-2xl object-cover' />
+                         }
                     </div>
 
                     <label className='text-2xl mt-5 pl-1'>Username</label>
-                    <input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={user.username}
+                    <input type="text" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={username}
                         onChange={e => setUser({ ...user, username: e.target.value })} />
 
                     <label className='text-2xl mt-5 pl-1'>Email</label>
-                    <input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={user.email}
+                    <input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={email}
                         onChange={e => setUser({ ...user, email: e.target.value })} />
 
                     <button className=' bg-yellow-500 py-1 w-24 rounded-md text-white mt-5 self-end' type='Submit'>Update</button>

@@ -51,9 +51,9 @@ const AdminUsers = () => {
 
                     {user && user.length > 0 ? (
                         user.map(user => (
-                            <div key={user._id} className='flex mt-8 md:flex-row md:items-center justify-between flex-col' style={{ width: '42vw' }}>
+                            <div key={user._id} className='flex mt-8 md:flex-row md:items-center justify-between flex-col' style={{ width: '48vw' }}>
 
-                                <div className='flex flex-col md:flex-row '>
+                                <div className='flex flex-col md:flex-row'>
 
                                     <img src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: '100px', height: '100px' }} />
 

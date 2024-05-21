@@ -10,11 +10,11 @@ const AdminSidebar = () => {
 
   return (
 
-    <div className=' bg-gray-300 flex flex-col justify-between p-4 pl-2' style={{ height: "100vh" }}>
+    <div className='adminsidebar bg-gray-300 flex flex-col justify-between p-4 pl-2' style={{ height: "100vh" }}>
       <div>
         <div className='topbar flex '>
           <Link to='/' className="logo font-bold text-4xl p-6">Nursing<span className='text-yellow-500'>Times</span></Link>
-          <Link to='/' className="logo1 font-bold text-4xl pt-6">N<span className='text-yellow-500'>T</span></Link>
+          <Link to='/' className="logo1 font-bold text-4xl py-6">N<span className='text-yellow-500'>T</span></Link>
           {/* <div className='close text-3xl hidden' id='close-btn'>
             <i className="fa-solid fa-xmark"></i>
           </div> */}
@@ -22,7 +22,7 @@ const AdminSidebar = () => {
 
       {/* Sidebar */}
         <div className="adminside mt-10 ">
-          <ul className='md:pl-8 pl-3'>
+          <ul className='md:pl-5 pl-4'>
 
             <li className='py-2'><Link to='/' className=' flex'>
               <i className="fa-solid fa-house text-xl"></i>
@@ -58,7 +58,7 @@ const AdminSidebar = () => {
         </div>
       </div>
 
-      <Link to='' className='adminside md:pl-8 pb-6 flex pl-3' onClick={logout}>
+      <Link to='' className='adminside md:pl-5 pb-6 flex pl-4' onClick={logout}>
         <i className="fa-solid fa-right-from-bracket text-2xl" />
         <h1 className='sm:text-xl text-lg pl-5'>Logout</h1>
       </Link>

@@ -245,7 +245,7 @@ const SinglePost = () => {
 
                     {
                         comments.map((cmnt) => {
-                            return <div key={cmnt._id} className='flex  py-3'>
+                            return <div key={cmnt._id} className='flex py-3'>
                                 <div className='flex justify-between w-full'>
                                     <div className='w-3/4'>
                                         <h1 className='line-clamp-2 text-ellipsis font-semibold'>{cmnt.postedBy?.username}</h1>

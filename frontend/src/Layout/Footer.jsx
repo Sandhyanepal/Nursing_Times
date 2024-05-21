@@ -56,8 +56,8 @@ function Footer() {
 
 
           <div className="list-none px-10 pt-3 text-start">
-            <h2 className="font-bold mb-2 text-xl">TOPICS</h2>
-            <li className="pb-2"><Link to="/" >Home</Link></li>
+            <h2 className="font-bold mb-2">TOPICS</h2>
+            <li className="pb-2"><Link to="" >Home</Link></li>
             <li className="pb-2"><Link to="/about">About</Link></li>
             <li className="pb-2"><Link to="/contact">Contact</Link></li>
             <li><Link to="/write">Write</Link></li>

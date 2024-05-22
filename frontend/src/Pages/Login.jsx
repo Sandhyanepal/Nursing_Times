@@ -6,7 +6,7 @@ const Login = () => {
 
   let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
-  let [setUser] = useState({})
+  let [user, setUser] = useState({})
 
   let [error, setError] = useState('')
   let [success, setSuccess] = useState(false)

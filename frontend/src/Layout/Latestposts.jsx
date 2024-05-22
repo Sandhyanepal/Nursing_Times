@@ -14,7 +14,7 @@ const Latestposts = () => {
   useEffect(()=>{
     getpostsbyviews()
     .then(data => {
-      setPosts(data.slice(0, 5))
+      setPosts(data?.slice(0, 5))
     })
   },[])
 
@@ -30,7 +30,7 @@ const Latestposts = () => {
         <hr className='border-b-2 border-b-black' />
         <div className='pt-10'>
           {
-            posts.map((post, index) => {
+            posts?.map((post, index) => {
               return (
                 <Link to={`/singlepost/${post._id}`}> <li className='text-2xl list-none ' key={post.id}> {index + 1}. {post.title}</li></Link>
               )

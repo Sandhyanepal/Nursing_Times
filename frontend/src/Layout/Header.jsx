@@ -1,6 +1,6 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { isAuthenticate } from '../api/userApi'
 
@@ -8,10 +8,26 @@ import { isAuthenticate } from '../api/userApi'
 
 const Header = () => {
     let [dropdown, showDropdown] = useState(false)
+    let dropdownRef = useRef();
+
+    useEffect(() => {
+        let handler = (e) =>{
+            if(!dropdownRef.current && !dropdownRef.current.contains(e.target)){
+                showDropdown(false);
+
+            }
+        };
+        document.addEventListener("mousedown", handler)
+
+        return() =>{
+            document.removeEventListener();
+        };
+    },[]);
+
+   
 
     let { user } = isAuthenticate()
     const navigate = useNavigate()
-
 
     function logout() {
         localStorage.clear();
@@ -57,15 +73,17 @@ const Header = () => {
                             </ul>
                         </div>
 
-                        <div className='md:w-1/5 flex  items-center relative justify-center'>
+                        < div className='md:w-1/5 flex items-center relative justify-center'>
 
                             {user && (
                                 <span><img className='headerImg rounded-full mr-7' src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: "40px", height: "40px" }} onClick={() => showDropdown(!dropdown)} /></span>
                             )}
 
                             {
-                                dropdown &&
-                                <div style={{
+                            dropdown && 
+                                <div
+                                // ref={dropdownRef}
+                                style={{
                                     // height:'400px',
                                     width: '160px',
                                     position: 'absolute',
@@ -77,7 +95,7 @@ const Header = () => {
                                         <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
 
                                         {
-                                            user && user.role == 1 &&
+                                            user && user.role === 1 &&
                                             <Link to='/admin/dashboard' className='border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center'>Dashboard</Link>
                                         }
 
@@ -88,7 +106,9 @@ const Header = () => {
                                             )}
                                     </div>
                                 </div>
+                               
                             }
+                        
 
                             <FontAwesomeIcon icon={faMagnifyingGlass} className=' text-2xl' />
 
@@ -124,7 +144,7 @@ const Header = () => {
                             <li className='effect mb-7 py-2  '> <Link to="/contact">Contacts</Link> </li>
                             <li className='effect mb-7 py-2'> <Link to="/write">Community</Link> </li>
                             {user && <li className='effect mb-7 py-2'> <Link to='/settings'>Account Settings</Link> </li>}
-                            {user && user.role == 1 &&  <li className='effect mb-7 py-2'><Link to='/admin/dashboard'>Dashboard</Link> </li>}
+                            {user && user.role === 1 &&  <li className='effect mb-7 py-2'><Link to='/admin/dashboard'>Dashboard</Link> </li>}
                             {user && <li className='effect mb-7 py-2' onClick={logout}>  Logout </li>}
                             {!user && <li className='effect mb-7 py-2'>  <Link to="/login">Login</Link> </li>}
                         </ul>

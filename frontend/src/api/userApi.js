@@ -30,6 +30,7 @@ export const getUserInfo = (id) => {
 
 // LOGIN
 export const login = (user) => {
+    console.log(API)
     return fetch(`${API}/login`, {
         method: "POST",
         headers: {

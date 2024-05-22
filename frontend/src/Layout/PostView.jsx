@@ -36,12 +36,12 @@ const PostView = ({ post }) => {
         <div key={post._id} className='flex flex-col md:flex-row w-3/5 py-5 ml-16'>
             <div className='md:w-3/5 w-4/5 pb-3 md:pb-0'>
                 <h1 className='font-bold pb-1 pt-1'>{post.title}</h1>
-                <p className='pb-2 line-clamp-2 text-ellipsis' dangerouslySetInnerHTML={{__html:post.description}}></p>
+                <h1 className='pb-2 line-clamp-2 text-ellipsis' dangerouslySetInnerHTML={{__html:post.description}}></h1>
                 <div className='flex gap-3'>
 
-                    <Link to={`/singlepost/${post._id}`} className='bg-yellow-500 p-1 rounded-md text-white text-sm md:text-base lg:text-lg text-center'>Read More</Link>
+                    <Link to={`/singlepost/${post._id}`} className='bg-yellow-500 p-1 rounded-md text-white text-xs md:text-base lg:text-lg text-center'>Read More</Link>
 
-                    <button className=' bg-red-500 p-1 rounded-md text-white text-sm md:text-lg' onClick={handleDelete(post._id)}>Delete</button>
+                    <button className=' bg-red-500 p-1 rounded-md text-white text-xs md:text-base lg:text-lg' onClick={handleDelete(post._id)}>Delete</button>
                 </div>
             </div>
             {

@@ -117,7 +117,7 @@ tbody tr:last-child td:first-child{
 }
 
 .button{
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     color: white;
 }
 .update{
@@ -181,20 +181,46 @@ tbody tr:last-child td:first-child{
     display: block; 
 }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:960px) {
+    /* .topbar .logo{
+        display: none; 
+    } */
+    .emptylayout{
+        width: 9%;
+    }
+    .adminoutlet{
+        width: 95%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width:960px) {
+    .adminside h1{
+        display: block;
+    }
+    /* .topbar .logo1{
+        display: none; 
+        text-align: center;
+    }  */
+    .adminlayout, .emptylayout{
+        width:20%
+    } 
+    .adminoutlet{
+        width: 80%;
+    }  
+}
+@media screen and (max-width:1300px) {
     .topbar .logo{
         display: none; 
     }
 }
-@media screen and (min-width:375px) {
-    .adminside h1{
-        display: block;
-    }
+@media screen and (min-width:1300px) {
+    
     .topbar .logo1{
         display: none; 
-    }
+        text-align: center;
+    } 
 }
-
 
 /* For all paragraphs */
 p{

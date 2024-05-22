@@ -27,6 +27,7 @@ import UserPosts from './Pages/admin/UserPosts'
 import AdminMessage from './Pages/admin/AdminMessage'
 import MessageView from './Layout/MessageView'
 import CategoryPost from './Pages/CategoryPost'
+import Profile from './Pages/Profile'
 
 
 
@@ -39,6 +40,7 @@ const MyRoutes = () => {
                     <Route path='/write' element={<Write />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/profile' element={<Profile/>}/>
                     <Route path='/forgetpassword' element={<ForgetPassword />} />
                     <Route path='/resetpassword/:token' element={<ResetPassword />} />
                     <Route path='/test' element={<Test />} />

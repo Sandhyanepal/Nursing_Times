@@ -92,7 +92,7 @@ const Header = () => {
                                     // display: 'none',
                                 }} className='bg-gray-200 rounded-md'>
                                     <div className='flex flex-col py-2 '>
-                                        <button className='border-b-2 border-gray-400 my-1 mx-2 pb-1'>Profile</button>
+                                        <Link to='/profile' className='border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center'>Profile</Link>
 
                                         {
                                             user && user.role === 1 &&

@@ -186,7 +186,7 @@ const SinglePost = () => {
                 <div className="singlePostWrapper flex flex-col">
 
                     {post.image && (
-                        <img className='postImg object-cover rounded w-11/12 m-auto ' src={`${API}/${post.image}`} alt="" style={{ height: '60vh' }} />
+                        <img className='postImg object-cover object-top rounded-md w-11/12 m-auto pt-6' src={`${API}/${post.image}`} alt="" style={{ height: '70vh' }} />
                     )}
 
                     <div className='items-center mt-5 '>

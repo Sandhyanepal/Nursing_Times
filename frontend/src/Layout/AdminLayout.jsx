@@ -6,15 +6,15 @@ const AdminLayout = () => {
   return (
     <div className='flex'>
 
-      <div className="w-1/5 fixed top-0 h-screen">
+      <div className="adminlayout fixed top-0 h-screen">
 
         <AdminSidebar />
       </div>
-      <div className="w-1/5 ">
+      <div className="emptylayout">
 
       </div>
 
-      <div className="w-3/4">
+      <div className="sm:ps-0 ps-4 adminoutlet">
         <Outlet />
 
       </div>

@@ -51,7 +51,8 @@ const AdminProfile = () => {
 
 
   return (
-    <div className='ml-12 w-full mr-12'>
+    <>
+    <div className='ml-12  mr-12'>
 
       <h1 className='text-5xl font-bold' style={{marginTop:'68px'}}>Welcome</h1>
       <h1 className='text-4xl font-bold mt-5'>to DashBoard</h1>
@@ -171,8 +172,14 @@ const AdminProfile = () => {
         </div>
       </div>
 
-
+      
     </div>
+
+    <footer className="flex justify-around py-3 bg-gray-400">
+        <span className='font-bold'>NursingTimes</span>
+        <span className='text-xs'>&copy; Nursing Times Admin Dashboard</span>
+      </footer>
+    </>
   )
 }
 

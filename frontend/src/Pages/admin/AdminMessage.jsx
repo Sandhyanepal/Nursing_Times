@@ -24,7 +24,7 @@ const AdminMessage = () => {
           <div key={msg._id} className="w-11/12 pl-12 pb-2">
             <Link to={`../messageview/${msg._id}`} className="flex pb-2">
               <h1 className="font-bold w-1/5">{msg.name}</h1>
-              <p className="font-semibold pl-9 w-4/5 line-clamp-1 text-ellipsis">{msg.message}</p>
+              <h1 className="font-semibold pl-9 w-4/5 line-clamp-1 text-ellipsis">{msg.message}</h1>
             </Link>
             <hr/>
           </div>

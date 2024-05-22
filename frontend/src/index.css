@@ -195,9 +195,9 @@ tbody tr:last-child td:first-child{
 }
 
 @media screen and (max-width:960px) {
-    .topbar .logo{
+    /* .topbar .logo{
         display: none; 
-    }
+    } */
     .emptylayout{
         width: 9%;
     }
@@ -206,14 +206,15 @@ tbody tr:last-child td:first-child{
         margin: auto;
     }
 }
+
 @media screen and (min-width:960px) {
     .adminside h1{
         display: block;
     }
-    .topbar .logo1{
+    /* .topbar .logo1{
         display: none; 
         text-align: center;
-    } 
+    }  */
     .adminlayout, .emptylayout{
         width:20%
     } 
@@ -221,7 +222,18 @@ tbody tr:last-child td:first-child{
         width: 80%;
     }  
 }
-
+@media screen and (max-width:1300px) {
+    .topbar .logo{
+        display: none; 
+    }
+}
+@media screen and (min-width:1300px) {
+    
+    .topbar .logo1{
+        display: none; 
+        text-align: center;
+    } 
+}
 
 /* For all paragraphs */
 p{

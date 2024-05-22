@@ -13,8 +13,8 @@ const AdminSidebar = () => {
     <div className='adminsidebar bg-gray-300 flex flex-col justify-between p-4 pl-2' style={{ height: "100vh" }}>
       <div>
         <div className='topbar flex '>
-          <Link to='/' className="logo font-bold text-4xl p-6">Nursing<span className='text-yellow-500'>Times</span></Link>
-          <Link to='/' className="logo1 font-bold text-4xl py-6">N<span className='text-yellow-500'>T</span></Link>
+          <Link to='/' className="logo font-bold text-4xl py-6 pl-2">Nursing<span className='text-yellow-500'>Times</span></Link>
+          <Link to='/' className="logo1 font-bold text-4xl py-6 lg:pl-16 lg:text-5xl">N<span className='text-yellow-500'>T</span></Link>
           {/* <div className='close text-3xl hidden' id='close-btn'>
             <i className="fa-solid fa-xmark"></i>
           </div> */}

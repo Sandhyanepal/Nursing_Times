@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom'
 const Latestposts = () => {
   let [posts, setPosts] = useState([])
 
-  // useEffect(() => {
-  //   getAllPost()
-  //     .then(data => {
-  //       setPosts(data.slice(0, 5))
-  //     })
-  // }, [])
   useEffect(()=>{
     getpostsbyviews()
     .then(data => {
@@ -20,8 +14,6 @@ const Latestposts = () => {
     })
   },[])
 
-  // Reverse the order of the posts array
-  // const reversedPosts = [...posts].reverse();
 
   return (
     <div className='latestposts max-md:hidden '>

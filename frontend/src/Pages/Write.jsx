@@ -178,32 +178,41 @@ const Write = () => {
                             </select>
                         </div>
 
+                        <div className='flex items-start flex-wrap'>
 
-                        {/* For Image */}
-                        <div className='flex items-center '>
-                            <label htmlFor="fileInput" className='pr-5'>
-                                <i className="fa-solid fa-plus writeIcon text-xl text-gray-500"></i>
-                            </label>
+                            {/* For Textarea */}
+                            <div className="writeFormGroup pt-5 text-xl w-full md:w-2/3">
+
+                                <EditorMCE handleEditorChange={handleEditorChange} />
+
+                            </div>
+
+                            {/* For Image */}
+                            <div className='flex items-center pt-6 md:pl-5'>
+                                <label htmlFor="fileInput" className='pr-5'>
+                                    <i className="fa-solid fa-plus writeIcon text-xl text-gray-500"></i>
+                                </label>
 
 
-                            <input type="file" id='fileInput' style={{ display: "none" }}
-                                onChange={handleChange('image')} />
+                                <input type="file" id='fileInput' style={{ display: "none" }}
+                                    onChange={handleChange('image')} />
 
-                            {image && (
-                                <div>
-                                    <img src={image} alt="Preview" style={{ maxWidth: '100%', maxHeight: '200px' }} />
-                                </div>
-                            )}
+                                {image && (
+                                    <div>
+                                        <img src={image} alt="Preview" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+                                    </div>
+                                )}
+                            </div>
+
+
+
+
                         </div>
-                    </div>
-
-
-                    {/* For Textarea */}
-                    <div className="writeFormGroup pt-5 text-xl ">
-
-                        <EditorMCE handleEditorChange={handleEditorChange} />
 
                     </div>
+
+
+
 
                     <button className='absolute top-5 right-0 text-white bg-yellow-500 p-1 rounded-md'
                         onClick={handleSubmit}

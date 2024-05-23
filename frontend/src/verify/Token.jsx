@@ -30,19 +30,19 @@ const Token = () => {
 
     const showError = () => {
         if(error){
-          return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+          return <div className='font-bold text-red-700 underline text-2xl pt-24 pb-28 text-center'>{error}</div>
         }
       }
 
       const showSuccess = () => {
         if(success){
-          return <div className='font-bold text-green-700 underline text-lg'>{success}</div>
+          return <div className='font-bold text-green-700 underline text-2xl text-center pt-24 pb-28'>{success}</div>
         }
       }
 
   return (
     <>
-      {isLoading ? <p>Loading...</p> : <>
+      {isLoading ? <p className='text-2xl text-center pt-24 pb-28'> Loading...</p> : <>
         {showError()}
         {showSuccess()}
       </>}

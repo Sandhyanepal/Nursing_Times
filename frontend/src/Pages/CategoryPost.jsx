@@ -34,7 +34,7 @@ const CategoryPost = () => {
 
             ) : (
                 // Display loading message or spinner if users data is not yet fetched
-                <p className='text-3xl text-center py-32'>Loading...</p>
+                <p className='text-3xl text-center py-32'>No Post Found</p>
             )}
             
 

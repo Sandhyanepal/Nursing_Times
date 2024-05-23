@@ -33,12 +33,14 @@ const Contact = () => {
 
   const showError = () => {
     if(error){
+      // alert(error)
       return <div className='font-bold text-red-700 underline text-lg py-2 text-center'>{error}</div>
     }
   }
 
   const showSuccess = () => {
     if(success){
+      // alert("Message Sent")
         return <div className='text-green-500 text-xl font-bold text-center py-5'>"Message Sent"</div>
     }
 }

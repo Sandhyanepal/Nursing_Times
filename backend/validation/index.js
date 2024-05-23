@@ -28,4 +28,23 @@ const userCheck = [
     .not().isIn(['P@ssW0rd']).withMessage("Cannot use this password")
 ]
 
-module.exports = {validation , userCheck}
+
+const categoryCheck = [
+    check('name', "Category name is required").notEmpty()
+    .isLength({min:5}).withMessage("Category name must be at least 5 characters")
+    .isLength({max:50}).withMessage("Category name must not exceed 50 characters"),
+]
+
+const postCheck = [
+    check('title', "Title is required").notEmpty()
+    .isLength({ min: 5 }).withMessage("Title must be at least 3 characters"),
+    check('description', "Description is required").notEmpty()
+    .isLength({min:10}).withMessage("Description must be at least 10 characters"),
+    check('image').optional().isURL().withMessage("Image must be a valid URL"),
+    check('userId', "User ID is required").notEmpty()
+    .isMongoId().withMessage("User ID must be a valid MongoDB ID"),
+    check('category', "Category ID is required").notEmpty()
+    .isMongoId().withMessage("Category ID must be a valid MongoDB ID"),
+] 
+
+module.exports = {validation , userCheck, categoryCheck, postCheck}

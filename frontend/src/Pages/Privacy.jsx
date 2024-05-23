@@ -3,7 +3,7 @@ import React from 'react'
 const Privacy = () => {
   return (
     <>
-      <h1 className='bg-yellow-400 p-7 py-12 text-center box-border text-2xl font-bold text-white w-11/12 m-auto'>Privacy Policy</h1>
+      <h1 className='bg-yellow-400 p-7 py-12 text-center box-border text-2xl font-bold text-white w-full m-auto'>Privacy Policy</h1>
       <div className="protecting py-3">
         <h1 className='text-2xl pl-48 font-bold p-2'>Protecting your data: The Nursing Times Group privacy statement</h1>
         <p className='pl-48 text-lg'>Protecting your privacy is very important to us. So that you can feel in control of your personal information, we want to be clear with you about the information we collect and how it is used.</p>

@@ -49,7 +49,7 @@ const Settings = () => {
         const imageFile = document.getElementById('fileInput').files[0];
 
         // Create a FormData object to store user data and image file
-        const formData = new FormData;
+        const formData = new FormData();
         formData.append('userId', _id);
         formData.append('username', username);
         formData.append('email', email);

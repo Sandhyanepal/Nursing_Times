@@ -8,9 +8,7 @@ const Latestposts = () => {
   useEffect(()=>{
     getpostsbyviews()
     .then(data => {
-      console.log(data)
       setPosts(data?.slice(0, 5))
-
     })
   },[])
 

@@ -34,13 +34,17 @@ function Footer() {
 
   const showError = () => {
     if(error){
-      return <div className='font-bold text-red-700 underline text-xl text-center'>{error}</div>
+      console.log(error)
+      alert(error)
+      // return <div className='font-bold text-red-700 underline text-xl text-center'>{error}</div>
     }
   }
 
   const showSuccess = () => {
+    
     if(success){
-        return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
+      alert("message sent")
+        // return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
     }
 }
 

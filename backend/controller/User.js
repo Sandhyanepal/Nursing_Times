@@ -195,6 +195,10 @@ exports.login = async (req, res) => {
             return res.status(400).json({ error: "Wrong password"});
         }
 
+        if(!user.isVerified){
+            return res.status(400).json({error:"User Not Verified"})
+        }
+
         // generate login token
         const token = jwt.sign(
             {

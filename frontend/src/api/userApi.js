@@ -1,5 +1,6 @@
-import { API } from "../config"
+// import { API } from "../config"
 
+let API = "http://localhost:5000"
 
 // REGISTER
 export const register = (user) => {

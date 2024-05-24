@@ -1,30 +1,13 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAuthenticate } from "../api/userApi";
+import { API } from '../config'
 
 const Header = () => {
   let [dropdown, showDropdown] = useState(false);
-//   let dropdownRef = useRef();
-
-  useEffect(() => {
-    let handler = (e) => {
-      // if(!dropdownRef.current && !dropdownRef.current.contains(e.target)){
-      //     showDropdown(false);
-      // }
-      showDropdown(false);
-    };
-    document.addEventListener("mousedown", handler);
-
-    // return() =>{
-    //     document.removeEventListener();
-    // };
-  }, []);
-
-//   const toggleDropdown = () => {
-//     showDropdown(!dropdown);
-//   };
+ 
 
   let { user } = isAuthenticate();
   const navigate = useNavigate();
@@ -34,15 +17,6 @@ const Header = () => {
     navigate("/login");
   }
 
-  // To hide and show sidebar
-  // function showSidebar() {
-  //     const sidebar = document.querySelector('.sidebar')
-  //     sidebar.style.display = 'flex'
-  // }
-  // function hideSidebar() {
-  //     const sidebar = document.querySelector('.sidebar')
-  //     sidebar.style.display = 'none'
-  // }
 
   let [sidebar, showSidebar] = useState(false);
 
@@ -51,7 +25,7 @@ const Header = () => {
       <header
         className="w-full  sticky top-0 bg-white z-10 "
         style={{ "box-shadow": "3px 3px 5px rgba(0, 0, 0, 0.1)" }}
-        //  className='md:flex sm:w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3  pt-5 sticky top-0 bg-white z-10 shadow-lg shadow-indigo-500/40'
+      //  className='md:flex sm:w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3  pt-5 sticky top-0 bg-white z-10 shadow-lg shadow-indigo-500/40'
       >
         <div className="flex sm:w-11/12 m-auto md:justify-around items-center sm:col-span-1 md:col-span-3  pt-3 pb-2 justify-between">
           <Link
@@ -88,65 +62,65 @@ const Header = () => {
             <div className="md:w-1/5 flex items-center relative justify-center">
               {user && (
                 <span>
-                  <img
-                    className="headerImg rounded-full mr-7"
-                    src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                    style={{ width: "40px", height: "40px" }}
-                    onClick={() => showDropdown(!dropdown)}
 
-                  />
+                  {user.image ? (
+                    // If user has uploaded an image, display it
+                    <img className='headerImg rounded-full mr-7 cursor-pointer' src={`${API}/${user.image}`} alt="" style={{ width: "40px", height: "40px" }} onClick={() => showDropdown(!dropdown)} />
+                  ) : (
+                    // If no image is uploaded, display the default image
+                    <img className='headerImg rounded-full mr-7 cursor-pointer' src="./images/user_img.jpg" alt="" style={{ width: "40px", height: "40px" }} onClick={() => showDropdown(!dropdown)} />
+                  )}
+
                 </span>
               )}
 
               {
-                
-                  dropdown &&
-                  <div
-                    // ref={dropdownRef}
-                    style={{
-                      // height:'400px',
-                      width: "160px",
-                      position: "absolute",
-                      top: "120%",
-                      right: "25%",
-                      // display: 'none',
-                    }}
-                    className="bg-gray-200 rounded-md"
-                  >
-                    <div className="flex flex-col py-2 ">
+
+                dropdown &&
+                <div
+                  style={{
+                    // height:'400px',
+                    width: "160px",
+                    position: "absolute",
+                    top: "120%",
+                    right: "25%",
+                    // display: 'none',
+                  }}
+                  className="bg-gray-200 rounded-md"
+                >
+                  <div className="flex flex-col py-2 ">
+                    <Link
+                      to="/profile"
+                      className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
+                    >
+                      Profile
+                    </Link>
+
+                    {user && user.role === 1 && (
                       <Link
-                        to="/profile"
+                        to="/admin/dashboard"
                         className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
                       >
-                        Profile
+                        Dashboard
                       </Link>
+                    )}
 
-                      {user && user.role === 1 && (
-                        <Link
-                          to="/admin/dashboard"
-                          className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
-                        >
-                          Dashboard
-                        </Link>
-                      )}
-
-                      <Link
-                        to="/settings"
-                        className="border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center "
+                    <Link
+                      to="/settings"
+                      className="border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center "
+                    >
+                      Account Settings
+                    </Link>
+                    {user && (
+                      <li
+                        onClick={logout}
+                        className="cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center"
                       >
-                        Account Settings
-                      </Link>
-                      {user && (
-                        <li
-                          onClick={logout}
-                          className="cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center"
-                        >
-                          Logout
-                        </li>
-                      )}
-                    </div>
+                        Logout
+                      </li>
+                    )}
                   </div>
+                </div>
               }
 
               <FontAwesomeIcon icon={faMagnifyingGlass} className=" text-2xl" />

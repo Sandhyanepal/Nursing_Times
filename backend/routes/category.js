@@ -1,10 +1,11 @@
 const express = require('express');
 const { addCategory, getAllCategory, updateCategory, getCategoryDetails, deleteCategory } = require('../controller/category');
 const { requireAdmin } = require('../controller/User');
+const { categoryCheck, validation } = require('../validation');
 //const { categoryCheck, validation } = require('../validation');
 const router = express.Router()
 
-router.post('/addCategory', requireAdmin, addCategory)
+router.post('/addCategory', categoryCheck, validation, requireAdmin, addCategory)
 router.get('/getAllCategory', getAllCategory)
 router.get('/getcategory/:id', getCategoryDetails)
 router.put('/updateCategory/:id', requireAdmin, updateCategory)

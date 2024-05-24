@@ -37,7 +37,7 @@ const categoryCheck = [
 
 const postCheck = [
     check('title', "Title is required").notEmpty()
-    .isLength({ min: 5 }).withMessage("Title must be at least 3 characters"),
+    .isLength({ min: 3 }).withMessage("Title must be at least 3 characters"),
     check('description', "Description is required").notEmpty()
     .isLength({min:10}).withMessage("Description must be at least 10 characters"),
     check('image').optional().isURL().withMessage("Image must be a valid URL"),
@@ -47,4 +47,12 @@ const postCheck = [
     .isMongoId().withMessage("Category ID must be a valid MongoDB ID"),
 ] 
 
-module.exports = {validation , userCheck, categoryCheck, postCheck}
+const usermsgCheck = [
+    check('name',"username is required").notEmpty()
+    .isLength({ min: 3 }).withMessage("Name must be at least 3 characters"),
+    check('email', "Email is required").notEmpty()
+    .isEmail().withMessage("Email format is incorrect"),
+    check('message').optional().isLength({ min: 10 }).withMessage("Message must be at least 10 characters")
+];
+
+module.exports = {validation , userCheck, categoryCheck, postCheck, usermsgCheck}

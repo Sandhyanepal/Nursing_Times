@@ -8,19 +8,19 @@ const Header = () => {
   let [dropdown, showDropdown] = useState(false);
 //   let dropdownRef = useRef();
 
-  useEffect(() => {
-    let handler = (e) => {
-      // if(!dropdownRef.current && !dropdownRef.current.contains(e.target)){
-      //     showDropdown(false);
-      // }
-      showDropdown(false);
-    };
-    document.addEventListener("mousedown", handler);
+  // useEffect(() => {
+  //   let handler = (e) => {
+  //     // if(!dropdownRef.current && !dropdownRef.current.contains(e.target)){
+  //     //     showDropdown(false);
+  //     // }
+  //     showDropdown(false);
+  //   };
+  //   document.addEventListener("mousedown", handler);
 
-    // return() =>{
-    //     document.removeEventListener();
-    // };
-  }, []);
+  //   // return() =>{
+  //   //     document.removeEventListener();
+  //   // };
+  // }, []);
 
 //   const toggleDropdown = () => {
 //     showDropdown(!dropdown);
@@ -161,7 +161,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* For samller screen */}
+        {/* For smaller screen */}
 
         {sidebar && (
           <div

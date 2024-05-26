@@ -11,8 +11,6 @@ const validation = (req,res,next) =>{
     next()
 } 
 
-
-
 const userCheck = [
     check('username',"username is required").notEmpty()
     .isLength({min:3}).withMessage("Username must be at least 3 characters"),
@@ -28,9 +26,8 @@ const userCheck = [
     .not().isIn(['P@ssW0rd']).withMessage("Cannot use this password")
 ]
 
-
 const categoryCheck = [
-    check('name', "Category name is required").notEmpty()
+    check('category_name', "Category name is required").notEmpty()
     .isLength({min:5}).withMessage("Category name must be at least 5 characters")
     .isLength({max:50}).withMessage("Category name must not exceed 50 characters"),
 ]
@@ -52,7 +49,7 @@ const usermsgCheck = [
     .isLength({ min: 3 }).withMessage("Name must be at least 3 characters"),
     check('email', "Email is required").notEmpty()
     .isEmail().withMessage("Email format is incorrect"),
-    check('message').optional().isLength({ min: 10 }).withMessage("Message must be at least 10 characters")
+    check('message').optional().isLength({ min: 5 }).withMessage("Message must be at least 5 characters")
 ];
 
 module.exports = {validation , userCheck, categoryCheck, postCheck, usermsgCheck}

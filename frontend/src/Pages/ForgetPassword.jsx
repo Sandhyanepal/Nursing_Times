@@ -26,13 +26,16 @@ const ForgetPassword = () => {
 
     const showError = () => {
         if(error){
-          return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+        //   return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+        alert(error)
+        setError('')
         }
       }
 
       const showSuccess = () => {
         if(success){
-            return <div className='text-green-500 text-lg font-bold'>"Password reset link has been sent to your email."</div>
+            // return <div className='text-green-500 text-lg font-bold'>"Password reset link has been sent to your email."</div>
+            alert("Password reset link has been sent to your email.")
         }
     }
 
@@ -48,7 +51,7 @@ const ForgetPassword = () => {
                         <input type="email" name='email' id='email' className='border-2 rounded-md border-black py-1 w-full xl:w-11/12 px-2' placeholder='Enter email...' value={email} onChange={e =>setEmail(e.target.value)}/>
                     </div>
                     <div className="mt-5 ">
-                        <button className='bg-yellow-500 py-1 px-2 rounded-md text-white' onClick={handleSubmit}>Send Email</button>
+                        <button className='yellowbg py-1 px-2 rounded-md' onClick={handleSubmit}>Send Email</button>
                     </div>
                 </form>
             </div>

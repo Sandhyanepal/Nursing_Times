@@ -1,5 +1,5 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAuthenticate } from "../api/userApi";
@@ -32,7 +32,7 @@ const Header = () => {
             to="/"
             className=" text-3xl font-bold py-4 w-3/10 italic pl-3 text-gray-600"
           >
-            Nursing<span className="text-yellow-500">Times</span>
+            Nursing<span className="txtyellow">Times</span>
           </Link>
 
           <div className="hideOnMobile md:flex w-3/4 pl-3 hidden  ">
@@ -59,7 +59,7 @@ const Header = () => {
               </ul>
             </div>
 
-            <div className="md:w-1/5 flex items-center relative justify-center">
+            <div className=" relative ">
               {user && (
                 <span>
 
@@ -83,7 +83,7 @@ const Header = () => {
                     width: "160px",
                     position: "absolute",
                     top: "120%",
-                    right: "25%",
+                    right: "-45%",
                     // display: 'none',
                   }}
                   className="bg-gray-200 rounded-md"
@@ -96,7 +96,7 @@ const Header = () => {
                       Profile
                     </Link>
 
-                    {user && user.role === 1 && (
+                    {user && user.role === "1" && (
                       <Link
                         to="/admin/dashboard"
                         className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
@@ -123,7 +123,7 @@ const Header = () => {
                 </div>
               }
 
-              <FontAwesomeIcon icon={faMagnifyingGlass} className=" text-2xl" />
+              {/* <FontAwesomeIcon icon={faMagnifyingGlass} className=" text-2xl" /> */}
             </div>
           </div>
 
@@ -148,10 +148,10 @@ const Header = () => {
                 <i className="fa-solid fa-xmark text-4xl"></i>{" "}
               </li>
 
-              <li>
+              {/* <li>
                 {" "}
                 <i className="fa-solid fa-magnifying-glass pt-9"></i>{" "}
-              </li>
+              </li> */}
 
               {/* <li className='py-3'> <Link to="/">Home</Link> </li> */}
               <li className="effect my-7 py-2">

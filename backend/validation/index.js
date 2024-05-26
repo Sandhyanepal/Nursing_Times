@@ -30,7 +30,7 @@ const userCheck = [
 
 
 const categoryCheck = [
-    check('name', "Category name is required").notEmpty()
+    check('category_name', "Category name is required").notEmpty()
     .isLength({min:5}).withMessage("Category name must be at least 5 characters")
     .isLength({max:50}).withMessage("Category name must not exceed 50 characters"),
 ]
@@ -47,4 +47,12 @@ const postCheck = [
     .isMongoId().withMessage("Category ID must be a valid MongoDB ID"),
 ] 
 
-module.exports = {validation , userCheck, categoryCheck, postCheck}
+const usermsgCheck = [
+    check('name',"username is required").notEmpty()
+    .isLength({ min: 3 }).withMessage("Name must be at least 3 characters"),
+    check('email', "Email is required").notEmpty()
+    .isEmail().withMessage("Email format is incorrect"),
+    check('message').optional().isLength({ min: 5 }).withMessage("Message must be at least 5 characters")
+];
+
+module.exports = {validation , userCheck, categoryCheck, postCheck, usermsgCheck}

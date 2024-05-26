@@ -17,7 +17,6 @@ const Write = () => {
         title: '',
         description: '',
         username: '',
-        // image: '',
         category: '',
         formData: new FormData()
     })
@@ -26,8 +25,6 @@ const Write = () => {
     let {
         title,
         description,
-        // image,
-        category,
         formData
     } = content
 
@@ -123,13 +120,16 @@ const Write = () => {
 
     const showError = () => {
         if (error) {
-            return <div className='font-bold text-red-700 underline text-xl pt-2 text-center'>{error}</div>
+            // return <div className='font-bold text-red-700 underline text-xl pt-2 text-center'>{error}</div>
+            alert("Something went wrong!!")
+            setError('')
         }
     }
 
     const showSuccess = () => {
         if (success) {
-            return <div className='text-green-500 text-xl font-bold text-center py-5'>"Your post has been added successfully."</div>
+            // return <div className='text-green-500 text-xl font-bold text-center py-5'>"Your post has been added successfully."</div>
+            alert("Your post has been added successfully.")
         }
     }
 
@@ -214,7 +214,7 @@ const Write = () => {
 
 
 
-                    <button className='absolute top-5 right-0 text-white bg-yellow-500 p-1 rounded-md'
+                    <button className='yellowbg absolute top-5 right-0  p-1 rounded-md'
                         onClick={handleSubmit}
                     >Publish </button>
                 </form>

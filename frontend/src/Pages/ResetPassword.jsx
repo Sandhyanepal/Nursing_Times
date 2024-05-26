@@ -45,13 +45,16 @@ const ResetPassword = () => {
 
     const showError = () => {
         if (error) {
-            return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            // return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            alert(error)
+            setError('')
         }
     }
 
     const showSuccess = () => {
         if (success) {
-            return <div className='text-green-500 text-lg font-bold'>"Your password has been successfully changed."</div>
+            // return <div className='text-green-500 text-lg font-bold'>"Your password has been successfully changed."</div>
+            alert("Your password has been successfully changed.")
         }
     }
 
@@ -68,7 +71,7 @@ const ResetPassword = () => {
                             <input type="password" name='password' id='password' className='border-2 rounded-md border-black  py-1 w-full xl:w-11/12 px-2' placeholder='Enter email...' value={password} onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className="mt-5 ">
-                            <button className='bg-yellow-500 py-1 px-2 rounded-md text-white' onClick={handleSubmit}>Reset Password</button>
+                            <button className='yellowbg py-1 px-2 rounded-md' onClick={handleSubmit}>Reset Password</button>
                         </div>
                     </form>
                 </div>

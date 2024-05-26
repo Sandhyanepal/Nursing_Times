@@ -43,7 +43,7 @@ function Footer() {
   const showSuccess = () => {
     
     if(success){
-      alert("message sent")
+      alert("Message sent")
         // return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
     }
 }
@@ -92,18 +92,12 @@ function Footer() {
             {showSuccess()}
 
           </div>
-
-          {/* <form className="flex flex-col sm:flex-row pt-3 gap-2 justify-center items-end w-3/5 m-auto">
-            <input className=" p-2 rounded-md mt-1 text-black w-full" type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
-            <input type="hidden" value={name} />
-            <input type="hidden" value={message} />
-            <button className=" bg-yellow-500 p-2 rounded-lg mt-1 px-5" onClick={handleSubmit}>Subscribe</button>
-          </form> */}
+          
           <form className="flex  pt-3 gap-2 justify-center  ">
             <input className=" p-2 rounded-md mt-1 text-black " type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
             <input type="hidden" value={name} />
             <input type="hidden" value={message} />
-            <button className=" bg-yellow-500 p-2 rounded-lg mt-1 " onClick={handleSubmit}>Subscribe</button>
+            <button className="yellowbg p-2 rounded-lg mt-1 " onClick={handleSubmit}>Subscribe</button>
           </form>
         </div>
         

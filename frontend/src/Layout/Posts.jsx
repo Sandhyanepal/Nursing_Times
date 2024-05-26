@@ -35,7 +35,7 @@ const Posts = ({ posts }) => {
         return <Post post={post} />;
       })}
 
-      <button className='absolute bg-yellow-500 mt-4 p-1 text-white rounded-md' onClick={showMore}>Show more</button>
+      <button className='absolute yellowbg mt-4 p-1 rounded-md' onClick={showMore}>Show more</button>
 
     </>
   )

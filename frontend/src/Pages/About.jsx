@@ -33,13 +33,16 @@ const About = () => {
 
   const showError = () => {
     if (error) {
-      return <div className='font-bold text-red-700 underline text-lg py-2 text-center'>{error}</div>
+      // return <div className='font-bold text-red-700 underline text-lg py-2 text-center'>{error}</div>
+      alert(error)
+      setError('')
     }
   }
 
   const showSuccess = () => {
     if (success) {
-      return <div className='text-green-500 text-xl font-bold text-center pt-5'>"Message Sent"</div>
+      // return <div className='text-green-500 text-xl font-bold text-center pt-5'>"Message Sent"</div>
+      alert("Message Sent")
     }
   }
 
@@ -79,19 +82,19 @@ const About = () => {
 
             <div className="abouticons flex pt-5 flex-wrap">
               <Link to="">
-                <i className="fa-brands fa-facebook text-2xl mr-5 bg-yellow-500 py-1 px-2 rounded-sm text-white mt-2 lg:mt-0" ></i>
+                <i className="yellowbg fa-brands fa-facebook text-2xl mr-5  py-1 px-2 rounded-sm  mt-2 lg:mt-0" ></i>
               </Link>
               <Link to="">
-                <i className="fa-brands fa-twitter text-2xl mr-5 bg-yellow-500 py-1 px-2 rounded-sm text-white mt-2 lg:mt-0"></i>
+                <i className="yellowbg fa-brands fa-twitter text-2xl mr-5  py-1 px-2 rounded-sm  mt-2 lg:mt-0"></i>
               </Link>
               <Link to="">
-                <i className="fa-brands fa-instagram text-2xl mr-5 bg-yellow-500 py-1 px-3 rounded-sm text-white mt-2 lg:mt-0"></i>
+                <i className="yellowbg fa-brands fa-instagram text-2xl mr-5  py-1 px-3 rounded-sm  mt-2 lg:mt-0"></i>
               </Link>
               <Link>
-                <i className="fa-brands fa-youtube text-2xl mr-5 bg-yellow-500 py-1 px-2 rounded-sm text-white mt-2 lg:mt-0"></i>
+                <i className="yellowbg fa-brands fa-youtube text-2xl mr-5  py-1 px-2 rounded-sm  mt-2 lg:mt-0"></i>
               </Link>
               <Link>
-                <i className="fa-brands fa-pinterest text-2xl bg-yellow-500 py-1 px-2 rounded-sm text-white mt-2 lg:mt-0"></i>
+                <i className="yellowbg fa-brands fa-pinterest text-2xl  py-1 px-2 rounded-sm  mt-2 lg:mt-0"></i>
               </Link>
             </div>
           </div>
@@ -101,23 +104,23 @@ const About = () => {
 
         <div className="vision pt-28 text-start w-11/12 m-auto">
           <h2 className="font-bold text-2xl  pb-2">NURSING TIMES - WHO WE ARE</h2>
-          <h3 className="font-bold text-yellow-500 text-lg  pb-1">MISSION</h3>
+          <h3 className="txtyellow font-bold  text-lg  pb-1">MISSION</h3>
           <p className="text-lg ">Educating new nurses by meeting them where they are with clinical knowledge, authenticity, and warmth in a clear and concise
             manner so that every nurse entering the profession is better equipped to sustainably provide care for both their patients and themselves.</p>
 
-          <h3 className="font-bold text-yellow-500 text-lg pt-4">VISION</h3>
+          <h3 className="txtyellow font-bold text-lg pt-4">VISION</h3>
           <p className="text-lg pb-7">To cut the number of nurses leaving the profession in half. As many as 30% of nurses leave the profession in the first year, and that jumps up to over 50% in year two. We believe that by starting off your professional journey with a solid foundation of skills in self-compassion, assertiveness, and healthy boundaries that more nurses will be empowered to command what they are worth and craft their professional life to fit their unique desires – not leave nursing altogether.</p>
 
           <h2 className="font-bold text-2xl pt-3 pb-2">VALUES</h2>
-          <h3 className="font-bold text-yellow-500 text-lg pb-1">OWNERSHIP</h3>
+          <h3 className="txtyellow font-bold  text-lg pb-1">OWNERSHIP</h3>
           <p className="text-lg pb-2 ">Foster accountability and responsibility in one’s growth as a clinician, CEO of their license, advocate for their patient, and as a human being.</p>
-          <h3 className="font-bold text-yellow-500  text-lg pb-1">CARE</h3>
+          <h3 className="txtyellow font-bold  text-lg pb-1">CARE</h3>
           <p className="text-lg pb-2 ">Genuinely caring about and nurturing the nurse as a whole person, not just a robot to complete tasks.</p>
-          <h3 className="font-bold text-yellow-500  text-lg pb-1">HUMANITY</h3>
+          <h3 className="txtyellow font-bold  text-lg pb-1">HUMANITY</h3>
           <p className="text-lg pb-2">Give nurses permission to be human, practice self-compassion, and extend empathy with boundaries.</p>
-          <h3 className="font-bold text-yellow-500  text-lg pb-1">AUTHENTICITY</h3>
+          <h3 className="txtyellow font-bold   text-lg pb-1">AUTHENTICITY</h3>
           <p className="text-lg pb-2">Come from a place of honesty and openness to facilitate meaningful learning and professional growth.</p>
-          <h3 className="font-bold text-yellow-500  text-lg pb-1">VITALITY</h3>
+          <h3 className="txtyellow font-bold text-lg pb-1">VITALITY</h3>
           <p className="text-lg pb-2">Not to just survive your career, but find joy, purpose, and meaning in the work and thrive.</p>
         </div>
 
@@ -143,7 +146,7 @@ const About = () => {
 
               <p >The founder and educator behind Nursing Times is, the Nursing Times podcast, a nurse educator, author, host of Nursing Times-created to educate, encourage, and motivate newly licensed nurses in innovative ways. And warmth clearly and concisely so that every nurse entering the profession is better equipped to provide care for both their patients and themselves in a sustainable manner!</p>
 
-              <div className="contacticons flex flex-wrap justify-around md:justify-between w-full text-yellow-500  pt-2">
+              <div className="txtyellow contacticons flex flex-wrap justify-around md:justify-between w-full pt-2">
                 <Link to="">
                   <i class="fa-brands fa-facebook text-2xl"></i>
                 </Link>
@@ -182,7 +185,7 @@ const About = () => {
                 <input type="text" placeholder='Name' className='border-2  p-2' value={name} onChange={e => setName(e.target.value)} />
                 <input type="email" placeholder='Email' className='border-2  p-2 my-3' value={email} onChange={e => setEmail(e.target.value)} />
                 <input type="hidden" value={message} />
-                <button className='text-center bg-yellow-500 text-white rounded-lg p-2' onClick={handleSubmit}>SUBSCRIBE</button>
+                <button className='yellowbg text-center rounded-lg p-2' onClick={handleSubmit}>SUBSCRIBE</button>
               </form>
 
             </div>

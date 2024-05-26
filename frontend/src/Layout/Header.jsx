@@ -1,14 +1,31 @@
 // import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAuthenticate } from "../api/userApi";
 import { API } from '../config'
 
 const Header = () => {
   let [dropdown, showDropdown] = useState(false);
- 
+  const subdropdown = useRef(null)
 
+  useEffect(()=> {
+    document.addEventListener("click", handleClickOutside, true)
+  },[])
+
+  const handleClickOutside = (e) => {
+    if(subdropdown.current && !subdropdown.current.contains(e.target)){
+        // handleNav();
+        console.log("outside clicked")
+        showDropdown(false)
+        showSidebar(false)
+    }
+  }
+    const handleLinkClick = () => {
+    showDropdown(false);
+    showSidebar(false)
+  }
+ 
   let { user } = isAuthenticate();
   const navigate = useNavigate();
 
@@ -87,11 +104,13 @@ const Header = () => {
                     // display: 'none',
                   }}
                   className="bg-gray-200 rounded-md"
+                  ref={subdropdown}
                 >
                   <div className="flex flex-col py-2 ">
                     <Link
                       to="/profile"
                       className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
+                      onClick={handleLinkClick}
                     >
                       Profile
                     </Link>
@@ -100,6 +119,7 @@ const Header = () => {
                       <Link
                         to="/admin/dashboard"
                         className="border-b-2 border-gray-400 my-1 mx-2 pb-1 text-center"
+                        onClick={handleLinkClick}
                       >
                         Dashboard
                       </Link>
@@ -108,13 +128,14 @@ const Header = () => {
                     <Link
                       to="/settings"
                       className="border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center "
+                      onClick={handleLinkClick}
                     >
                       Account Settings
                     </Link>
                     {user && (
                       <li
                         onClick={logout}
-                        className="cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center"
+                        className="cursor-pointer list-none border-b-2 border-gray-400 my-1 mx-2 px-2 pb-1 text-center" 
                       >
                         Logout
                       </li>
@@ -141,6 +162,7 @@ const Header = () => {
           <div
           // className='fixed md:hidden'
           // className={sidebar ? 'block' : 'hidden'}
+          ref={subdropdown}
           >
             <ul class="sidebar text-xl pl-10">
               <li onClick={() => showSidebar(!sidebar)} className="pt-8">
@@ -156,25 +178,25 @@ const Header = () => {
               {/* <li className='py-3'> <Link to="/">Home</Link> </li> */}
               <li className="effect my-7 py-2">
                 {" "}
-                <Link to="/about">About</Link>{" "}
-              </li>
-              <li className="effect mb-7 py-2  ">
-                {" "}
-                <Link to="/contact">Contacts</Link>{" "}
+                <Link to="/about" onClick={handleLinkClick}>About</Link>{" "}
               </li>
               <li className="effect mb-7 py-2">
                 {" "}
-                <Link to="/write">Community</Link>{" "}
+                <Link to="/contact" onClick={handleLinkClick}>Contacts</Link>{" "}
+              </li>
+              <li className="effect mb-7 py-2">
+                {" "}
+                <Link to="/write" onClick={handleLinkClick}>Community</Link>{" "}
               </li>
               {user && (
                 <li className="effect mb-7 py-2">
                   {" "}
-                  <Link to="/settings">Account Settings</Link>{" "}
+                  <Link to="/settings" onClick={handleLinkClick}>Account Settings</Link>{" "}
                 </li>
               )}
               {user && user.role === 1 && (
                 <li className="effect mb-7 py-2">
-                  <Link to="/admin/dashboard">Dashboard</Link>{" "}
+                  <Link to="/admin/dashboard" onClick={handleLinkClick}>Dashboard</Link>{" "}
                 </li>
               )}
               {user && (

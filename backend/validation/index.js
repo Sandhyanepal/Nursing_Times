@@ -11,8 +11,6 @@ const validation = (req,res,next) =>{
     next()
 } 
 
-
-
 const userCheck = [
     check('username',"username is required").notEmpty()
     .isLength({min:3}).withMessage("Username must be at least 3 characters"),
@@ -28,7 +26,6 @@ const userCheck = [
     .not().isIn(['P@ssW0rd']).withMessage("Cannot use this password")
 ]
 
-
 const categoryCheck = [
     check('category_name', "Category name is required").notEmpty()
     .isLength({min:5}).withMessage("Category name must be at least 5 characters")
@@ -37,7 +34,7 @@ const categoryCheck = [
 
 const postCheck = [
     check('title', "Title is required").notEmpty()
-    .isLength({ min: 5 }).withMessage("Title must be at least 3 characters"),
+    .isLength({ min: 3 }).withMessage("Title must be at least 3 characters"),
     check('description', "Description is required").notEmpty()
     .isLength({min:10}).withMessage("Description must be at least 10 characters"),
     check('image').optional().isURL().withMessage("Image must be a valid URL"),

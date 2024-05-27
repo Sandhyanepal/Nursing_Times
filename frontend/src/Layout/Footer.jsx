@@ -36,7 +36,6 @@ function Footer() {
     if(error){
       console.log(error)
       alert(error)
-      // return <div className='font-bold text-red-700 underline text-xl text-center'>{error}</div>
     }
   }
 
@@ -44,7 +43,6 @@ function Footer() {
     
     if(success){
       alert("Message sent")
-        // return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
     }
 }
 
@@ -73,7 +71,6 @@ function Footer() {
             <li className="pb-2"><Link to="/privacy">Privacy</Link></li>
           </div>
         </div>
-        {/* <div className="list-none flex md:flex-col md:justify-start flex-wrap justify-around"> */}
         <div className="list-none justify-between flex-wrap">
           <div className="flex lg:flex-col justify-around">
             <h2 className="font-bold pt-3 text-center mb-2 sm:text-xl text-lg">Connect With Us</h2>

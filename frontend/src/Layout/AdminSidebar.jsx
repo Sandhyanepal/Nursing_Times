@@ -47,11 +47,6 @@ const AdminSidebar = () => {
               <h1 className='sm:text-xl text-lg pl-5'>Category</h1>
             </Link></li>
 
-            {/* <li className='py-2'><Link to='' className='flex'>
-              <i className="fa-solid fa-gear text-xl"></i>
-              <h1 className='sm:text-xl text-lg pl-5'>Settings</h1>
-            </Link></li> */}
-
           </ul>
         </div>
       </div>

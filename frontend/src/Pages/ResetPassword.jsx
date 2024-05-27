@@ -45,7 +45,6 @@ const ResetPassword = () => {
 
     const showError = () => {
         if (error) {
-            // return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
             alert(error)
             setError('')
         }
@@ -53,7 +52,6 @@ const ResetPassword = () => {
 
     const showSuccess = () => {
         if (success) {
-            // return <div className='text-green-500 text-lg font-bold'>"Your password has been successfully changed."</div>
             alert("Your password has been successfully changed.")
         }
     }

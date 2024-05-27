@@ -4,7 +4,7 @@ const upload = require('../utils/fileUpload');
 const { postCheck, validation } = require('../validation');
 const router = express.Router()
 
-router.post('/addpost', postCheck, validation,  upload.single('image'), addpost);
+router.post('/addpost',   upload.single('image'),postCheck, validation, addpost);
 router.put('/updatepost/:id',  upload.single('image'), updatePost);
 router.delete('/deletepost/:id',  deletePost);
 router.get('/getpost/:id', getPost);

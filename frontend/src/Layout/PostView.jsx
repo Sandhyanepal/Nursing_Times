@@ -8,8 +8,6 @@ const PostView = ({ post }) => {
 
     let {user} = isAuthenticate()
 
-    // const [posts, setPosts] = useState([])
-
     const [ setDeleteSuccess] = useState(false)
 
    

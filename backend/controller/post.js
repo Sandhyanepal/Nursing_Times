@@ -4,7 +4,7 @@ const User = require("../models/user")
 
 //Create Post
 exports.addpost = async (req, res) => {
-  try {
+  // try {
     let post = await Post.create({
       title: req.body.title,
       description: req.body.description,
@@ -16,10 +16,11 @@ exports.addpost = async (req, res) => {
       return res.status(400).json({ error: "Something went wrong" });
     }
     res.send(post);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-};
+  } 
+  // catch (err) {
+  //   res.status(400).json({ error: err.message });
+  // }
+// };
 
 //Update post
 exports.updatePost = async (req, res) => {

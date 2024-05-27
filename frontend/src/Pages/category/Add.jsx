@@ -26,14 +26,12 @@ const Add = () => {
     }
     const showError = () => {
         if(error){
-            // return <div className='text-red-600 text-center'>{error}</div>
             alert(error)
             setError('')
         }
     }
 
     const showSuccess = () =>{
-        // success && <div className='text-center text-green-600 text-xl font-bold'>Category has been added successfully.</div>
         if(success){
 
             alert("Category has been added successfully.")

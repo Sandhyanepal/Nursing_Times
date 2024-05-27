@@ -41,7 +41,6 @@ const Login = () => {
 
   const showError = () => {
     if (error) {
-      // return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
       alert("User not verified")
     }
   }

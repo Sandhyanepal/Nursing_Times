@@ -37,7 +37,7 @@ const SinglePost = () => {
                 console.log("JSON result:", jsonResult); // Log the JSON result
                 setPost(jsonResult);
                 setTitle(jsonResult.title)
-                setDesc(jsonResult.desc)
+                setDesc(jsonResult.description)
 
             } catch (error) {
                 console.error("Error fetching post:", error);
@@ -217,7 +217,7 @@ const SinglePost = () => {
 
                     {updateMode ?
                         (
-                        // <textarea className='w-11/12 m-auto mt-5 border-b-2 p-5 h-48 resize-none' value={desc} onChange={(e) => setDesc(e.target.value)}>{post.description}
+                        
                         
                         // </textarea>
                         <EditorMCE handleEditorChange={handleEditorChange} value={desc}/>

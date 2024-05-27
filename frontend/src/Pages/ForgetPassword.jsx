@@ -26,7 +26,6 @@ const ForgetPassword = () => {
 
     const showError = () => {
         if(error){
-        //   return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
         alert(error)
         setError('')
         }
@@ -34,7 +33,6 @@ const ForgetPassword = () => {
 
       const showSuccess = () => {
         if(success){
-            // return <div className='text-green-500 text-lg font-bold'>"Password reset link has been sent to your email."</div>
             alert("Password reset link has been sent to your email.")
         }
     }

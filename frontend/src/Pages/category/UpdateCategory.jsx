@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
-// import AdminSidebar from '../../Layout/AdminSidebar'
 import { getCategoryDetails, updateCategory } from '../../api/categoryApi'
 import { useParams } from 'react-router-dom'
 import { isAuthenticate } from '../../api/userApi'
-//import { isAuthenticate } from '../../api/userApi'
 
 const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
-    // let [token, setToken] = useState('')
 
     let { token } = isAuthenticate()
 

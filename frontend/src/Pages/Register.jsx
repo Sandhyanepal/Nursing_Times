@@ -28,7 +28,6 @@ const Register = () => {
 
   const showError = () => {
     if(error){
-      // return <div className='font-bold text-red-700 underline text-lg'>{error}</div>
       alert(error)
       setError('')
     }
@@ -36,7 +35,6 @@ const Register = () => {
 
   const showSuccess = () => {
     if(success){
-      // return <div className='font-bold text-green-700 underline text-lg'>"User registered successfully."</div>
       alert("User registered successfully.")
     }
   }

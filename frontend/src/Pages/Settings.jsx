@@ -6,7 +6,6 @@ import { API } from '../config'
 
 const Settings = () => {
 
-    // let { user } = isAuthenticate()
     const id = isAuthenticate()?.user._id
 
     const [user, setUser] = useState({});
@@ -112,7 +111,6 @@ const Settings = () => {
 
     const showError = () => {
         if (error) {
-            // return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
             alert(error)
             setError('')
         }
@@ -121,7 +119,6 @@ const Settings = () => {
     const showSuccess = () => {
         if (success) {
 
-            // return <div className='text-green-500 text-lg font-bold text-center'>"Your profile has been updated successfully."</div>
             alert("Your profile has been updated successfully.")
         }
     }

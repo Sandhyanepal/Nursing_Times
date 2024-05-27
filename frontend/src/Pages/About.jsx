@@ -33,7 +33,6 @@ const About = () => {
 
   const showError = () => {
     if (error) {
-      // return <div className='font-bold text-red-700 underline text-lg py-2 text-center'>{error}</div>
       alert(error)
       setError('')
     }
@@ -41,7 +40,6 @@ const About = () => {
 
   const showSuccess = () => {
     if (success) {
-      // return <div className='text-green-500 text-xl font-bold text-center pt-5'>"Message Sent"</div>
       alert("Message Sent")
     }
   }

@@ -3,8 +3,6 @@ import { API } from '../config'
 import { Link } from 'react-router-dom'
 
 const Post = ({ post }) => {
-  // console.log("Post.jsx:",post)
-  // console.log("category:",post.category?.category_name)
 
 
   return (
@@ -13,7 +11,6 @@ const Post = ({ post }) => {
       <div className="postInfo sm:w-7/12 md:w-3/5 ">
         
 
-        {/* <Link to = {`${API}/getpost/${post._id}`}> */}
         <Link to={`/singlepost/${post._id}`}>
         <h1 className="postTitle text-2xl mt-2 font-semibold">
           {post.title}</h1>

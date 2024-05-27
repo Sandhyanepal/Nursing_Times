@@ -8,7 +8,6 @@ import CategoryOptions from "../Layout/CategoryOptions";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  // let [loading, setLoading] = useState(true)
 
   useEffect(() => {
        axios.get(`${API}/getallposts`)
@@ -16,7 +15,6 @@ const Home = () => {
         {
           setPosts(res.data)
           console.log("res:",res.data)
-          // setLoading(false)
         }       
       
       )

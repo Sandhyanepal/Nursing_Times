@@ -40,7 +40,7 @@ const postCheck = [
     check('image').optional().isURL().withMessage("Image must be a valid URL"),
     check('userId', "User ID is required").notEmpty()
     .isMongoId().withMessage("User ID must be a valid MongoDB ID"),
-    check('category', "Category ID is required").notEmpty()
+    check('category', "Category is required").notEmpty()
     .isMongoId().withMessage("Category ID must be a valid MongoDB ID"),
 ] 
 

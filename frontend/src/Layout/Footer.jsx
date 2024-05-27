@@ -36,15 +36,13 @@ function Footer() {
     if(error){
       console.log(error)
       alert(error)
-      // return <div className='font-bold text-red-700 underline text-xl text-center'>{error}</div>
     }
   }
 
   const showSuccess = () => {
     
     if(success){
-      alert("message sent")
-        // return <div className='text-green-500 text-xl font-bold text-center'>"Message Sent"</div>
+      alert("Message sent")
     }
 }
 
@@ -73,7 +71,6 @@ function Footer() {
             <li className="pb-2"><Link to="/privacy">Privacy</Link></li>
           </div>
         </div>
-        {/* <div className="list-none flex md:flex-col md:justify-start flex-wrap justify-around"> */}
         <div className="list-none justify-between flex-wrap">
           <div className="flex lg:flex-col justify-around">
             <h2 className="font-bold pt-3 text-center mb-2 sm:text-xl text-lg">Connect With Us</h2>
@@ -92,18 +89,12 @@ function Footer() {
             {showSuccess()}
 
           </div>
-
-          {/* <form className="flex flex-col sm:flex-row pt-3 gap-2 justify-center items-end w-3/5 m-auto">
-            <input className=" p-2 rounded-md mt-1 text-black w-full" type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
-            <input type="hidden" value={name} />
-            <input type="hidden" value={message} />
-            <button className=" bg-yellow-500 p-2 rounded-lg mt-1 px-5" onClick={handleSubmit}>Subscribe</button>
-          </form> */}
+          
           <form className="flex  pt-3 gap-2 justify-center  ">
             <input className=" p-2 rounded-md mt-1 text-black " type="email" placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)}/>
             <input type="hidden" value={name} />
             <input type="hidden" value={message} />
-            <button className=" bg-yellow-500 p-2 rounded-lg mt-1 " onClick={handleSubmit}>Subscribe</button>
+            <button className="yellowbg p-2 rounded-lg mt-1 " onClick={handleSubmit}>Subscribe</button>
           </form>
         </div>
         

@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getAllPost } from '../../api/postApi'
-// import { isAuthenticate } from '../../api/userApi'
 import PostView from '../../Layout/PostView'
 
 
 const AdminPosts = () => {
 
-    // const { user } = isAuthenticate()
 
     const [posts, setPosts] = useState([])
-    // const[limit, setLimit] = useState(4)
     const [deleteSuccess] = useState(false)
 
     useEffect(() => {
@@ -25,23 +22,7 @@ const AdminPosts = () => {
             })
     }, [deleteSuccess])
 
-    // const handleDelete = postId => (event) => {
-    //     // event.preventDefault()
-    //     const confirmed = window.confirm("Are you sure you want to delete this post?")
-    //     if (confirmed === true) {
-    //         deletepost( postId, user._id)
-    //             .then(data => {
-    //                 if (data.error) {
-    //                     alert(data.error)
-    //                     setDeleteSuccess(false)
-    //                 }
-    //                 else {
-    //                     setDeleteSuccess(true)
-    //                     alert('Post Deleted.')
-    //                 }
-    //             })
-    //     }
-    // }
+   
 
 
 

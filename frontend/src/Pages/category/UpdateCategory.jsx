@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
-// import AdminSidebar from '../../Layout/AdminSidebar'
 import { getCategoryDetails, updateCategory } from '../../api/categoryApi'
 import { useParams } from 'react-router-dom'
 import { isAuthenticate } from '../../api/userApi'
-//import { isAuthenticate } from '../../api/userApi'
 
 const UpdateCategory = () => {
     let [category_name, setCategoryName] = useState('')
     let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
-    // let [token, setToken] = useState('')
 
     let { token } = isAuthenticate()
 
@@ -45,13 +42,18 @@ const UpdateCategory = () => {
     }
     const showError = () => {
         if(error){
-            return <div className='text-red-600 text-center'>{error}</div>
+            // return <div className='text-red-600 text-center'>{error}</div>
+            alert(error)
+            setError('')
         }
     }
 
-    const showSuccess = () =>(
-        success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
-    )
+    const showSuccess = () =>{
+        // success && <div className='text-center text-green-600 text-xl font-bold'>Category has been updated successfully.</div>
+        if(success){
+            alert("Category has been updated successfully.")
+        }
+    }
 
     return (
      <div className='flex'>

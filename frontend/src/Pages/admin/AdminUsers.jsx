@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { deleteuser, getallusers } from '../../api/userApi'
 import { Link } from 'react-router-dom'
+import { API } from '../../config'
+import img from '../../assets/images/user_img.jpg'
 
 const AdminUsers = () => {
 
 
     let [user, setUser] = useState([])
 
-    // let [error, setError] = useState('')
     let [success, setSuccess] = useState(false)
 
     useEffect(() => {
@@ -55,12 +56,18 @@ const AdminUsers = () => {
 
                                 <div className='flex flex-col md:flex-row'>
 
-                                    <img src="https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style={{ width: '100px', height: '100px' }} />
+                                    {user.image ? (
+                                        // If user has uploaded an image, display it
+                                        <img className='headerImg cursor-pointer object-cover' src={`${API}/${user.image}`} alt="" style={{ width: '100px', height: '100px' }} />
+                                    ) : (
+                                        // If no image is uploaded, display the default image
+                                        <img className='headerImg cursor-pointer' src={img} alt="" style={{ width: '100px', height: '100px' }} />
+                                    )}
 
                                     <div className='md:px-5'>
                                         <h1 className='pb-1 font-semibold  '>{user.username}</h1>
                                         <p className='pb-1 '>{user.email}</p>
-                                        <Link to={`../userposts/${user._id}`} className='my-1 p-1 bg-yellow-500 text-white rounded-md'>View Posts</Link>
+                                        <Link to={`../userposts/${user._id}`} className='yellowbg my-1 p-1 rounded-md'>View Posts</Link>
                                     </div>
 
                                 </div>

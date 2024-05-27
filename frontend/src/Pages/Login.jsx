@@ -41,17 +41,17 @@ const Login = () => {
 
   const showError = () => {
     if (error) {
-      return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+      alert("User not verified")
     }
   }
 
   const redirect = () => {
     if (success) {
       if (isAuthenticate().user.role === '1' ) {
-        return navigate('/admin/dashboard')
+        navigate('/admin/dashboard')
       }
       else {
-        return navigate('/')
+        navigate('/')
       }
     }
   }
@@ -77,7 +77,7 @@ const Login = () => {
 
           {showError()}
 
-          <button className='mt-3 bg-yellow-500 text-white py-1 rounded-md' onClick={handleLogin}>Login</button>
+          <button className='yellowbg mt-3 py-1 rounded-md' onClick={handleLogin}>Login</button>
 
           <Link to='/forgetpassword' className='mt-2 text-blue-600 text-start' >Forget Password?</Link>
         </form>

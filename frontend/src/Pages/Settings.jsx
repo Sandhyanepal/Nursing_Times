@@ -6,7 +6,6 @@ import { API } from '../config'
 
 const Settings = () => {
 
-    // let { user } = isAuthenticate()
     const id = isAuthenticate()?.user._id
 
     const [user, setUser] = useState({});
@@ -112,14 +111,15 @@ const Settings = () => {
 
     const showError = () => {
         if (error) {
-            return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            alert(error)
+            setError('')
         }
     }
 
     const showSuccess = () => {
         if (success) {
 
-            return <div className='text-green-500 text-lg font-bold text-center'>"Your profile has been updated successfully."</div>
+            alert("Your profile has been updated successfully.")
         }
     }
 
@@ -131,7 +131,7 @@ const Settings = () => {
                 {showError()}
                 {showSuccess()}
                 <div className="settingTitle flex items-center justify-between flex-wrap">
-                    <h1 className='text-3xl mb-5 text-yellow-500'>Update Your Account</h1>
+                    <h1 className='txtyellow text-3xl mb-5 '>Update Your Account</h1>
 
                     <div className=''>
                         <button className='bg-red-500 py-1 w-32 rounded-md text-white ' onClick={handleDelete}>DeleteAccount</button>
@@ -144,7 +144,7 @@ const Settings = () => {
                     <div className="settingsPP flex items-center my-3">
 
                         <label htmlFor="fileInput">
-                            <FontAwesomeIcon icon={faUserCircle} className='w-6 h-6 p-1 rounded-3xl bg-yellow-500 text-white flex justify-center items-center mr-3 cursor-pointer' />
+                            <FontAwesomeIcon icon={faUserCircle} className='yellowbg w-6 h-6 p-1 rounded-3xl flex justify-center items-center mr-3 cursor-pointer' />
                         </label>
                         <input type="file" id='fileInput' style={{ display: 'none' }} onChange={e => {
                             setImageSelected(true)
@@ -167,7 +167,7 @@ const Settings = () => {
                     <input type="email" className='text-gray-500 my-3 py-2 pl-1 border-b-2' value={email}
                         onChange={e => setUser({ ...user, email: e.target.value })} />
 
-                    <button className=' bg-yellow-500 py-1 w-24 rounded-md text-white mt-5 self-end' type='Submit'>Update</button>
+                    <button className='yellowbg  py-1 w-24 rounded-md  mt-5 self-end' type='Submit'>Update</button>
 
                 </form>
             </div>

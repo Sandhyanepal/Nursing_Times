@@ -3,7 +3,7 @@ const { submitUserMessage, getAllMessage, getMessage } = require('../controller/
 const { usermsgCheck, validation } = require('../validation')
 const router = express.Router()
 
-router.post('/submitusermessage', usermsgCheck, validation, submitUserMessage)
+router.post('/submitusermessage',usermsgCheck, validation, submitUserMessage)
 router.get('/getallmessage', getAllMessage)
 router.get('/getmessage/:id', getMessage)
 

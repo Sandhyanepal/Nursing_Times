@@ -43,7 +43,7 @@ const Profile = () => {
                                         )
                                     }
                                     <h1 className='py-2 line-clamp-2 text-ellipsis' dangerouslySetInnerHTML={{ __html: post.description }}></h1>
-                                    <Link to={`/singlepost/${post._id}`} className='bg-yellow-500 p-1 rounded-md text-white text-xs md:text-base lg:text-lg text-center'>Read More</Link>
+                                    <Link to={`/singlepost/${post._id}`} className='yellowbg p-1 rounded-md text-xs md:text-base lg:text-lg text-center'>Read More</Link>
                                     <h1 className="postDate pt-2  text-gray-500">{new Date(post.createdAt).toDateString()}</h1>
         
                                 </div>

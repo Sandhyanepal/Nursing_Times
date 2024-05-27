@@ -13,11 +13,9 @@ const AdminSidebar = () => {
     <div className='adminsidebar bg-gray-300 flex flex-col justify-between p-4 pl-2' style={{ height: "100vh" }}>
       <div>
         <div className='topbar flex '>
-          <Link to='/' className="logo font-bold text-4xl py-6 pl-2">Nursing<span className='text-yellow-500'>Times</span></Link>
-          <Link to='/' className="logo1 font-bold text-4xl py-6 lg:pl-16 lg:text-5xl">N<span className='text-yellow-500'>T</span></Link>
-          {/* <div className='close text-3xl hidden' id='close-btn'>
-            <i className="fa-solid fa-xmark"></i>
-          </div> */}
+          <Link to='/' className="logo font-bold text-4xl py-6 pl-2">Nursing<span className='txtyellow '>Times</span></Link>
+          <Link to='/' className="logo1 font-bold text-4xl py-6 lg:pl-16 lg:text-5xl">N<span className='txtyellow'>T</span></Link>
+          
         </div>
 
       {/* Sidebar */}
@@ -47,11 +45,6 @@ const AdminSidebar = () => {
             <li className='py-2'><Link to='category' className='flex  '>
               <i className="fa-regular fa-newspaper text-xl"></i>
               <h1 className='sm:text-xl text-lg pl-5'>Category</h1>
-            </Link></li>
-
-            <li className='py-2'><Link to='' className='flex'>
-              <i className="fa-solid fa-gear text-xl"></i>
-              <h1 className='sm:text-xl text-lg pl-5'>Settings</h1>
             </Link></li>
 
           </ul>

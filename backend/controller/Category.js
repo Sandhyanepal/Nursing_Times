@@ -1,7 +1,7 @@
 const Category = require('../models/category')
 
 exports.addCategory = async(req,res)=>{
-    category = await Category.create({
+    let category = await Category.create({
         category_name: req.body.category_name
     })
     category = await category.save()
@@ -14,7 +14,7 @@ exports.addCategory = async(req,res)=>{
 
 exports.getAllCategory = async(req,res)=>{
     try{
-        category = await Category.find();
+        let category = await Category.find();
         res.send(category)
     }
     catch (err) {

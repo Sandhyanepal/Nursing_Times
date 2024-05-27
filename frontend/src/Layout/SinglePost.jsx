@@ -37,7 +37,7 @@ const SinglePost = () => {
                 console.log("JSON result:", jsonResult); // Log the JSON result
                 setPost(jsonResult);
                 setTitle(jsonResult.title)
-                setDesc(jsonResult.desc)
+                setDesc(jsonResult.description)
 
             } catch (error) {
                 console.error("Error fetching post:", error);
@@ -110,13 +110,16 @@ const SinglePost = () => {
 
     const showError = () => {
         if (error) {
-            return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            // return <div className='font-bold text-red-700 underline text-lg pt-2 text-center'>{error}</div>
+            alert(error)
+            setError('')
         }
     }
 
     const showSuccess = () => {
         if (success) {
-            return <div className='text-green-500 text-lg font-bold text-center'>{success}</div>
+            // return <div className='text-green-500 text-lg font-bold text-center'>{success}</div>
+            alert(success)
         }
     }
 
@@ -214,7 +217,7 @@ const SinglePost = () => {
 
                     {updateMode ?
                         (
-                        // <textarea className='w-11/12 m-auto mt-5 border-b-2 p-5 h-48 resize-none' value={desc} onChange={(e) => setDesc(e.target.value)}>{post.description}
+                        
                         
                         // </textarea>
                         <EditorMCE handleEditorChange={handleEditorChange} value={desc}/>
@@ -229,7 +232,7 @@ const SinglePost = () => {
                         )}
 
                     {updateMode && (
-                        <button className='updateButton bg-yellow-500 text-white py-1 rounded-md mt-3 w-24 self-end me-5 md:me-10' onClick={handleEdit}>Update</button>
+                        <button className='yellowbg updateButton py-1 rounded-md mt-3 w-24 self-end me-5 md:me-10' onClick={handleEdit}>Update</button>
                     )}
                 </div>
             </div>
@@ -240,7 +243,7 @@ const SinglePost = () => {
                     <h3 className=' text-xl font-bold py-5'>Comments</h3>
 
                     <input type="text" placeholder='Add a comment' className='border p-2 w-full mt-2' onChange={e => setCommentInput(e.target.value)} value={commentInput} />
-                    <button className='bg-yellow-500 px-4 py-1 rounded-lg text-white my-3 ' onClick={handleSubmit}>Comment</button>
+                    <button className='yellowbg px-4 py-1 rounded-lg my-3 ' onClick={handleSubmit}>Comment</button>
 
 
                     {

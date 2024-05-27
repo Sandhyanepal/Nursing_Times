@@ -28,13 +28,14 @@ const Register = () => {
 
   const showError = () => {
     if(error){
-      return <div className='font-bold text-red-700 underline text-lg'>{error}</div>
+      alert(error)
+      setError('')
     }
   }
 
   const showSuccess = () => {
     if(success){
-      return <div className='font-bold text-green-700 underline text-lg'>"User registered successfully."</div>
+      alert("User registered successfully.")
     }
   }
 
@@ -58,7 +59,7 @@ const Register = () => {
             <label htmlFor="" className='my-1 text-xl'>Password</label>
             <input type="password" placeholder='Enter your password' className=' pl-2 py-1' id='pwd' onChange={e=>setPassword(e.target.value)}/>
 
-            <button className='mt-3 bg-yellow-500 text-white py-1 rounded-md' onClick={handleRegister}>Register</button>
+            <button className='yellowbg mt-3 py-1 rounded-md' onClick={handleRegister}>Register</button>
 
           </form>
           <p className='mt-2 text-center'>Aready have an account? <Link to="/login" className='text-blue-600'>Login</Link></p>
